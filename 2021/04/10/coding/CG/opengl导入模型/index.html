@@ -1,0 +1,651 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="准备工作学习网站 LearnOpenGL CN:   https:&#x2F;&#x2F;learnopengl-cn.github.io&#x2F;  依赖开源项目  Assimp:https:&#x2F;&#x2F;github.com&#x2F;assimp&#x2F;assimp  (注：这个需要编译，后续会说，直接下载源文件不管用)  下载Assimp:    http:&#x2F;&#x2F;assimp.org&#x2F;index.php&#x2F;downloads  GLFW:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL 导入模型">
+<meta property="og:url" content="https://lavender815.github.io/2021/04/10/coding/CG/opengl%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="准备工作学习网站 LearnOpenGL CN:   https:&#x2F;&#x2F;learnopengl-cn.github.io&#x2F;  依赖开源项目  Assimp:https:&#x2F;&#x2F;github.com&#x2F;assimp&#x2F;assimp  (注：这个需要编译，后续会说，直接下载源文件不管用)  下载Assimp:    http:&#x2F;&#x2F;assimp.org&#x2F;index.php&#x2F;downloads  GLFW:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/B6Ix9CtgN1Xuoqd.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/cAkrC6LjBVqfJGl.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/G9LPNR7FwMStHkI.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/E4MxHKu5cRDkL3s.png">
+<meta property="og:image" content="https://i.loli.net/2021/04/10/9zuG3gcvnDB8TKe.png">
+<meta property="article:published_time" content="2021-04-10T15:50:00.000Z">
+<meta property="article:modified_time" content="2021-07-22T14:26:30.836Z">
+<meta property="article:author" content="Lavender">
+<meta property="article:tag" content="OpenGL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.loli.net/2021/04/10/B6Ix9CtgN1Xuoqd.png">
+  
+  <title>OpenGL 导入模型 - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="OpenGL 导入模型">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-10 23:50" pubdate>
+        2021年4月10日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">OpenGL 导入模型</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月22日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><h2 id="学习网站"><a href="#学习网站" class="headerlink" title="学习网站"></a>学习网站</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/">LearnOpenGL CN:   </a><a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/">https://learnopengl-cn.github.io/</a></p>
+</blockquote>
+<h2 id="依赖开源项目"><a href="#依赖开源项目" class="headerlink" title="依赖开源项目"></a>依赖开源项目</h2><blockquote>
+<ol>
+<li><p>Assimp:<a target="_blank" rel="noopener" href="https://github.com/assimp/assimp">https://github.com/assimp/assimp</a>  (注：这个需要编译，后续会说，直接下载源文件不管用)</p>
+<p> <a target="_blank" rel="noopener" href="http://assimp.org/index.php/downloads">下载Assimp:    </a><a target="_blank" rel="noopener" href="http://assimp.org/index.php/downloads">http://assimp.org/index.php/downloads</a></p>
+</li>
+<li><p>GLFW:    <a target="_blank" rel="noopener" href="https://github.com/glfw/glfw">https://github.com/glfw/glfw</a>  (注：这个因为需要lib文件，所以需要官网下载相应的库文件等)</p>
+<p> <a target="_blank" rel="noopener" href="https://www.glfw.org/download.html">下载GLFW:    </a><a target="_blank" rel="noopener" href="https://www.glfw.org/download.html">https://www.glfw.org/download.html</a></p>
+</li>
+<li><p>GLM:    <a target="_blank" rel="noopener" href="https://github.com/g-truc/glm">https://github.com/g-truc/glm</a></p>
+</li>
+<li><p>STB:    <a target="_blank" rel="noopener" href="https://github.com/nothings/stb">https://github.com/nothings/stb</a>   (注：其实只用到一个关键文件<code>stb_image.h</code>，直接手动添加头文件也可)</p>
+</li>
+<li><p>GLAD下载:    <a target="_blank" rel="noopener" href="https://glad.dav1d.de/">https://glad.dav1d.de/</a></p>
+</li>
+</ol>
+</blockquote>
+<h2 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h2><blockquote>
+<p><strong>Visual Studio 16 2019 (VS 2019)</strong></p>
+<p>(注：一定要选定好统一的调试模式，例如 Debug 模式 / x64，后续的Assimp编译模式也要与此统一：Debug 模式 / x64，以及GLFW的相应文件下载也是x64的)</p>
+<p>另外，本人习惯：所有后续的include文件(.h 包含目录)、lib文件(.lib 库目录)都是使用的VS 2019默认的目录，应该是<code>Microsoft Visual Studio（VS2019安装目录）\2019\Community\VC\Tools\MSVC\14.28.29910</code> 里面的<code>include</code>文件夹和<code>lib</code>文件夹，查看方法：打开菜单-&gt;项目-&gt;（项目）属性-&gt;VC ++目录-&gt;包含目录-&gt;编辑，在下方计算的值即可看到目录位置；也可以自定义相应的目录，在上述位置中修改添加等。</p>
+</blockquote>
+<h2 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h2><blockquote>
+<p>Cmake:     <a target="_blank" rel="noopener" href="https://cmake.org/download/">https://cmake.org/download/</a></p>
+<p>需要cmake对assimp进行编译</p>
+<p>当快捷键<code>win</code>+<code>R</code>输入<code>cmd</code>，输入<code>cmake --help</code>显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">Usage<br><br>  cmake [options] &lt;path-to-source&gt;<br>  cmake [options] &lt;path-to-existing-build&gt;<br>  cmake [options] -S &lt;path-to-source&gt; -B &lt;path-to-build&gt;<br><br>Specify a <span class="hljs-built_in">source</span> directory to (re-)generate a build system <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> the<br>current working directory.  Specify an existing build directory to<br>re-generate its build system.<br>                                   · · · · · ·<br></code></pre></td></tr></table></figure>
+
+<p>类似如上，即成功</p>
+</blockquote>
+<h1 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h1><h2 id="1、新建项目"><a href="#1、新建项目" class="headerlink" title="1、新建项目"></a>1、新建项目</h2><p>打开VS 2019，新建一个普通的控制台项目即可；</p>
+<p>以下以LearnOpenGL CN上项目为例：</p>
+<p>打开<a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/model_loading.cpp">https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/model_loading.cpp</a></p>
+<p>将源码复制到对应工程的源文件中，此时会有很多报错，不要急，因为缺少相应的头文件等</p>
+<h2 id="2、配置导入头文件（重要）"><a href="#2、配置导入头文件（重要）" class="headerlink" title="2、配置导入头文件（重要）"></a>2、配置导入头文件（重要）</h2><h3 id="1-GLAD"><a href="#1-GLAD" class="headerlink" title="(1) GLAD"></a>(1) GLAD</h3><p>打开网站：<a target="_blank" rel="noopener" href="https://glad.dav1d.de/">https://glad.dav1d.de/</a>，在API里选择对应的opengl版本下载即可，本项目以opengl版本为4.1为例，最后点击下方的<code>Generate</code>下载；</p>
+<p>下载<code>glad.zip</code>，解压后找到<code>glad/src</code>下的<code>glad.c</code>，添加到项目-&gt;源文件中，找到<code>glad/include/glad</code>文件夹，将其复制到VS 2019对应的包含目录中（开头已经说明）。</p>
+<h3 id="2-GLFW"><a href="#2-GLFW" class="headerlink" title="(2) GLFW"></a>(2) GLFW</h3><p>打开网站：<a target="_blank" rel="noopener" href="https://www.glfw.org/download.html">https://www.glfw.org/download.html</a>，我是Windows平台，64位，所以点击<code>64-bit Windows binaries</code>下载，解压后打开<code>lib-vc2019</code>，将里面的lib文件复制到 VS 2019 对应的库目录 x64 文件夹中；</p>
+<p>接下来，打开菜单-&gt;项目-&gt;属性，找见链接器-&gt;输入-&gt;附加依赖项-&gt;编辑，输入<code>glfw3.lib</code>，确定;</p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/glfw/glfw/tree/master/include">https://github.com/glfw/glfw/tree/master/include</a>里的GLFW文件夹，解压后复制GLFW文件夹至VS 2019对应的包含目录中。</p>
+<h3 id="3-GLM"><a href="#3-GLM" class="headerlink" title="(3) GLM"></a>(3) GLM</h3><p>下载<a target="_blank" rel="noopener" href="https://github.com/g-truc/glm">https://github.com/g-truc/glm</a>，复制里面的glm文件夹至VS 2019对应的包含目录中即可。</p>
+<h3 id="4-LearnOpenGL头文件问题"><a href="#4-LearnOpenGL头文件问题" class="headerlink" title="(4) LearnOpenGL头文件问题"></a>(4) LearnOpenGL头文件问题</h3><p>打开<a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/model_loading.cpp">https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/model_loading.cpp</a></p>
+<p>鼠标移动至<code>#include &lt;learnopengl/shader_m.h&gt;</code>中，点击，即可跳转至shader_m.h文件，在项目中头文件右键，添加新建项，命名为shader_m.h，复制代码至文件中；</p>
+<p>后续的<code>camera.h</code>和<code>model.h</code>添加方法相同，都是新建头文件，复制代码进去；对用网站地址：</p>
+<p>shader_m.h:     <a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader.h">https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader.h</a></p>
+<p>camera.h:     <a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/camera.h">https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/camera.h</a></p>
+<p>model.h:     <a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/model.h">https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/model.h</a></p>
+<p>然后，将头文件由（例）<code>#include &lt;learnopengl/shader_m.h&gt;</code>改成<code>#include &quot;shader_m.h&quot;</code>，后面的camera.h和model.h相同</p>
+<h3 id="5-model-h头文件问题"><a href="#5-model-h头文件问题" class="headerlink" title="(5) model.h头文件问题"></a>(5) model.h头文件问题</h3><p>此时shader_m.h文件和camera.h文件都没有错误，但model.h文件还需要配置一些头文件，包括stb_image.h文件、assimp库、mesh.h和shader.h，下面先说明mesh.h和shader.h</p>
+<p>和(4)一样，都是新建头文件，复制对应的代码进去；对用网站地址：</p>
+<p>mesh.h:     <a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/mesh.h">https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/mesh.h</a></p>
+<p>shader.h:     <a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader.h">https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/shader.h</a></p>
+<p>然后，将头文件由（例）<code>#include &lt;learnopengl/mesh.h&gt;</code>改成<code>#include &quot;mesh.h&quot;</code>，后面的shader.h相同</p>
+<p>注：mesh.h中也引入了shader.h，也需要改一下</p>
+<h3 id="6-stb-image-h头文件问题"><a href="#6-stb-image-h头文件问题" class="headerlink" title="(6) stb_image.h头文件问题"></a>(6) stb_image.h头文件问题</h3><p>项目头文件新建.h文件命名为stb_image.h</p>
+<p>LearnOpenGL网站地址如下：<a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/#stb_imageh">https://learnopengl-cn.github.io/01%20Getting%20started/06%20Textures/#stb_imageh</a>，可作为了解参考</p>
+<p>代码地址：<a target="_blank" rel="noopener" href="https://github.com/nothings/stb/blob/master/stb_image.h">https://github.com/nothings/stb/blob/master/stb_image.h</a>，复制代码至新建的头文件中，即可，头文件改成<code>#include &quot;stb_image.h&quot;</code></p>
+<p>重要⭐⭐⭐：这时直接引用会报错，代码stb_image.h里有如下说明：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Do <span class="hljs-keyword">this</span>:<br>   <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STB_IMAGE_IMPLEMENTATION</span><br>before you include <span class="hljs-keyword">this</span> file in *one* C <span class="hljs-keyword">or</span> C++ file to create the implementation.<br></code></pre></td></tr></table></figure>
+
+
+
+<p>因此，要在<code>#include &quot;stb_image.h&quot;</code>引用前加一行，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> STB_IMAGE_IMPLEMENTATION</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;stb_image.h&quot;</span></span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="7-assimp库（核心）"><a href="#7-assimp库（核心）" class="headerlink" title="(7) assimp库（核心）"></a>(7) assimp库（核心）</h3><p>下载Assimp:    <a target="_blank" rel="noopener" href="http://assimp.org/index.php/downloads">http://assimp.org/index.php/downloads</a>，选择<code>Get the sourcecode</code>或者直接访问<a target="_blank" rel="noopener" href="https://github.com/assimp/assimp/releases/tag/v5.0.1">https://github.com/assimp/assimp/releases/tag/v5.0.1</a>下载<code>Source code (zip)</code> （以这个5.0.1版本为例）</p>
+<p>解压assimp-5.0.1，新建文件夹build，按住<code>Shift</code>键，右键，选择<code>在此处打开Powershell窗口</code>，输入以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">cmake .. -G <span class="hljs-string">&quot;Visual Studio 16 2019&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>回车键，如图生成以下文件即成功：</p>
+<p><img src="https://i.loli.net/2021/04/10/B6Ix9CtgN1Xuoqd.png" srcset="/img/loading.gif" lazyload alt="image-20210410225638071"></p>
+<p>打开.sln（Solution文件）,注意编译环境是Debug / x64，选择ALL_BUILD，生成</p>
+<p><img src="https://i.loli.net/2021/04/10/cAkrC6LjBVqfJGl.png" srcset="/img/loading.gif" lazyload alt="image-20210410234255092"></p>
+<p>等待生成成功，输出窗口出现以下即为成功：</p>
+<p><img src="https://i.loli.net/2021/04/10/G9LPNR7FwMStHkI.png" srcset="/img/loading.gif" lazyload alt="image-20210410230354912"></p>
+<p>复制<code>assimp-5.0.1\build\include\assimp</code>文件夹下的<code>config.h</code>到<code>assimp-5.0.1\include\assimp</code>文件夹里</p>
+<p>复制下载的<code>assimp-5.0.1\include</code>文件夹里的<code>assimp</code>文件夹至VS 2019对应的包含目录中。</p>
+<p>复制<code>assimp-5.0.1\build\code\Debug</code>里的除.dll文件到 VS 2019 对应的库目录 x64 文件夹中。</p>
+<p>注意：此时运行可能会出现如下问题：</p>
+<p><img src="https://i.loli.net/2021/04/10/E4MxHKu5cRDkL3s.png" srcset="/img/loading.gif" lazyload alt="image-20210410231413293"></p>
+<p>解决方法：</p>
+<p>将<code>assimp-5.0.1\build\code\Debug</code>里的<code>assimp-vc142-mtd.dll</code>复制到<code>项目文件夹/x64/Debug</code>文件夹下</p>
+<p>，或者复制到系统的<code>C:/Windows/System32</code>文件夹下（因为是x64下）</p>
+<p>接下来，打开菜单-&gt;项目-&gt;属性，找见链接器-&gt;输入-&gt;附加依赖项-&gt;编辑，输入<code>assimp-vc142-mtd.dll</code>，确定;</p>
+<h3 id="8-模型问题"><a href="#8-模型问题" class="headerlink" title="(8) 模型问题"></a>(8) 模型问题</h3><p>打开主函数文件，大概在80行代码处有以下代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// build and compile shaders</span><br>   <span class="hljs-comment">// -------------------------</span><br>   <span class="hljs-function">Shader <span class="hljs-title">ourShader</span><span class="hljs-params">(<span class="hljs-string">&quot;1.model_loading.vs&quot;</span>, <span class="hljs-string">&quot;1.model_loading.fs&quot;</span>)</span></span>;<br><br>   <span class="hljs-comment">// load models</span><br>   <span class="hljs-comment">// -----------</span><br>   <span class="hljs-function">Model <span class="hljs-title">ourModel</span><span class="hljs-params">(FileSystem::getPath(<span class="hljs-string">&quot;resources/objects/backpack/backpack.obj&quot;</span>))</span></span>;<br></code></pre></td></tr></table></figure>
+
+<p>其中<code>1.model_loading.vs</code>和 <code>1.model_loading.fs</code>都是shader文件，<code>backpack.obj</code>是OBJ格式的模型文件</p>
+<p>接下来，先搞定shader文件，分别在项目源文件新建文件，分别命名为<code>1.model_loading.vs</code>和 <code>1.model_loading.fs</code>，</p>
+<p>访问网站，粘贴代码，网站和代码如下：</p>
+<p><a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/1.model_loading.vs">1.model_loading.vs</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#version 330 core</span><br><span class="hljs-built_in">layout</span> (location = <span class="hljs-number">0</span>) in vec3 aPos;<br><span class="hljs-built_in">layout</span> (location = <span class="hljs-number">1</span>) in vec3 aNormal;<br><span class="hljs-built_in">layout</span> (location = <span class="hljs-number">2</span>) in vec2 aTexCoords;<br><br>out vec2 TexCoords;<br><br>uniform mat4 model;<br>uniform mat4 view;<br>uniform mat4 projection;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    TexCoords = aTexCoords;    <br>    gl_Position = projection * view * model * <span class="hljs-built_in">vec4</span>(aPos, <span class="hljs-number">1.0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><a target="_blank" rel="noopener" href="https://learnopengl.com/code_viewer_gh.php?code=src/3.model_loading/1.model_loading/1.model_loading.fs">1.model_loading.fs</a></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#version 330 core</span><br>out vec4 FragColor;<br><br>in vec2 TexCoords;<br><br>uniform sampler2D texture_diffuse1;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;    <br>    FragColor = <span class="hljs-built_in">texture</span>(texture_diffuse1, TexCoords);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接下来搞定obj模型文件，按照<code>resources/objects/backpack/backpack.obj</code>新建文件夹也可，自己定义路径也可，我放在与.sln同一级文件夹下新建的resources/objects/backpack目录下，即<code>../resources/objects/backpack/</code></p>
+<p>下载模型nanosuit.rar:    <a target="_blank" rel="noopener" href="https://learnopengl-cn.github.io/data/nanosuit.rar">https://learnopengl-cn.github.io/data/nanosuit.rar</a></p>
+<p>然后解压，复制所以文件至<code>../resources/objects/backpack/</code>下，对于我这种代码改成</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// load models</span><br>    <span class="hljs-comment">// -----------</span><br>    <span class="hljs-function">Model <span class="hljs-title">ourModel</span><span class="hljs-params">(FileSystem::getPath(<span class="hljs-string">&quot;../resources/objects/backpack/nanosuit.obj&quot;</span>))</span></span>;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>最后，上方代码会报错，是关于FileSystem相关的，改成如下就正确了</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// build and compile shaders</span><br><span class="hljs-comment">// -------------------------</span><br><span class="hljs-function">Shader <span class="hljs-title">ourShader</span><span class="hljs-params">(<span class="hljs-string">&quot;1.model_loading.vs&quot;</span>, <span class="hljs-string">&quot;1.model_loading.fs&quot;</span>)</span></span>;<br><br><span class="hljs-comment">// load models</span><br><span class="hljs-comment">// -----------</span><br><span class="hljs-function">Model <span class="hljs-title">ourModel</span><span class="hljs-params">(<span class="hljs-string">&quot;../resources/objects/backpack/nanosuit.obj&quot;</span>)</span></span>;<br></code></pre></td></tr></table></figure>
+
+<h1 id="最终成果"><a href="#最终成果" class="headerlink" title="最终成果"></a>最终成果</h1><p>运行如下：</p>
+<p><img src="https://i.loli.net/2021/04/10/9zuG3gcvnDB8TKe.png" srcset="/img/loading.gif" lazyload alt="image-20210410233446712"></p>
+<p><strong>成功！</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/OpenGL/">OpenGL</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGL/">OpenGL</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/08/shoka/Shoka%E4%B8%BB%E9%A2%98%EF%BC%9A%E4%BF%AE%E5%A4%8D%E6%B5%8F%E8%A7%88%E5%99%A8%E6%9B%B4%E6%96%B0%E5%90%8E%E5%88%86%E7%B1%BB%E5%8D%A1%E7%89%87%E7%9A%84BUG/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Shoka主题：修复浏览器更新后分类卡片的bug</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/04/02/github%E7%9B%B8%E5%85%B3/">
+                        <span class="hidden-mobile">Github提速/下载</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

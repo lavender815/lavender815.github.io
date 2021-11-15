@@ -1,0 +1,539 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多边形扫描转换 采用活化边表的有序边表算法多边形填充（MFC）">
+<meta property="og:url" content="https://lavender815.github.io/2020/10/29/coding/CG/%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%89%AB%E6%8F%8F%E8%BD%AC%E6%8D%A2%20%E9%87%87%E7%94%A8%E6%B4%BB%E5%8C%96%E8%BE%B9%E8%A1%A8%E7%9A%84%E6%9C%89%E5%BA%8F%E8%BE%B9%E8%A1%A8%E7%AE%97%E6%B3%95%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%A1%AB%E5%85%85%EF%BC%88MFC%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-29T11:30:00.000Z">
+<meta property="article:modified_time" content="2021-07-28T04:05:32.890Z">
+<meta property="article:author" content="Lavender">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="图形学">
+<meta property="article:tag" content="MFC">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>多边形扫描转换 采用活化边表的有序边表算法多边形填充（MFC） - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="多边形扫描转换 采用活化边表的有序边表算法多边形填充（MFC）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-29 19:30" pubdate>
+        2020年10月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">多边形扫描转换 采用活化边表的有序边表算法多边形填充（MFC）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月28日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">CCGPainterView::ScanLineFillConvert</span><span class="hljs-params">(CDC* pDC, CPoint startPoint, COLORREF fillCol, COLORREF boundaryCol)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">/*定义结构体用于活性边表AET和新边表NET*/</span><br>    <span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">XET</span></span><br><span class="hljs-class">    &#123;</span><br>        <span class="hljs-keyword">double</span> x;<br>        <span class="hljs-keyword">double</span> dx, ymax;<br>        XET* next;<br>    &#125;AET, NET;<br>    <span class="hljs-comment">//CPoint *ThePolygon.m_Vertex;</span><br>    <span class="hljs-keyword">int</span> vertNum = ThePolygon.m_VerticeNumber;<br>    <span class="hljs-comment">/*计算最高点y的坐标,扫描线扫到y的最高点就结束*/</span><br>    <span class="hljs-keyword">int</span> MaxY = ThePolygon.m_Vertex[<span class="hljs-number">0</span>].y;<br>    <span class="hljs-keyword">int</span> MinY = ThePolygon.m_Vertex[<span class="hljs-number">0</span>].y;<br>    <span class="hljs-keyword">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt; vertNum; i++) &#123;<br>        <span class="hljs-keyword">if</span> (ThePolygon.m_Vertex[i].y &gt; MaxY)<br>            MaxY = ThePolygon.m_Vertex[i].y;<br><br>        <span class="hljs-keyword">if</span> (MinY &gt; ThePolygon.m_Vertex[i].y)<br>            MinY = ThePolygon.m_Vertex[i].y;<br>    &#125;<br>    <span class="hljs-comment">/*初始化AET表，这是一个有头结点的链表*/</span><br>    AET* pAET = <span class="hljs-keyword">new</span> AET;<br>    pAET-&gt;next = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-comment">/*初始化NET表，这也是一个有头结点的链表，头结点的dx，x，ymax都初始化为0*/</span><br>    NET* pNET[<span class="hljs-number">1024</span>];<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt;= MaxY; i++) &#123;<br>        pNET[i] = <span class="hljs-keyword">new</span> NET;<br>        pNET[i]-&gt;dx = <span class="hljs-number">0</span>;<br>        pNET[i]-&gt;x = <span class="hljs-number">0</span>;<br>        pNET[i]-&gt;ymax = <span class="hljs-number">0</span>;<br>        pNET[i]-&gt;next = <span class="hljs-literal">NULL</span>;<br>    &#125;<br>    <span class="hljs-comment">/*扫描并建立NET表*/</span><br>    <span class="hljs-keyword">for</span> (i = MinY; i &lt;= MaxY; i++) &#123;<br>        <span class="hljs-comment">/*i表示扫描线，扫描线从多边形的最底端开始，向上扫描*/</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; vertNum; j++)<br>            <span class="hljs-comment">/*如果多边形的该顶点与扫描线相交，判断该点为顶点的两条直线是否在扫描线上方</span><br><span class="hljs-comment">             *如果在上方，就记录在边表中，并且是头插法记录，结点并没有按照x值进行排序，毕竟在更新AET的时候还要重新排一次</span><br><span class="hljs-comment">             *所以NET表可以暂时不排序</span><br><span class="hljs-comment">            */</span><br>            <span class="hljs-keyword">if</span> (ThePolygon.m_Vertex[j].y == i) &#123;<br>                <span class="hljs-comment">/*笔画前面的那个点*/</span><br>                <span class="hljs-keyword">if</span> (ThePolygon.m_Vertex[(j - <span class="hljs-number">1</span> + vertNum) % vertNum].y &gt; ThePolygon.m_Vertex[j].y) &#123;<br>                    NET* p = <span class="hljs-keyword">new</span> NET;<br>                    p-&gt;x = ThePolygon.m_Vertex[j].x;<br>                    p-&gt;ymax = ThePolygon.m_Vertex[(j - <span class="hljs-number">1</span> + vertNum) % vertNum].y;<br>                    p-&gt;dx = <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>((ThePolygon.m_Vertex[(j - <span class="hljs-number">1</span> + vertNum) % vertNum].x - ThePolygon.m_Vertex[j].x)) / <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>((ThePolygon.m_Vertex[(j - <span class="hljs-number">1</span> + vertNum) % vertNum].y - ThePolygon.m_Vertex[j].y));<br>                    p-&gt;next = pNET[i]-&gt;next;<br>                    pNET[i]-&gt;next = p;<br>                &#125;<br>                <span class="hljs-comment">/*笔画后面的那个点*/</span><br>                <span class="hljs-keyword">if</span> (ThePolygon.m_Vertex[(j + <span class="hljs-number">1</span> + vertNum) % vertNum].y &gt; ThePolygon.m_Vertex[j].y) &#123;<br>                    NET* p = <span class="hljs-keyword">new</span> NET;<br>                    p-&gt;x = ThePolygon.m_Vertex[j].x;<br>                    p-&gt;ymax = ThePolygon.m_Vertex[(j + <span class="hljs-number">1</span> + vertNum) % vertNum].y;<br>                    p-&gt;dx = <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>((ThePolygon.m_Vertex[(j + <span class="hljs-number">1</span> + vertNum) % vertNum].x - ThePolygon.m_Vertex[j].x)) / <span class="hljs-built_in"><span class="hljs-keyword">double</span></span>((ThePolygon.m_Vertex[(j + <span class="hljs-number">1</span> + vertNum) % vertNum].y - ThePolygon.m_Vertex[j].y));<br>                    p-&gt;next = pNET[i]-&gt;next;<br>                    pNET[i]-&gt;next = p;<br>                &#125;<br>            &#125;<br>    &#125;<br>    <span class="hljs-comment">/*建立并更新活性边表AET*/</span><br>    <span class="hljs-keyword">for</span> (i = MinY; i &lt;= MaxY; i++) &#123;<br>        <span class="hljs-comment">/*更新活性边表AET，计算扫描线与边的新的交点x，此时y值没有达到临界值的话*/</span><br>        NET* p = pAET-&gt;next;<br>        <span class="hljs-keyword">while</span> (p) &#123;<br>            p-&gt;x = p-&gt;x + p-&gt;dx;<br>            p = p-&gt;next;<br>        &#125;<br>        <span class="hljs-comment">/*更新完以后，对活性边表AET按照x值从小到大排序*/</span><br>        AET* tq = pAET;<br>        p = pAET-&gt;next;<br>        tq-&gt;next = <span class="hljs-literal">NULL</span>;<br>        <span class="hljs-keyword">while</span> (p) &#123;<br>            <span class="hljs-keyword">while</span> (tq-&gt;next &amp;&amp; p-&gt;x &gt;= tq-&gt;next-&gt;x)<br>                tq = tq-&gt;next;<br>            NET* s = p-&gt;next;<br>            p-&gt;next = tq-&gt;next;<br>            tq-&gt;next = p;<br>            p = s;<br>            tq = pAET;<br>        &#125;<br>        <span class="hljs-comment">/*从AET表中删除ymax==i的结点*/</span><br>        AET* q = pAET;<br>        p = q-&gt;next;<br>        <span class="hljs-keyword">while</span> (p) &#123;<br>            <span class="hljs-keyword">if</span> (p-&gt;ymax == i) &#123;<br>                q-&gt;next = p-&gt;next;<br>                <span class="hljs-keyword">delete</span> p;<br>                p = q-&gt;next;<br>            &#125;<br>            <span class="hljs-keyword">else</span> &#123;<br>                q = q-&gt;next;<br>                p = q-&gt;next;<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">/*将NET中的新点加入AET，并用插入法按X值递增排序*/</span><br>        p = pNET[i]-&gt;next;<br>        q = pAET;<br>        <span class="hljs-keyword">while</span> (p) &#123;<br>            <span class="hljs-keyword">while</span> (q-&gt;next &amp;&amp; p-&gt;x &gt;= q-&gt;next-&gt;x)<br>                q = q-&gt;next;<br>            NET* s = p-&gt;next;<br>            p-&gt;next = q-&gt;next;<br>            q-&gt;next = p;<br>            p = s;<br>            q = pAET;<br>        &#125;<br><br>        <span class="hljs-comment">/*配对填充颜色*/</span><br>        p = pAET-&gt;next;<br>        <span class="hljs-keyword">while</span> (p &amp;&amp; p-&gt;next) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">float</span> j = p-&gt;x; j &lt;= p-&gt;next-&gt;x; j++) &#123;<br>                pDC-&gt;<span class="hljs-built_in">SetPixel</span>(<span class="hljs-keyword">static_cast</span>&lt;<span class="hljs-keyword">int</span>&gt;(j), i, fillCol);<br>            &#125;<br>            p = p-&gt;next-&gt;next;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/MFC/">MFC</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/02/coding/Java/20201102/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JAVA程序设计基础作业三（编写输出球体、立方体、圆柱体体积）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/29/coding/CG/%E6%89%AB%E6%8F%8F%E7%BA%BF%E5%A1%AB%E5%85%85%E7%AE%97%E6%B3%9520201029/">
+                        <span class="hidden-mobile">扫描线种子多边形填充算法(MFC）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

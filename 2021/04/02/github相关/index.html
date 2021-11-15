@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="一、提升Github访问速度1、Github镜像网站访问 1、https:&#x2F;&#x2F;github.com.cnpmjs.org&#x2F; 2、https:&#x2F;&#x2F;git.sdut.me&#x2F; 3、https:&#x2F;&#x2F;hub.fastgit.org  2、 修改Hosts文件加速访问(1)获取github的global.ssl.fastly 访问https:&#x2F;&#x2F;fastly.net.ipaddress.com&#x2F;github.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github提速&#x2F;下载">
+<meta property="og:url" content="https://lavender815.github.io/2021/04/02/github%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="一、提升Github访问速度1、Github镜像网站访问 1、https:&#x2F;&#x2F;github.com.cnpmjs.org&#x2F; 2、https:&#x2F;&#x2F;git.sdut.me&#x2F; 3、https:&#x2F;&#x2F;hub.fastgit.org  2、 修改Hosts文件加速访问(1)获取github的global.ssl.fastly 访问https:&#x2F;&#x2F;fastly.net.ipaddress.com&#x2F;github.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/02/ceyWpd.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/02/cecPqP.png">
+<meta property="og:image" content="https://z3.ax1x.com/2021/04/02/cehhes.png">
+<meta property="article:published_time" content="2021-04-02T09:50:09.000Z">
+<meta property="article:modified_time" content="2021-07-22T14:26:29.769Z">
+<meta property="article:author" content="Lavender">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/04/02/ceyWpd.png">
+  
+  <title>Github提速/下载 - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Github提速/下载">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-04-02 17:50" pubdate>
+        2021年4月2日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      5 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Github提速/下载</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月22日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="一、提升Github访问速度"><a href="#一、提升Github访问速度" class="headerlink" title="一、提升Github访问速度"></a>一、提升Github访问速度</h1><h2 id="1、Github镜像网站访问"><a href="#1、Github镜像网站访问" class="headerlink" title="1、Github镜像网站访问"></a>1、Github镜像网站访问</h2><blockquote>
+<p>1、<a target="_blank" rel="noopener" href="https://github.com.cnpmjs.org/">https://github.com.cnpmjs.org/</a></p>
+<p>2、<a target="_blank" rel="noopener" href="https://git.sdut.me/">https://git.sdut.me/</a></p>
+<p>3、<a target="_blank" rel="noopener" href="https://hub.fastgit.org/">https://hub.fastgit.org</a></p>
+</blockquote>
+<h2 id="2、-修改Hosts文件加速访问"><a href="#2、-修改Hosts文件加速访问" class="headerlink" title="2、 修改Hosts文件加速访问"></a>2、 修改Hosts文件加速访问</h2><h3 id="1-获取github的global-ssl-fastly"><a href="#1-获取github的global-ssl-fastly" class="headerlink" title="(1)获取github的global.ssl.fastly"></a>(1)获取github的global.ssl.fastly</h3><blockquote>
+<p>访问<a target="_blank" rel="noopener" href="https://fastly.net.ipaddress.com/github.global.ssl.fastly.net#ipinfo">https://fastly.net.ipaddress.com/github.global.ssl.fastly.net#ipinfo</a></p>
+</blockquote>
+<p><img src="https://z3.ax1x.com/2021/04/02/ceyWpd.png" srcset="/img/loading.gif" lazyload></p>
+<p>获得IP为<code>199.232.69.194</code></p>
+<h3 id="2-获取github-com地址"><a href="#2-获取github-com地址" class="headerlink" title="(2) 获取github.com地址"></a>(2) 获取github.com地址</h3><blockquote>
+<p>访问 <a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/#ipinfo">https://github.com.ipaddress.com/#ipinfo</a></p>
+</blockquote>
+<p><img src="https://z3.ax1x.com/2021/04/02/cecPqP.png" srcset="/img/loading.gif" lazyload></p>
+<p>获得IP为<code>140.82.112.4</code></p>
+<h3 id="3-修改Hosts文件"><a href="#3-修改Hosts文件" class="headerlink" title="(3)修改Hosts文件"></a>(3)修改Hosts文件</h3><blockquote>
+<p>Hosts文件位置：<code>C:\Windows\System32\drivers\etc\hosts</code></p>
+<p>右键属性，修改Users可写入</p>
+<p>如下图</p>
+<p><img src="https://z3.ax1x.com/2021/04/02/cehhes.png" srcset="/img/loading.gif" lazyload></p>
+<p>打开方式，选择记事本，输入以下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs txt">199.232.69.194 github.global.ssl.fastly.net<br>140.82.112.4 github.com<br></code></pre></td></tr></table></figure>
+
+<p>以上两个IP地址都是刚才两个网页获得，不同电脑IP可能不同</p>
+<p>最后<code>Win</code>+<code>R</code>，打开运行，输入<code>cmd</code>，进入命令提示符，输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ipconfig /flushdns<br></code></pre></td></tr></table></figure>
+
+<p>刷新DNS缓存，最后应该能正常访问</p>
+</blockquote>
+<h2 id="3、Github520-包含图片加载问题"><a href="#3、Github520-包含图片加载问题" class="headerlink" title="3、Github520(包含图片加载问题)"></a>3、Github520(包含图片加载问题)</h2><blockquote>
+<p>Github大佬的加速github和解决图片加载问题的项目</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://github.com/521xueweihan/GitHub520">https://github.com/521xueweihan/GitHub520</a> </p>
+<p>（emmm，能解决访问慢的问题，如果访问不了github，emmm，这个方法不适用于您）</p>
+<p>使用方法都在Github上完整给出</p>
+</blockquote>
+<h1 id="二、提高Github下载速度"><a href="#二、提高Github下载速度" class="headerlink" title="二、提高Github下载速度"></a>二、提高Github下载速度</h1><h2 id="1、-代理网站加速"><a href="#1、-代理网站加速" class="headerlink" title="1、 代理网站加速"></a>1、 代理网站加速</h2><blockquote>
+<p>1、<a target="_blank" rel="noopener" href="https://ghproxy.com/">https://ghproxy.com/</a></p>
+<p>2、<a target="_blank" rel="noopener" href="http://gh.api.99988866.xyz/">http://gh.api.99988866.xyz/</a></p>
+<p>3、<a target="_blank" rel="noopener" href="http://toolwa.com/github/">http://toolwa.com/github/</a></p>
+<p>4、<a target="_blank" rel="noopener" href="https://github.zhlh6.cn/">https://github.zhlh6.cn/</a>   （使用<code>git clone</code>方式下载）</p>
+<p>5、Github raw加速：将 <code>raw.githubusercontent.com</code>替换成<code>raw.staticdn.net</code></p>
+<p>6、<a target="_blank" rel="noopener" href="https://shrill-pond-3e81.hunsh.workers.dev/">https://shrill-pond-3e81.hunsh.workers.dev/</a></p>
+<p>7、<a target="_blank" rel="noopener" href="http://gitd.cc/">http://gitd.cc/</a></p>
+<p>8、<a target="_blank" rel="noopener" href="https://gitclone.com/">https://gitclone.com/</a>（部分需要会员,效果显著）</p>
+<p>9、<a target="_blank" rel="noopener" href="https://pd.zwc365.com/">https://pd.zwc365.com/</a></p>
+<p>10、<a target="_blank" rel="noopener" href="https://d.serctl.com/">https://d.serctl.com/</a></p>
+<p>11、<a target="_blank" rel="noopener" href="http://tool.mkblog.cn/downgit/#/home">http://tool.mkblog.cn/downgit/#/home</a></p>
+</blockquote>
+<h2 id="2、油猴插件配置脚本-适用于基于-Chromium-的浏览器"><a href="#2、油猴插件配置脚本-适用于基于-Chromium-的浏览器" class="headerlink" title="2、油猴插件配置脚本(适用于基于 Chromium 的浏览器)"></a>2、油猴插件配置脚本(适用于基于 <a target="_blank" rel="noopener" href="https://www.chromium.org/">Chromium</a> 的浏览器)</h2><h3 id="安装油猴插件（支持Chrome、Microsoft-Edge、360浏览器等）"><a href="#安装油猴插件（支持Chrome、Microsoft-Edge、360浏览器等）" class="headerlink" title="安装油猴插件（支持Chrome、Microsoft Edge、360浏览器等）"></a>安装油猴插件（支持Chrome、Microsoft Edge、360浏览器等）</h3><h3 id="①-脚本一：github-accelerator"><a href="#①-脚本一：github-accelerator" class="headerlink" title="① 脚本一：github-accelerator"></a>① <a target="_blank" rel="noopener" href="https://github.com/jadezi/github-accelerator/">脚本一：github-accelerator</a></h3><h3 id="②-脚本二：Github-增强-高速下载"><a href="#②-脚本二：Github-增强-高速下载" class="headerlink" title="② 脚本二：Github 增强 - 高速下载"></a>② <a target="_blank" rel="noopener" href="https://greasyfork.org/scripts/412245">脚本二：Github 增强 - 高速下载</a></h3><h2 id="3-插件加速-适用于基于-Chromium-的浏览器"><a href="#3-插件加速-适用于基于-Chromium-的浏览器" class="headerlink" title="3 插件加速(适用于基于 Chromium 的浏览器)"></a>3 插件加速(适用于基于 <a target="_blank" rel="noopener" href="https://www.chromium.org/">Chromium</a> 的浏览器)</h2><blockquote>
+<p>插件名称：Github加速</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/github%E5%8A%A0%E9%80%9F/mfnkflidjnladnkldfonnaicljppahpg/related?hl=zh-CN">Github加速</a></p>
+<p>插件ID：mfnkflidjnladnkldfonnaicljppahpg</p>
+<blockquote>
+<p>(正常渠道方法：需要科学上网，不过既然能科学上网了，不就直接访问Gihub了吗？这个插件应该适用于只能通过谷歌访问助手下载插件的朋友)</p>
+</blockquote>
+<blockquote>
+<p>Chrome Extension 第三方下载：</p>
+<p><a target="_blank" rel="noopener" href="https://chrome.pictureknow.com/">1、收藏猫插件下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://chrome-extension-downloader.com/">2、chrome-extension-downloader: 根据插件ID下载crx文件</a></p>
+</blockquote>
+</blockquote>
+<h2 id="4-Gitee转入下载"><a href="#4-Gitee转入下载" class="headerlink" title="4 Gitee转入下载"></a>4 Gitee转入下载</h2><blockquote>
+<p>1、申请一个gitee账户</p>
+<p>2、右上角“+”号—&gt;从Github/GitLab导入</p>
+<p>3、导入成功后即可进行下载等各项操作</p>
+</blockquote>
+<h2 id="5、IDM下载"><a href="#5、IDM下载" class="headerlink" title="5、IDM下载"></a>5、IDM下载</h2><blockquote>
+<p>其实就是利用Internet Download Manager的多线程下载的优势达到加速下载的目的</p>
+</blockquote>
+<h2 id="6、哔——————"><a href="#6、哔——————" class="headerlink" title="6、哔——————"></a>6、哔——————</h2><blockquote>
+<p>代理、梯子（科学上网）YOU  KNOW</p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E5%B7%A7/">技巧</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/github/">github</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/github/">github</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/04/10/coding/CG/opengl%E5%AF%BC%E5%85%A5%E6%A8%A1%E5%9E%8B/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">OpenGL 导入模型</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/01/31/20210131SpleeterGui/">
+                        <span class="hidden-mobile">软件推荐：SpleeterGui（人声音乐分离）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

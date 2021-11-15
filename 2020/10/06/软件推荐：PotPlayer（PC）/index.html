@@ -1,0 +1,578 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="什么是PotPlayer? PotPlayer 是 KMPlayer 的原制作者姜龙喜先生（韩国）进入 Daum 公司后的新一代网络播放器。PotPlayer 的优势在于强大的内置解码器；而 KMPlayer 的优势在于强大的定制能力和个性化功能。PotPlayer 使用 VC++ 编写， KMPlayer 为 Delphi 编写。PotPlayer 是 Daum 公司的一款网络播放器，有自己的独">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件推荐：PotPlayer（PC）">
+<meta property="og:url" content="https://lavender815.github.io/2020/10/06/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%EF%BC%9APotPlayer%EF%BC%88PC%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="什么是PotPlayer? PotPlayer 是 KMPlayer 的原制作者姜龙喜先生（韩国）进入 Daum 公司后的新一代网络播放器。PotPlayer 的优势在于强大的内置解码器；而 KMPlayer 的优势在于强大的定制能力和个性化功能。PotPlayer 使用 VC++ 编写， KMPlayer 为 Delphi 编写。PotPlayer 是 Daum 公司的一款网络播放器，有自己的独">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-47a3d8750ed791476745ea5e5de4dc7a_720w.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-c82e29e14b944321ba70c945f60301b9_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-4907b11091d3bf372ffaaa039489758b_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-fdf895d6ccc9ef6eecee5033f56565ac_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-c4a9a02d8f1dc72e46c0061862e967d7_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-19382d5d96f217c780e54d4f2dda865b_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-b1f503bba556598672d05603363ef2ff_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-ca3e4a911d5acbf57ad9a74dd8ab93b6_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-c0b70aefb1a209bd1ee2f80f151ee7ea_b.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-18955aa64fd3ddd8ede77f2b649312c6_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-23bd0b1806d581abb0975bc265da8ef4_180x120.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-7cd97d5cb27505442a528c3de953f7b1_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-9d9e439398ed7043f46b5e1bea8a8e32_720w.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-f8f3c43c934cc6ea7db4fd6c8b7dd145_720w.jpg">
+<meta property="article:published_time" content="2020-10-06T05:25:00.000Z">
+<meta property="article:modified_time" content="2021-11-02T09:02:16.522Z">
+<meta property="article:author" content="Lavender">
+<meta property="article:tag" content="技巧">
+<meta property="article:tag" content="软件">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-47a3d8750ed791476745ea5e5de4dc7a_720w.jpg">
+  
+  <title>软件推荐：PotPlayer（PC） - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="软件推荐：PotPlayer（PC）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-10-06 13:25" pubdate>
+        2020年10月6日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">软件推荐：PotPlayer（PC）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年11月2日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="什么是PotPlayer"><a href="#什么是PotPlayer" class="headerlink" title="什么是PotPlayer?"></a>什么是PotPlayer?</h2><blockquote>
+<p>PotPlayer 是 KMPlayer 的原制作者姜龙喜先生（韩国）进入 Daum 公司后的新一代网络播放器。PotPlayer 的优势在于强大的内置解码器；而 KMPlayer 的优势在于强大的定制能力和个性化功能。PotPlayer 使用 VC++ 编写， KMPlayer 为 Delphi 编写。PotPlayer 是 Daum 公司的一款网络播放器，有自己的独立著作权，并非由姜龙喜先生原创，由 KMPlayer 的原始作者姜龙喜进行后续开发。(1428以后版本)的 KMPlayer 由 PandoraTV 团队负责集体开发。应 PandoraTV 的要求，PotPlayer 不会加入在 KMPlayer 中一些受欢迎功能，但作者答应加入一些近似的功能。<br>                                                                                                                                                                        ——百度百科</p>
+</blockquote>
+<h2 id="官网地址：https-potplayer-daum-net-lang-zh-CN（需要科学上网）"><a href="#官网地址：https-potplayer-daum-net-lang-zh-CN（需要科学上网）" class="headerlink" title="官网地址：https://potplayer.daum.net/?lang=zh_CN（需要科学上网）"></a>官网地址：<a target="_blank" rel="noopener" href="https://potplayer.daum.net/?lang=zh_CN">https://potplayer.daum.net/?lang=zh_CN</a>（需要科学上网）</h2><h2 id="PotPlayer优点："><a href="#PotPlayer优点：" class="headerlink" title="PotPlayer优点："></a>PotPlayer优点：</h2><h3 id="1、倍速播放"><a href="#1、倍速播放" class="headerlink" title="1、倍速播放"></a>1、倍速播放</h3><p>（1）右下角点击设置会有菜单，点击加快或者减慢，屏幕左上角会有播放速度。</p>
+<p>快捷键：x 减慢0.1倍 c加快0.1倍</p>
+<p><img src="https://pic3.zhimg.com/80/v2-47a3d8750ed791476745ea5e5de4dc7a_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>（2）快捷键D、F逐帧播放,D后退一帧，F前进一帧。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-c82e29e14b944321ba70c945f60301b9_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、设置进度条缩略图"><a href="#2、设置进度条缩略图" class="headerlink" title="2、设置进度条缩略图"></a>2、设置进度条缩略图</h3><p>快捷键F5打开设置，点击 播放 ，然后勾选 鼠标指向进度条显示缩略图。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-4907b11091d3bf372ffaaa039489758b_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://pic1.zhimg.com/80/v2-fdf895d6ccc9ef6eecee5033f56565ac_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3、视频录制及视频转gif"><a href="#3、视频录制及视频转gif" class="headerlink" title="3、视频录制及视频转gif"></a>3、视频录制及视频转gif</h3><p>（1）视频录制</p>
+<p>Alt+C 快捷键打开录制视频窗口，选择保存位置，选中MKV文件格式，点击开始可以马上录屏。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-c4a9a02d8f1dc72e46c0061862e967d7_720w.jpg" srcset="/img/loading.gif" lazyload><br>（2）视频转gif</p>
+<p>Alt+C 快捷键打开录制视频窗口，选择保存位置，选中GIF文件格式，进度选2，帧率选10。（这样录制出的动图效果更好一点）。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-19382d5d96f217c780e54d4f2dda865b_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="4、无边框-amp-皮肤设置"><a href="#4、无边框-amp-皮肤设置" class="headerlink" title="4、无边框&amp;皮肤设置"></a>4、无边框&amp;皮肤设置</h3><p>（1）设置播放器无边框</p>
+<p>快捷键F5进入设置，选择 皮肤/配色 ，勾选 视频下自动隐藏 和 全屏时防止遮盖。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-b1f503bba556598672d05603363ef2ff_720w.jpg" srcset="/img/loading.gif" lazyload><br>在 皮肤覆盖/放大 中方式选择 Direct3D 9模式，透明度默认值70%就ok。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-ca3e4a911d5acbf57ad9a74dd8ab93b6_720w.jpg" srcset="/img/loading.gif" lazyload><br><img src="https://pic3.zhimg.com/v2-c0b70aefb1a209bd1ee2f80f151ee7ea_b.jpg" srcset="/img/loading.gif" lazyload><br>（2）皮肤设置</p>
+<p>如果不喜欢自带默认皮肤，可以再网站下载其他皮肤放在指定文件夹。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-18955aa64fd3ddd8ede77f2b649312c6_720w.jpg" srcset="/img/loading.gif" lazyload><br><a target="_blank" rel="noopener" href="https://daumpotplayer.com/skin-youtube-skin-for-potplayer-by-oclambo/#more-611">[Skin] YouTube Skin For PotPlayer by oclambodaumpotplayer.com<img src="https://pic1.zhimg.com/v2-23bd0b1806d581abb0975bc265da8ef4_180x120.jpg" srcset="/img/loading.gif" lazyload alt="图标"></a></p>
+<p><img src="https://pic2.zhimg.com/80/v2-7cd97d5cb27505442a528c3de953f7b1_720w.jpg" srcset="/img/loading.gif" lazyload><br>皮肤资源转自知乎大佬 <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/f7f34171b4f65e87c309bc1fa6098f57">@ipcjs</a> ，感谢分享！</p>
+<p>博主的皮肤已经下载好放到指定文件夹，快捷键F5打开设置，更换皮肤即可。不过我还是更喜欢默认皮肤。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-9d9e439398ed7043f46b5e1bea8a8e32_720w.jpg" srcset="/img/loading.gif" lazyload><br>特别喜欢的一个小功能，切换总在最前端。这样每次打开就可以放在界面之前。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-f8f3c43c934cc6ea7db4fd6c8b7dd145_720w.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>转自——</strong></p>
+<p><strong>为什么会推荐PotPlayer视频播放器? - 番茄学长的文章 - 知乎<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/143808787">https://zhuanlan.zhihu.com/p/143808787</a></strong></p>
+<h2 id="命令行选项："><a href="#命令行选项：" class="headerlink" title="命令行选项："></a>命令行选项：</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-meta">命令行用法</span> : <span class="hljs-string">PotPlayerMini64.exe &quot;文件路径&quot; [参数]</span><br><br><span class="hljs-attr">&quot;特殊文件名&quot;</span><br><span class="hljs-meta">-</span>         : <span class="hljs-string">播放标准输入(管道)的流媒体</span><br><br><span class="hljs-attr">[选项]</span><br><span class="hljs-meta">/filedlg</span>          : <span class="hljs-string">打开文件对话框</span><br><span class="hljs-meta">/urldlg</span>       : <span class="hljs-string">打开链接对话框</span><br><span class="hljs-meta">/folderdlg</span>        : <span class="hljs-string">打开文件夹对话框</span><br><span class="hljs-meta">/simple</span>       : <span class="hljs-string">简捷打开文件对话框</span><br><span class="hljs-meta">/cap</span>          : <span class="hljs-string">视频录制</span><br><span class="hljs-meta">/cam</span>          : <span class="hljs-string">摄像头其他设备</span><br><span class="hljs-meta">/atv[</span>:<span class="hljs-string">ch]         : 模拟 TV</span><br><span class="hljs-meta">/dtv[</span>:<span class="hljs-string">ch[-索引]]    : 数字 TV</span><br><span class="hljs-meta">/dvd</span>          : <span class="hljs-string">默认 DVD 设备</span><br><span class="hljs-meta">/cd[</span>:<span class="hljs-string">drive]       : CD 驱动器</span><br><span class="hljs-meta">/add</span>          : <span class="hljs-string">添加到播放列表的最底位置</span><br><span class="hljs-meta">/insert</span>       : <span class="hljs-string">添加到播放列表中正在播放的文件的下一个位置</span><br><span class="hljs-meta">/autoplay</span>         : <span class="hljs-string">自动播放</span><br><span class="hljs-meta">/same</span>         : <span class="hljs-string">播放所有项目</span><br><span class="hljs-meta">/sort</span>         : <span class="hljs-string">按名称排序</span><br><span class="hljs-meta">/randomize</span>    : <span class="hljs-string">随机排序</span><br><span class="hljs-meta">/new</span>          : <span class="hljs-string">运行新的播放器(忽略禁止多重执行选项)</span><br><span class="hljs-meta">/current</span>      : <span class="hljs-string">运行当前播放器(忽略禁止多重执行选项)</span><br><span class="hljs-meta">/clipboard</span>        : <span class="hljs-string">将剪贴板中的项目粘贴到播放列表中并立即开始播放</span><br><span class="hljs-meta">/seek</span>=<span class="hljs-string">hh:mm:ss.ms : 指定时间开始播放</span><br><span class="hljs-meta">/sub</span>=<span class="hljs-string">[&quot;]字幕文件[&quot;] : 指定要一起打开的字幕文件</span><br><span class="hljs-attr">config</span>=<span class="hljs-string">&quot;配置名&quot;      : 选择指定配置</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="快捷键列表："><a href="#快捷键列表：" class="headerlink" title="快捷键列表："></a>快捷键列表：</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-meta">快捷键</span>               <span class="hljs-string">指令</span><br><span class="hljs-attr">--------------------------------------------------------</span><br> <span class="hljs-meta">&quot;</span>              <span class="hljs-string">播放-&gt;跳略播放-&gt;跳略播放 开|关</span><br> <span class="hljs-meta">&#x27;</span>              <span class="hljs-string">播放-&gt;跳略播放-&gt;跳略播放设置...</span><br> <span class="hljs-meta">,</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;滞后0.5 秒</span><br> <span class="hljs-meta">Alt+,</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;滞后50 秒</span><br> <span class="hljs-meta">.</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;超前0.5 秒</span><br> <span class="hljs-meta">Alt+.</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;超前50 秒</span><br> <span class="hljs-meta">/</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;复位</span><br> <span class="hljs-meta">&lt;</span>               <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;滞后0.5 秒</span><br> <span class="hljs-meta">&gt;</span>              <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;超前0.5 秒</span><br> <span class="hljs-meta">[</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;设定起点</span><br> <span class="hljs-meta">Alt+[</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将起点步进 0.1 秒</span><br> <span class="hljs-attr">\ </span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;区段循环 开|关</span><br> <span class="hljs-meta">Alt+\ </span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;当前章节/标记/书签 区段循环</span><br> <span class="hljs-meta">]</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;设定止点</span><br> <span class="hljs-meta">Alt+]</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将止点步进 0.1 秒</span><br> <span class="hljs-meta">`</span>              <span class="hljs-string">屏幕-&gt;迷你尺寸</span><br> <span class="hljs-meta">&#123;</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;解除起点</span><br> <span class="hljs-meta">&#125;</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;解除止点</span><br> <span class="hljs-attr">Backspace</span>          <span class="hljs-string">播放-&gt;定位-&gt;重新开始</span><br> <span class="hljs-meta">Shift+Backspace</span>        <span class="hljs-string">播放-&gt;定位-&gt;结束前30秒</span><br> <span class="hljs-meta">Ctrl+Backspace</span>         <span class="hljs-string">播放-&gt;定位-&gt;中段</span><br> <span class="hljs-meta">Alt+Backspace</span>          <span class="hljs-string">DVD-&gt;标题菜单</span><br> <span class="hljs-attr">Tab</span>                <span class="hljs-string">配置/语言/其他-&gt;OSD信息</span><br> <span class="hljs-meta">Shift+Tab</span>          <span class="hljs-string">配置/语言/其他-&gt;简要信息</span><br> <span class="hljs-attr">Enter</span>              <span class="hljs-string">屏幕-&gt;全屏</span><br> <span class="hljs-meta">Ctrl+Enter</span>         <span class="hljs-string">屏幕-&gt;全屏+(拉伸)</span><br> <span class="hljs-meta">Ctrl+Shift+Enter</span>       <span class="hljs-string">屏幕-&gt;全屏(其他显示器)</span><br> <span class="hljs-meta">Alt+Enter</span>          <span class="hljs-string">屏幕-&gt;全屏</span><br> <span class="hljs-meta">Ctrl+Alt+Enter</span>         <span class="hljs-string">屏幕-&gt;全屏+(保持比例)</span><br> <span class="hljs-attr">Space</span>              <span class="hljs-string">播放-&gt;播放|暂停</span><br> <span class="hljs-attr">PgUp</span>               <span class="hljs-string">电视-&gt;下一频道</span><br> <span class="hljs-meta">Shift+PgUp</span>         <span class="hljs-string">上一 书签/章节</span><br> <span class="hljs-meta">Ctrl+PgUp</span>          <span class="hljs-string">电视-&gt;前一收看频道</span><br> <span class="hljs-meta">Alt+PgUp</span>           <span class="hljs-string">字幕-&gt;字幕样式-&gt;字体 +</span><br> <span class="hljs-attr">PgDn</span>               <span class="hljs-string">电视-&gt;上一频道</span><br> <span class="hljs-meta">Shift+PgDn</span>         <span class="hljs-string">下一 书签/章节</span><br> <span class="hljs-meta">Ctrl+PgDn</span>          <span class="hljs-string">电视-&gt;后一收看频道</span><br> <span class="hljs-meta">Alt+PgDn</span>           <span class="hljs-string">字幕-&gt;字幕样式-&gt;字体 -</span><br> <span class="hljs-attr">End</span>                <span class="hljs-string">播放-&gt;定位-&gt;下一对白</span><br> <span class="hljs-attr">Home</span>               <span class="hljs-string">播放-&gt;定位-&gt;上一对白</span><br> <span class="hljs-meta">Ctrl+Home</span>          <span class="hljs-string">播放-&gt;定位-&gt;当前字幕起点</span><br> <span class="hljs-meta">Alt+Home</span>           <span class="hljs-string">字幕-&gt;字幕样式-&gt;复位</span><br> <span class="hljs-meta">←</span>              <span class="hljs-string">播放-&gt;定位-&gt;步退5 秒</span><br> <span class="hljs-meta">Shift+←</span>            <span class="hljs-string">播放-&gt;定位-&gt;步退1 分</span><br> <span class="hljs-meta">Ctrl+←</span>             <span class="hljs-string">播放-&gt;定位-&gt;步退30 秒</span><br> <span class="hljs-meta">Ctrl+Shift+←</span>           <span class="hljs-string">播放-&gt;定位-&gt;上一关键帧</span><br> <span class="hljs-meta">Alt+←</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;左移</span><br> <span class="hljs-meta">Ctrl+Alt+←</span>         <span class="hljs-string">播放-&gt;定位-&gt;步退5 分</span><br> <span class="hljs-meta">↑</span>              <span class="hljs-string">声音-&gt;音量 +</span><br> <span class="hljs-meta">Shift+↑</span>            <span class="hljs-string">声音-&gt;播放音量控制-&gt;主音量 +</span><br> <span class="hljs-meta">Alt+↑</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;上移</span><br> <span class="hljs-meta">Ctrl+Alt+↑</span>         <span class="hljs-string">声音-&gt;系统音量-&gt;波形音量 +</span><br> <span class="hljs-meta">Ctrl+Alt+Shift+↑</span>       <span class="hljs-string">声音-&gt;系统音量-&gt;主音量 +</span><br> <span class="hljs-meta">→</span>              <span class="hljs-string">播放-&gt;定位-&gt;步进5 秒</span><br> <span class="hljs-meta">Shift+→</span>            <span class="hljs-string">播放-&gt;定位-&gt;步进1 分</span><br> <span class="hljs-meta">Ctrl+→</span>             <span class="hljs-string">播放-&gt;定位-&gt;步进30 秒</span><br> <span class="hljs-meta">Ctrl+Shift+→</span>           <span class="hljs-string">播放-&gt;定位-&gt;下一关键帧</span><br> <span class="hljs-meta">Alt+→</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;右移</span><br> <span class="hljs-meta">Ctrl+Alt+→</span>         <span class="hljs-string">播放-&gt;定位-&gt;步进5 分</span><br> <span class="hljs-meta">↓</span>              <span class="hljs-string">声音-&gt;音量 -</span><br> <span class="hljs-meta">Shift+↓</span>            <span class="hljs-string">声音-&gt;播放音量控制-&gt;主音量 -</span><br> <span class="hljs-meta">Alt+↓</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;下移</span><br> <span class="hljs-meta">Ctrl+Alt+↓</span>         <span class="hljs-string">声音-&gt;系统音量-&gt;波形音量 -</span><br> <span class="hljs-meta">Ctrl+Alt+Shift+↓</span>       <span class="hljs-string">声音-&gt;系统音量-&gt;主音量 -</span><br> <span class="hljs-attr">Insert</span>             <span class="hljs-string">电视-&gt;最后收看频道</span><br> <span class="hljs-meta">Ctrl+Insert</span>            <span class="hljs-string">收藏-&gt;添加当前文件夹</span><br> <span class="hljs-meta">Alt+Insert</span>         <span class="hljs-string">收藏-&gt;添加当前文件</span><br> <span class="hljs-attr">Delete</span>             <span class="hljs-string">电视-&gt;跳转至指定频道...</span><br> <span class="hljs-meta">Shift+Delete</span>           <span class="hljs-string">播放-&gt;播放列表-&gt;删除-&gt;删除文件</span><br> <span class="hljs-meta">Ctrl+Shift+Delete</span>      <span class="hljs-string">播放-&gt;播放列表-&gt;删除-&gt;删除文件(+字幕)</span><br> <span class="hljs-attr">0</span>              <span class="hljs-string">屏幕-&gt;自定义尺寸设置...</span><br> <span class="hljs-attr">1</span>              <span class="hljs-string">屏幕-&gt;半倍屏</span><br> <span class="hljs-meta">Alt+1</span>              <span class="hljs-string">屏幕-&gt;显示器 30% 尺寸</span><br> <span class="hljs-attr">2</span>              <span class="hljs-string">屏幕-&gt;1 倍屏</span><br> <span class="hljs-meta">Alt+2</span>              <span class="hljs-string">屏幕-&gt;显示器 45% 尺寸</span><br> <span class="hljs-attr">3</span>              <span class="hljs-string">屏幕-&gt;1.5 倍屏</span><br> <span class="hljs-meta">Alt+3</span>              <span class="hljs-string">屏幕-&gt;显示器 60% 尺寸</span><br> <span class="hljs-attr">4</span>              <span class="hljs-string">屏幕-&gt;2.0 倍屏</span><br> <span class="hljs-meta">Alt+4</span>              <span class="hljs-string">屏幕-&gt;显示器 75% 尺寸</span><br> <span class="hljs-attr">5</span>              <span class="hljs-string">屏幕-&gt;最大化</span><br> <span class="hljs-attr">6</span>              <span class="hljs-string">屏幕-&gt;最大化|还原</span><br> <span class="hljs-attr">7</span>              <span class="hljs-string">屏幕-&gt;最大化+(过任务栏)|还原</span><br> <span class="hljs-attr">8</span>              <span class="hljs-string">屏幕-&gt;无边框尺寸</span><br> <span class="hljs-attr">9</span>              <span class="hljs-string">屏幕-&gt;自定义尺寸</span><br> <span class="hljs-attr">A</span>              <span class="hljs-string">声音-&gt;选择声音</span><br> <span class="hljs-meta">Shift+A</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;语音增强</span><br> <span class="hljs-meta">Alt+A</span>              <span class="hljs-string">声音-&gt;选择声音-&gt;按序切换声音</span><br> <span class="hljs-meta">Ctrl+Alt+A</span>         <span class="hljs-string">配置/语言/其他-&gt;收尾处理-&gt;依次切换收尾方式</span><br> <span class="hljs-attr">B</span>              <span class="hljs-string">播放-&gt;AB 区段循环</span><br> <span class="hljs-meta">Ctrl+B</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;软模糊</span><br> <span class="hljs-meta">Alt+B</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;粗体</span><br> <span class="hljs-meta">Ctrl+Alt+B</span>         <span class="hljs-string">视频-&gt;下边距-&gt;按序切换边距</span><br> <span class="hljs-attr">C</span>              <span class="hljs-string">播放-&gt;播放速度-&gt;加速 +</span><br> <span class="hljs-meta">Shift+C</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;晶化</span><br> <span class="hljs-meta">Ctrl+C</span>             <span class="hljs-string">视频-&gt;图像截取-&gt;复制当前源画面</span><br> <span class="hljs-meta">Alt+C</span>              <span class="hljs-string">视频-&gt;视频录制-&gt;录制视频...</span><br> <span class="hljs-meta">Ctrl+Alt+C</span>         <span class="hljs-string">视频-&gt;图像截取-&gt;复制当前实画面</span><br> <span class="hljs-attr">D</span>              <span class="hljs-string">播放-&gt;定位-&gt;上一帧</span><br> <span class="hljs-meta">Shift+D</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;降噪</span><br> <span class="hljs-meta">Ctrl+D</span>             <span class="hljs-string">打开-&gt;DVD 设备</span><br> <span class="hljs-meta">Alt+D</span>              <span class="hljs-string">打开-&gt;设备设置...</span><br> <span class="hljs-meta">Ctrl+Alt+D</span>         <span class="hljs-string">打开-&gt;蓝光设备</span><br> <span class="hljs-attr">E</span>              <span class="hljs-string">视频-&gt;亮度 +1%</span><br> <span class="hljs-meta">Shift+E</span>            <span class="hljs-string">声音-&gt;均衡器</span><br> <span class="hljs-meta">Ctrl+E</span>             <span class="hljs-string">视频-&gt;图像截取-&gt;截存当前源画面</span><br> <span class="hljs-meta">Alt+E</span>              <span class="hljs-string">字幕-&gt;字幕浏览器...</span><br> <span class="hljs-meta">Ctrl+Alt+E</span>         <span class="hljs-string">视频-&gt;图像截取-&gt;截存当前实画面</span><br> <span class="hljs-attr">F</span>              <span class="hljs-string">播放-&gt;定位-&gt;下一帧</span><br> <span class="hljs-meta">Ctrl+F</span>             <span class="hljs-string">滤镜-&gt;滤镜/解码器管理...</span><br> <span class="hljs-meta">Alt+F</span>              <span class="hljs-string">字幕-&gt;字幕样式-&gt;字体设置...</span><br> <span class="hljs-attr">G</span>              <span class="hljs-string">播放-&gt;定位-&gt;手动定位...</span><br> <span class="hljs-meta">Shift+G</span>            <span class="hljs-string">声音-&gt;音轨-&gt;声音录制...</span><br> <span class="hljs-meta">Ctrl+G</span>             <span class="hljs-string">视频-&gt;图像截取-&gt;连续截图...</span><br> <span class="hljs-meta">Alt+G</span>              <span class="hljs-string">电视-&gt;频道控制-&gt;频道管理...</span><br> <span class="hljs-attr">H</span>              <span class="hljs-string">播放-&gt;章节/书签</span><br> <span class="hljs-meta">Shift+H</span>            <span class="hljs-string">声音-&gt;音调-&gt;低音</span><br> <span class="hljs-meta">Ctrl+H</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;去块(提高画质)</span><br> <span class="hljs-meta">Alt+H</span>              <span class="hljs-string">字幕-&gt;显示字幕</span><br> <span class="hljs-attr">I</span>              <span class="hljs-string">视频-&gt;色彩度 -1%</span><br> <span class="hljs-meta">Ctrl+I</span>             <span class="hljs-string">视频-&gt;反交错-&gt;切换反交错方式</span><br> <span class="hljs-attr">J</span>              <span class="hljs-string">视频-&gt;3D 视频输出</span><br> <span class="hljs-meta">Shift+J</span>            <span class="hljs-string">声音-&gt;音调-&gt;高音</span><br> <span class="hljs-meta">Ctrl+J</span>             <span class="hljs-string">打开-&gt;摄像头/其他设备</span><br> <span class="hljs-attr">K</span>              <span class="hljs-string">视频-&gt;图像截取</span><br> <span class="hljs-meta">Shift+K</span>            <span class="hljs-string">声音-&gt;音调-&gt;默认音调</span><br> <span class="hljs-meta">Ctrl+K</span>             <span class="hljs-string">打开-&gt;数字 TV(BDA 设备)</span><br> <span class="hljs-meta">Alt+K</span>              <span class="hljs-string">视频-&gt;图像旋转-&gt;按序选择旋转方式</span><br> <span class="hljs-attr">L</span>              <span class="hljs-string">字幕-&gt;选择字幕</span><br> <span class="hljs-meta">Shift+L</span>            <span class="hljs-string">配置/语言/其他-&gt;语言</span><br> <span class="hljs-meta">Ctrl+L</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;电平控制</span><br> <span class="hljs-meta">Alt+L</span>              <span class="hljs-string">字幕-&gt;选择字幕-&gt;依次选择字幕</span><br> <span class="hljs-attr">M</span>              <span class="hljs-string">声音-&gt;静音</span><br> <span class="hljs-meta">Ctrl+M</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;瞬态降噪</span><br> <span class="hljs-meta">Ctrl+Alt+M</span>         <span class="hljs-string">声音-&gt;系统音量-&gt;静音</span><br> <span class="hljs-meta">Ctrl+Alt+Shift+M</span>       <span class="hljs-string">声音-&gt;系统音量-&gt;静音</span><br> <span class="hljs-attr">N</span>              <span class="hljs-string">电视-&gt;频道控制</span><br> <span class="hljs-meta">Shift+N</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;规格化</span><br> <span class="hljs-meta">Ctrl+N</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;3D 降噪</span><br> <span class="hljs-meta">Alt+N</span>              <span class="hljs-string">视频-&gt;图像截取-&gt;创建缩略图...</span><br> <span class="hljs-attr">O</span>              <span class="hljs-string">视频-&gt;色彩度 +1%</span><br> <span class="hljs-meta">Ctrl+O</span>             <span class="hljs-string">打开-&gt;打开文件...</span><br> <span class="hljs-meta">Alt+O</span>              <span class="hljs-string">打开-&gt;打开字幕...</span><br> <span class="hljs-attr">P</span>              <span class="hljs-string">添加书签</span><br> <span class="hljs-meta">Shift+P</span>            <span class="hljs-string">视频-&gt;像素着色-&gt;调整尺寸前的着色切换</span><br> <span class="hljs-meta">Ctrl+P</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;上下翻转</span><br> <span class="hljs-meta">Alt+P</span>              <span class="hljs-string">字幕-&gt;手动输入字幕...</span><br> <span class="hljs-meta">Ctrl+Alt+P</span>         <span class="hljs-string">视频-&gt;像素着色-&gt;调整尺寸后的着色切换</span><br> <span class="hljs-attr">Q</span>              <span class="hljs-string">视频-&gt;图像属性复位</span><br> <span class="hljs-meta">Ctrl+Q</span>             <span class="hljs-string">视频-&gt;裁剪/拉伸-&gt;图像缩放设置...</span><br> <span class="hljs-attr">R</span>              <span class="hljs-string">视频-&gt;对比度 -1%</span><br> <span class="hljs-meta">Shift+R</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;混响</span><br> <span class="hljs-meta">Ctrl+R</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;锐化</span><br> <span class="hljs-attr">S</span>              <span class="hljs-string">视频-&gt;像素着色</span><br> <span class="hljs-meta">Ctrl+S</span>             <span class="hljs-string">打开-&gt;采集器</span><br> <span class="hljs-meta">Ctrl+Shift+S</span>           <span class="hljs-string">字幕-&gt;保存字幕-&gt;按影片名称保存</span><br> <span class="hljs-meta">Alt+S</span>              <span class="hljs-string">字幕-&gt;保存字幕-&gt;回写SMI字幕</span><br> <span class="hljs-meta">Ctrl+Alt+S</span>         <span class="hljs-string">字幕-&gt;保存字幕-&gt;另存字幕为...</span><br> <span class="hljs-attr">T</span>              <span class="hljs-string">视频-&gt;对比度 +1%</span><br> <span class="hljs-meta">Shift+T</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;左右声道互换</span><br> <span class="hljs-meta">Ctrl+T</span>             <span class="hljs-string">配置/语言/其他-&gt;置顶方式-&gt;切换最前端</span><br> <span class="hljs-attr">U</span>              <span class="hljs-string">视频-&gt;饱和度 +1%</span><br> <span class="hljs-meta">Ctrl+U</span>             <span class="hljs-string">打开-&gt;打开链接...</span><br> <span class="hljs-attr">V</span>              <span class="hljs-string">视频-&gt;选择图像</span><br> <span class="hljs-meta">Shift+V</span>            <span class="hljs-string">声音-&gt;声音处理-&gt;语音消除</span><br> <span class="hljs-meta">Ctrl+V</span>             <span class="hljs-string">打开-&gt;打开剪贴板</span><br> <span class="hljs-meta">Alt+V</span>              <span class="hljs-string">视频-&gt;选择图像-&gt;图像顺序选择</span><br> <span class="hljs-attr">W</span>              <span class="hljs-string">视频-&gt;亮度 -1%</span><br> <span class="hljs-meta">Ctrl+W</span>             <span class="hljs-string">打开-&gt;模拟TV</span><br> <span class="hljs-attr">X</span>              <span class="hljs-string">播放-&gt;播放速度-&gt;减速 -</span><br> <span class="hljs-meta">Shift+X</span>            <span class="hljs-string">声音-&gt;开启声音处理滤镜</span><br> <span class="hljs-meta">Ctrl+X</span>             <span class="hljs-string">视频-&gt;图像处理滤镜-&gt;依次切换图像处理滤镜</span><br> <span class="hljs-attr">Y</span>              <span class="hljs-string">视频-&gt;饱和度 -1%</span><br> <span class="hljs-meta">Ctrl+Y</span>             <span class="hljs-string">打开-&gt;重开当前/最后文件</span><br> <span class="hljs-meta">Ctrl+Alt+Y</span>         <span class="hljs-string">打开-&gt;重载字幕</span><br> <span class="hljs-attr">Z</span>              <span class="hljs-string">播放-&gt;播放速度-&gt;正常/之前的速度</span><br> <span class="hljs-meta">Shift+Z</span>            <span class="hljs-string">播放-&gt;定位-&gt;时间场景浏览...</span><br> <span class="hljs-meta">Ctrl+Z</span>             <span class="hljs-string">视频-&gt;图像处理-&gt;左右翻转</span><br> <span class="hljs-meta">Alt+Z</span>              <span class="hljs-string">播放-&gt;定位-&gt;章节/书签场景浏览...</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">0           帧位-&gt;预置-&gt;选择预置顺序</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">1           帧位-&gt;全帧 -</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">1      屏幕-&gt;窗口定位-&gt;置于 ↙</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">2           帧位-&gt;帧高 -</span><br> <span class="hljs-meta">Ctrl+Numpad</span> <span class="hljs-string">2          帧位-&gt;偏移 ↓</span><br> <span class="hljs-meta">Alt+Numpad</span> <span class="hljs-string">2           字幕-&gt;字幕样式-&gt;上下边距 -</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">2      屏幕-&gt;窗口定位-&gt;位移 ↓</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">3      屏幕-&gt;窗口定位-&gt;置于 ↘</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">4           帧位-&gt;帧宽 -</span><br> <span class="hljs-meta">Ctrl+Numpad</span> <span class="hljs-string">4          帧位-&gt;偏移 ←</span><br> <span class="hljs-meta">Alt+Numpad</span> <span class="hljs-string">4           字幕-&gt;字幕样式-&gt;左右边距 -</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">4      屏幕-&gt;窗口定位-&gt;位移 ←</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">5           帧位-&gt;帧位 之前/复位</span><br> <span class="hljs-meta">Ctrl+Numpad</span> <span class="hljs-string">5          帧位-&gt;帧位居中</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">5      屏幕-&gt;窗口定位-&gt;外框居中</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">6           帧位-&gt;帧宽 +</span><br> <span class="hljs-meta">Ctrl+Numpad</span> <span class="hljs-string">6          帧位-&gt;偏移 →</span><br> <span class="hljs-meta">Alt+Numpad</span> <span class="hljs-string">6           字幕-&gt;字幕样式-&gt;左右边距 +</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">6      屏幕-&gt;窗口定位-&gt;位移 →</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">7      屏幕-&gt;窗口定位-&gt;置于 ↖</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">8           帧位-&gt;帧高 +</span><br> <span class="hljs-meta">Ctrl+Numpad</span> <span class="hljs-string">8          帧位-&gt;偏移 ↑</span><br> <span class="hljs-meta">Alt+Numpad</span> <span class="hljs-string">8           字幕-&gt;字幕样式-&gt;上下边距 +</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">8      屏幕-&gt;窗口定位-&gt;位移 ↑</span><br> <span class="hljs-attr">Numpad</span> <span class="hljs-string">9           帧位-&gt;全帧 +</span><br> <span class="hljs-meta">Ctrl+Alt+Numpad</span> <span class="hljs-string">9      屏幕-&gt;窗口定位-&gt;置于 ↗</span><br> <span class="hljs-attr">Add</span>                <span class="hljs-string">帧位-&gt;全帧 +</span><br> <span class="hljs-meta">Ctrl+Alt+Add</span>           <span class="hljs-string">屏幕-&gt;窗口 +</span><br> <span class="hljs-attr">Subtract</span>           <span class="hljs-string">帧位-&gt;全帧 -</span><br> <span class="hljs-meta">Ctrl+Alt+Subtract</span>      <span class="hljs-string">屏幕-&gt;窗口 -</span><br> <span class="hljs-attr">F1</span>             <span class="hljs-string">关于...</span><br> <span class="hljs-meta">Ctrl+F1</span>            <span class="hljs-string">属性...</span><br> <span class="hljs-meta">Ctrl+Alt+F1</span>            <span class="hljs-string">直播-&gt;采集器I</span><br> <span class="hljs-attr">F2</span>             <span class="hljs-string">打开-&gt;打开文件夹...</span><br> <span class="hljs-meta">Ctrl+Alt+F2</span>            <span class="hljs-string">直播-&gt;采集器II</span><br> <span class="hljs-attr">F3</span>             <span class="hljs-string">打开文件...</span><br> <span class="hljs-meta">Ctrl+Alt+F3</span>            <span class="hljs-string">直播-&gt;采集器I开始</span><br> <span class="hljs-attr">F4</span>             <span class="hljs-string">关闭</span><br> <span class="hljs-meta">Ctrl+Alt+F4</span>            <span class="hljs-string">直播-&gt;采集器II开始</span><br> <span class="hljs-attr">F5</span>             <span class="hljs-string">选项...</span><br> <span class="hljs-meta">Ctrl+F5</span>            <span class="hljs-string">比例-&gt;依次切换比例模式</span><br> <span class="hljs-meta">Ctrl+Alt+F5</span>            <span class="hljs-string">直播-&gt;采集设置...</span><br> <span class="hljs-attr">F6</span>             <span class="hljs-string">列表...</span><br> <span class="hljs-meta">Ctrl+F6</span>            <span class="hljs-string">比例-&gt;依次切换比例</span><br> <span class="hljs-attr">F7</span>             <span class="hljs-string">控制...</span><br> <span class="hljs-attr">F9</span>             <span class="hljs-string">直播-&gt;聊天/浏览器...</span><br> <span class="hljs-attr">F12</span>                <span class="hljs-string">打开-&gt;简索-&gt;简索文件...</span><br> <span class="hljs-meta">Ctrl+F12</span>           <span class="hljs-string">打开-&gt;简索-&gt;简索菜单...</span><br> <span class="hljs-meta">Alt+F12</span>            <span class="hljs-string">打开-&gt;打开远程连接...</span><br> <span class="hljs-attr">Scroll</span>             <span class="hljs-string">配置/语言/其他-&gt;播放信息</span><br> <span class="hljs-meta">Ctrl++</span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;下一字幕区段循环</span><br> <span class="hljs-meta">Alt++</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;下一章节/标记/书签 区段循环</span><br> <span class="hljs-meta">Ctrl+Alt++</span>         <span class="hljs-string">播放-&gt;AB 区段循环-&gt;增加区段循环次数</span><br> <span class="hljs-meta">Shift+,</span>            <span class="hljs-string">声音-&gt;声音匹配(同步)-&gt;滞后 0.05 秒</span><br> <span class="hljs-meta">Ctrl+,</span>             <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;滞后5 秒</span><br> <span class="hljs-meta">Ctrl+Alt+,</span>         <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;上一字幕同步</span><br> <span class="hljs-meta">Ctrl+-</span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;上一字幕区段循环</span><br> <span class="hljs-meta">Alt+-</span>              <span class="hljs-string">播放-&gt;AB 区段循环-&gt;上一章节/标记/书签 区段循环</span><br> <span class="hljs-meta">Ctrl+Alt+-</span>         <span class="hljs-string">播放-&gt;AB 区段循环-&gt;减少区段循环次数</span><br> <span class="hljs-meta">Shift+.</span>            <span class="hljs-string">声音-&gt;声音匹配(同步)-&gt;超前 0.05 秒</span><br> <span class="hljs-meta">Ctrl+.</span>             <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;超前5 秒</span><br> <span class="hljs-meta">Ctrl+Alt+.</span>         <span class="hljs-string">字幕-&gt;字幕同步(帧率)-&gt;下一字幕同步</span><br> <span class="hljs-meta">Shift+/</span>            <span class="hljs-string">声音-&gt;声音匹配(同步)-&gt;复位</span><br> <span class="hljs-meta">Ctrl+[</span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将起点步退 0.1 秒</span><br> <span class="hljs-meta">Ctrl+Alt+[</span>         <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将循环区步退 0.1 秒</span><br> <span class="hljs-meta">Shift+\ </span>           <span class="hljs-string">播放-&gt;AB 区段循环-&gt;编辑AB区段循环列表...</span><br> <span class="hljs-meta">Ctrl+\ </span>            <span class="hljs-string">播放-&gt;AB 区段循环-&gt;循环当前字幕</span><br> <span class="hljs-meta">Ctrl+]</span>             <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将止点步退 0.1 秒</span><br> <span class="hljs-meta">Ctrl+Alt+]</span>         <span class="hljs-string">播放-&gt;AB 区段循环-&gt;将循环区步进 0.1 秒</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>软件还有很多玩法，就需要自己琢磨啦！</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/">软件推荐</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%8A%80%E5%B7%A7/">技巧</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/10/12/coding/CG/DDA%E7%AE%97%E6%B3%95%E7%94%BB%E7%9B%B4%E7%BA%BF%EF%BC%88MFC%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">DDA算法画直线（MFC）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/10/05/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90%EF%BC%9AEverything%EF%BC%88PC%EF%BC%89/">
+                        <span class="hidden-mobile">软件推荐：Everything（PC）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

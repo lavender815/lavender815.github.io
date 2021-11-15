@@ -1,0 +1,972 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/page/2/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="No words are necessary between two loving hearts">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/09/coding/Java/20201209javaex6/" target="_self">
+          JAVA实验六：线程
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/09/coding/Java/20201209javaex6/" target="_self">
+          
+          
+            
+          
+          JAVA实验六：线程实验目的
+
+掌握线程的概念。
+掌握线程的创建方法。
+掌握线程的常用方法。
+掌握线程同步的方法
+掌握线程联合的方法。
+
+
+实验内容
+  将实验6文件夹中所附的源程序“RWthread.java”改为用线程联合实现。
+
+实验代码原RWthread.java代码12345678910111213141516171819202122232425262728293031323334353
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-09 00:22" pubdate>
+              2020-12-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/JAVA/">JAVA</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/08/%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E6%8A%80%E6%9C%AF%E5%8F%8A%E5%BA%94%E7%94%A8%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" target="_self">
+          数字视频技术及应用实验三：运动目标检测
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/08/%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E6%8A%80%E6%9C%AF%E5%8F%8A%E5%BA%94%E7%94%A8%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E8%BF%90%E5%8A%A8%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" target="_self">
+          
+          
+            
+          
+          数字视频技术及应用实验三：运动目标检测实验内容及要求
+  阅读实验三指导书，任选一种方法（背景减法、帧差法等）编程实现视频中运动目标检测，并分析实验结果。
+
+实验内容指导
+  1.在vs中新建工程；  2.配置OpenCV；  3.定义读取视频的变量  4.定义相应的指针和结构并初始化  5.将视频灰度化,并将指针的内容存到相应的结构体中  6.计算视频中前后两帧的差值,并将其二值化；  7.更新
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-08 20:11" pubdate>
+              2020-12-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91/">数字视频</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/08/20201201%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA%E4%B8%8E%E6%92%AD%E6%94%BE%E6%8E%A7%E5%88%B6/" target="_self">
+          数字视频技术及应用实验二：视频增强与播放控制
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/08/20201201%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E5%AE%9E%E9%AA%8C%E4%BA%8C%EF%BC%9A%E8%A7%86%E9%A2%91%E5%A2%9E%E5%BC%BA%E4%B8%8E%E6%92%AD%E6%94%BE%E6%8E%A7%E5%88%B6/" target="_self">
+          
+          
+            
+          
+          数字视频技术及应用实验二：视频增强与播放控制实验任务书
+  编程实现一个简易的视频播放器，包含以下功能：
+
+控制视频的播放与暂停。
+控制视频播放进度。
+可调节当前视频的对比度与亮度。
+对视频进行直方图均衡化。
+仍选一种或多种滤波对进行视频增强（方框滤波、均值滤波、高斯率波、理想低通滤波等）
+
+
+实验内容指导
+
+   在VS中新建工程。
+   配置OpenCV。
+   定义读取视频及控制播放所需要的
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-08 20:09" pubdate>
+              2020-12-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91/">数字视频</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/07/coding/Java/20201207javaex5/" target="_self">
+          JAVA实验五： 图形用户界面
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/07/coding/Java/20201207javaex5/" target="_self">
+          
+          
+            
+          
+          JAVA实验五： 图形用户界面实验目的
+
+掌握图形用户界面的要素。
+掌握窗体类。
+掌握布局管理器。
+掌握中间容器类
+掌握事件处理机制。
+掌握图形界面中的基本组件。
+
+
+实验内容
+  第一部分  编写一个Java源程序，其中包含：  编写一个包含主方法main的公共类（访问权限为public的类），该类继承自窗体类JFrame，并且，该类实现了接口ActionListener（实现接口ActionL
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-07 21:54" pubdate>
+              2020-12-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/JAVA/">JAVA</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/12/07/coding/Java/20201207javaex4/" target="_self">
+          JAVA实验四：输入流和输出流
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/12/07/coding/Java/20201207javaex4/" target="_self">
+          
+          
+            
+          
+          JAVA实验四：输入流和输出流实验目的
+
+掌握流的概念和分类。
+掌握文件字符流和缓冲字符流
+掌握随机读写流。
+掌握标准输入/输出。
+掌握File类。
+
+
+实验内容
+  第一部分  编写一个Java源程序，其中包含编写一个包含主方法main的公共类（访问权限为public的类），主方法main中完成的任务是：  （1）从键盘上输入两个文件的路径名及其文件名。  （2）从键盘上输入若干学生的信息（姓名
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-12-07 21:53" pubdate>
+              2020-12-07
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/JAVA/">JAVA</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/22/coding/Java/20201110javwork3/" target="_self">
+          JAVA程序设计基础作业四(计算字符串子串）
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/22/coding/Java/20201110javwork3/" target="_self">
+          
+          
+            
+          
+          JAVA程序设计基础作业四第一部分作业内容
+  编写一个类，该类的功能是可以根据给定的字符串（字符串中的内容是英文单词、英文字符和标点符号，字符串中单词之间有空格）和子串，计算出字符串中包含多少个子串。（要求：对字符串分词时使用String类的split方法。）  在主类中输入字符串和子串，之后使用上面的类检索出子串的数量。  例如，程序可以使用下面的框架：
+  12345678910111213
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-22 15:34" pubdate>
+              2020-11-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/JAVA/">JAVA</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/21/20201121%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8F%90%E5%8F%96%E4%B8%8E%E5%88%86%E5%89%B2/" target="_self">
+          数字视频技术及应用实验一：关键帧提取与分割
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/21/20201121%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91%E5%AE%9E%E9%AA%8C%E4%B8%80%EF%BC%9A%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8F%90%E5%8F%96%E4%B8%8E%E5%88%86%E5%89%B2/" target="_self">
+          
+          
+            
+          
+          数字视频技术及应用实验一：关键帧提取与分割实验内容
+  阅读实验二指导书，提取视频关键帧（镜头的第一帧为关键帧），然后分别利用分水岭算法和阈值分割算法对关键帧进行图像分割，其中。至少任选两种不同的阈值分割算法进行实验。
+
+实验步骤
+  在vs中新建工程。  2.    配置OpenCV。  3.    读取视频。  4.    计算前后两帧灰度值之差，若大于某阈值，则将该帧作为关键帧。  5.  
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-21 21:52" pubdate>
+              2020-11-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E6%95%B0%E5%AD%97%E8%A7%86%E9%A2%91/">数字视频</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/15/coding/CG/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E5%9F%BA%E4%BA%8EOpenGL%E7%9A%84%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%BC%96%E7%A8%8B%E5%88%9D%E6%8E%A2/" target="_self">
+          图形学实验三：基于OpenGL的图形学编程初探
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/15/coding/CG/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6%E5%AE%9E%E9%AA%8C%E4%B8%89%EF%BC%9A%E5%9F%BA%E4%BA%8EOpenGL%E7%9A%84%E5%9B%BE%E5%BD%A2%E5%AD%A6%E7%BC%96%E7%A8%8B%E5%88%9D%E6%8E%A2/" target="_self">
+          
+          
+            
+          
+          图形学实验三：基于OpenGL的图形学编程初探原OpenGL示例代码简单绘制图形：cube.cpp123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include &lt;windows.h
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-15 23:52" pubdate>
+              2020-11-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/C/">C++</a>
+            
+              <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/15/coding/Java/20201110javaex3/" target="_self">
+          JAVA实验三：掌握泛型类的原理和使用方法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/15/coding/Java/20201110javaex3/" target="_self">
+          
+          
+            
+          
+          JAVA实验三：掌握泛型类的原理和使用方法实验任务书
+  “实验3说明”文件夹中给出了一些源程序，完成以下要求：其中，StuList.java（假设其中的类实现了接口MyList）中需要补充代码。  要求：  （注意，本次实验要做两个版本。  第一个版本是，排序时树映射的第一个泛型是封装类，测试程序时，会发现这种版本在学生成绩都不相同时是没有问题的，如果有成绩相同的情况，请观察程序的显示结果，看看
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-15 21:42" pubdate>
+              2020-11-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+              <a href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/JAVA/">JAVA</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/JAVA/">JAVA</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2020/11/14/hexo/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%9B%9B%EF%BC%89/" target="_self">
+          Hexo搭建个人博客（四）
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2020/11/14/hexo/Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E5%9B%9B%EF%BC%89/" target="_self">
+          
+          
+            
+          
+          Hexo搭建个人博客（四）
+  其实网站服务器已经搭建好，这篇博客是对前面的简单加深，这篇的目的是如何添加评论系统
+  因为Hexo没有自带的评论系统，所以需要第三方评论系统
+  本篇以免费无需登录的 Valine 为例
+  选择原因：Valine 免费，简洁，无需登录，集成好，方便
+  许多Hexo主题已经自带Valine，不过需要获取appid和appkey
+
+1、注册登录Leancloud
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-14 23:15" pubdate>
+              2020-11-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/Hexo/">Hexo</a>
+            
+              <a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Hexo/">Hexo</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,567 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="数字图像处理：BMP图像处理（控制台程序）实验任务书：   编写一个VC++的控制台程序。要求如下：   一、打开一个BMP图像文件（图像大小不要太大）。   二、显示图像文件的数据。   对于读入的图像文件，显示位图数据(选择一部分区域显示即可)。用256色或256级灰度图像进行验证。有两种显示方式：从上到下，从下到上。自己验证。         三、计算图像的直方图**(可以只显示灰度级100">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字图像处理：BMP图像处理（控制台程序）">
+<meta property="og:url" content="https://lavender815.github.io/2020/11/09/coding/CG/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%EF%BC%9ABMP%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86%EF%BC%88%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%A8%8B%E5%BA%8F%EF%BC%89/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="数字图像处理：BMP图像处理（控制台程序）实验任务书：   编写一个VC++的控制台程序。要求如下：   一、打开一个BMP图像文件（图像大小不要太大）。   二、显示图像文件的数据。   对于读入的图像文件，显示位图数据(选择一部分区域显示即可)。用256色或256级灰度图像进行验证。有两种显示方式：从上到下，从下到上。自己验证。         三、计算图像的直方图**(可以只显示灰度级100">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-09T15:17:00.000Z">
+<meta property="article:modified_time" content="2021-07-22T14:49:23.980Z">
+<meta property="article:author" content="Lavender">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="图形学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>数字图像处理：BMP图像处理（控制台程序） - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字图像处理：BMP图像处理（控制台程序）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2020-11-09 23:17" pubdate>
+        2020年11月9日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      19k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      61 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字图像处理：BMP图像处理（控制台程序）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年7月22日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="数字图像处理：BMP图像处理（控制台程序）"><a href="#数字图像处理：BMP图像处理（控制台程序）" class="headerlink" title="数字图像处理：BMP图像处理（控制台程序）"></a>数字图像处理：BMP图像处理（控制台程序）</h1><h2 id="实验任务书："><a href="#实验任务书：" class="headerlink" title="实验任务书："></a>实验任务书：</h2><blockquote>
+<p>  编写一个VC++的控制台程序。要求如下：</p>
+<p>  一、打开一个BMP图像文件（图像大小不要太大）。</p>
+<p>  二、显示图像文件的数据。</p>
+<p>  对于读入的图像文件，显示位图数据(选择一部分区域显示即可)。用256色或256级灰度图像进行验证。有两种显示方式：从上到下，从下到上。自己验证。      </p>
+<p>  三、计算图像的直方图**(<strong><strong>可以只显示灰度级</strong></strong>100~200<strong><strong>的直方图，为</strong></strong>0<strong><strong>的不显示；大小的处理，先归一化，再乘以</strong></strong>50**)</p>
+<p>  对于256级灰度级的图像进行计算。存入一个256元素的数组中，并显示其数据。用图形的方式显示（数据为0的不显示，如果值太大，按比例缩小一下）。</p>
+<p>  四、图像的增亮或减暗</p>
+<p>  输入一个数字，如果是正数对图像进行增亮，如果是负数对图像进行减暗。</p>
+<p>  用其他软件进行查看，源图像和被增亮或减暗的图像进行对比，是不是达到了预想的效果。</p>
+<p>  五、main() 函数的要求</p>
+<p>  有选择。</p>
+<p>  main()函数将指定BMP文件读入内存，将图像信息打印输出，最后又原样存入指定文件中。并进行计算需要的数据。</p>
+<p>  界面：</p>
+<p>  **0———-**<strong>结束</strong></p>
+<p>  **1———-**<strong>读图像</strong>（8/24位）</p>
+<p>  **2———–**<strong>写图像</strong>（8/24位）</p>
+<p>  <strong>3———–<strong><strong>显示图像数据（</strong></strong>1<strong><strong>行到</strong></strong>10<strong><strong>行，</strong></strong>1<strong><strong>列到</strong></strong>10<strong><strong>列</strong></strong>,10*10****的大小）</strong>（8/24位）</p>
+<p>  <strong>4———–<strong><strong>计算直方图（</strong></strong>100-200<strong><strong>之间的灰度，</strong></strong>1-10<strong><strong>行，</strong></strong>1-0<strong><strong>列</strong></strong>,10*10****的大小）</strong>(8位)</p>
+<p>  *<em>5———–<strong><strong>对图像进行增亮或减暗（如加上</strong></strong>50</em><em><strong>或减去</strong></em><em>50</em>*<strong>等）</strong>(8位)</p>
+<p>  **6———–**<strong>图像反色</strong></p>
+<p>  *<em>7———–<strong><strong>变成灰度图（</strong></strong>8/24</em>*<strong>位）</strong></p>
+<p>  <strong>8———–<strong><strong>显示调色板</strong></strong>(8**<strong>位</strong></strong>)**</p>
+<p>  <strong>9———–24<strong><strong>位彩色图像转换为</strong></strong>8****位灰度图像</strong></p>
+<p>  <strong>10———–24<strong><strong>位彩色图像转换为</strong></strong>8****位彩色图像</strong></p>
+</blockquote>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><blockquote>
+<p>  代码仅供参考：</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;Windows.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;bits/stdc++.h&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *pBmpBuf;<br><span class="hljs-keyword">int</span> bmpWidth;<br><span class="hljs-keyword">int</span> bmpHeight;<br>RGBQUAD *pColorTable;<br><span class="hljs-keyword">int</span> biBitCount;<br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> **out_r;<br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> **out_g;<br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> **out_b;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">readBmp</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span> <span class="hljs-comment">//读图像</span></span><br><span class="hljs-function"></span>&#123;<br>    FILE *fp=<span class="hljs-built_in">fopen</span>(bmpName,<span class="hljs-string">&quot;rb&quot;</span>);<br>    <span class="hljs-keyword">if</span>(fp==<span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">fseek</span>(fp,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER),<span class="hljs-number">0</span>);<br>    BITMAPINFOHEADER head;<br>    <span class="hljs-built_in">fread</span>(&amp;head,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER),<span class="hljs-number">1</span>,fp);<br>    bmpWidth=head.biWidth;<br>    bmpHeight=head.biHeight;<br>    biBitCount=head.biBitCount;<br>    <span class="hljs-keyword">int</span> lineByte=(bmpWidth*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        pColorTable=<span class="hljs-keyword">new</span> RGBQUAD[<span class="hljs-number">256</span>];<br>        <span class="hljs-built_in">fread</span>(pColorTable,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(RGBQUAD),<span class="hljs-number">256</span>,fp);<br>    &#125;<br>    pBmpBuf=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>[lineByte*bmpHeight];<br>    <span class="hljs-built_in">fread</span>(pBmpBuf,<span class="hljs-number">1</span>,lineByte*bmpHeight,fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">saveBmp</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName,<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *imgBuf,<span class="hljs-keyword">int</span> width,<span class="hljs-keyword">int</span> height,<span class="hljs-keyword">int</span> biBitCount,RGBQUAD *pColorTable)</span> <span class="hljs-comment">//写图像</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(!imgBuf) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> colorTablesize=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>) colorTablesize=<span class="hljs-number">1024</span>;<br>    <span class="hljs-keyword">int</span> lineByte=(width*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    FILE *fp=<span class="hljs-built_in">fopen</span>(bmpName,<span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span>(fp==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    BITMAPFILEHEADER fileHead;<br>    fileHead.bfType=<span class="hljs-number">0x4D42</span>;<br>    fileHead.bfSize=<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER)+<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER)+colorTablesize+lineByte*height;<br>    fileHead.bfReserved1=<span class="hljs-number">0</span>;<br>    fileHead.bfReserved2=<span class="hljs-number">0</span>;<br>    fileHead.bfOffBits=<span class="hljs-number">54</span>+colorTablesize;<br>    <span class="hljs-built_in">fwrite</span>(&amp;fileHead,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER),<span class="hljs-number">1</span>,fp);<br>    BITMAPINFOHEADER head;<br>    head.biBitCount=biBitCount;<br>    head.biClrImportant=<span class="hljs-number">0</span>;<br>    head.biClrUsed=<span class="hljs-number">0</span>;<br>    head.biCompression=<span class="hljs-number">0</span>;<br>    head.biHeight=height;<br>    head.biPlanes=<span class="hljs-number">1</span>;<br>    head.biSize=<span class="hljs-number">40</span>;<br>    head.biSizeImage=lineByte*height;<br>    head.biWidth=width;<br>    head.biXPelsPerMeter=<span class="hljs-number">0</span>;<br>    head.biYPelsPerMeter=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">fwrite</span>(&amp;head,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER),<span class="hljs-number">1</span>,fp);<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>        <span class="hljs-built_in">fwrite</span>(pColorTable,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(RGBQUAD),<span class="hljs-number">256</span>,fp);<br>    <span class="hljs-built_in">fwrite</span>(imgBuf,height*lineByte,<span class="hljs-number">1</span>,fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">saveBmp_2</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName,<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *imgBuf,<span class="hljs-keyword">int</span> width,<span class="hljs-keyword">int</span> height,<span class="hljs-keyword">int</span> biBitCount,RGBQUAD *pColorTable)</span> <span class="hljs-comment">//写图像</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(!imgBuf) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> colorTablesize=<span class="hljs-number">1024</span>;<br>    <span class="hljs-keyword">int</span> lineByte=(width*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> fix=lineByte-bmpWidth*<span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *p=imgBuf;<br>    FILE *fp=<span class="hljs-built_in">fopen</span>(bmpName,<span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span>(fp==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> lineBytetmp=((width*<span class="hljs-number">8</span>)/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> fixtmp=lineBytetmp-bmpWidth;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *imgBuftmp=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>[lineBytetmp*bmpHeight];<br>    BITMAPFILEHEADER fileHead;<br>    fileHead.bfType=<span class="hljs-number">0x4D42</span>;<br>    fileHead.bfSize=<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER)+<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER)+<span class="hljs-number">256</span>*<span class="hljs-number">4</span>+lineBytetmp*bmpHeight;<br>    fileHead.bfReserved1=<span class="hljs-number">0</span>;<br>    fileHead.bfReserved2=<span class="hljs-number">0</span>;<br>    fileHead.bfOffBits=<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER)+<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER)+<span class="hljs-number">256</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-built_in">fwrite</span>(&amp;fileHead,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER),<span class="hljs-number">1</span>,fp);<br>    BITMAPINFOHEADER head;<br>    head.biBitCount=<span class="hljs-number">8</span>;<br>    head.biClrImportant=<span class="hljs-number">0</span>;<br>    head.biClrUsed=<span class="hljs-number">256</span>;<br>    head.biCompression=BI_RGB;<br>    head.biHeight=height;<br>    head.biPlanes=<span class="hljs-number">1</span>;<br>    head.biSize=<span class="hljs-number">40</span>;<br>    head.biSizeImage=lineBytetmp*height;<br>    head.biWidth=width;<br>    head.biXPelsPerMeter=<span class="hljs-number">0</span>;<br>    head.biYPelsPerMeter=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">fwrite</span>(&amp;head,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER),<span class="hljs-number">1</span>,fp);<br>    RGBQUAD *pColorTabletmp=<span class="hljs-keyword">new</span> RGBQUAD[<span class="hljs-number">256</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>    &#123;<br>        pColorTabletmp[i].rgbBlue=i;<br>        pColorTabletmp[i].rgbGreen=i;<br>        pColorTabletmp[i].rgbRed=i;<br>        pColorTabletmp[i].rgbReserved=<span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">int</span> pos=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>        &#123;<br>            <span class="hljs-keyword">int</span> blue=*p++;<br>            <span class="hljs-keyword">int</span> green=*p++;<br>            <span class="hljs-keyword">int</span> red=*p++;<br>            <span class="hljs-keyword">int</span> gray=<span class="hljs-number">0.3</span>*red+<span class="hljs-number">0.59</span>*green+<span class="hljs-number">0.11</span>*blue;<br>            imgBuftmp[pos]=gray;<br>            pos++;<br>        &#125;<br>        p+=fix;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;fixtmp;i++)<br>        &#123;<br>            imgBuftmp[pos]=<span class="hljs-number">0</span>;<br>            pos++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">delete</span> []pColorTable;<br>    <span class="hljs-keyword">delete</span> []imgBuf;<br>    <span class="hljs-built_in">fwrite</span>(pColorTabletmp,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(RGBQUAD),<span class="hljs-number">256</span>,fp);<br>    <span class="hljs-built_in">fwrite</span>(imgBuftmp,height*lineBytetmp,<span class="hljs-number">1</span>,fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">saveBmp_3</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName,<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *imgBuf,<span class="hljs-keyword">int</span> width,<span class="hljs-keyword">int</span> height,<span class="hljs-keyword">int</span> biBitCount,RGBQUAD *pColorTable)</span> <span class="hljs-comment">//写图像</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(!imgBuf) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> colorTablesize=<span class="hljs-number">1024</span>;<br>    <span class="hljs-keyword">int</span> lineByte=(width*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> fix=lineByte-bmpWidth*<span class="hljs-number">3</span>;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *p=imgBuf;<br>    FILE *fp=<span class="hljs-built_in">fopen</span>(bmpName,<span class="hljs-string">&quot;wb&quot;</span>);<br>    <span class="hljs-keyword">if</span>(fp==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">int</span> lineBytetmp=((width*<span class="hljs-number">8</span>)/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> fixtmp=lineBytetmp-bmpWidth;<br>    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> *imgBuftmp=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span>[lineBytetmp*bmpHeight];<br>    BITMAPFILEHEADER fileHead;<br>    fileHead.bfType=<span class="hljs-number">0x4D42</span>;<br>    fileHead.bfSize=<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER)+<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER)+<span class="hljs-number">256</span>*<span class="hljs-number">4</span>+lineBytetmp*bmpHeight;<br>    fileHead.bfReserved1=<span class="hljs-number">0</span>;<br>    fileHead.bfReserved2=<span class="hljs-number">0</span>;<br>    fileHead.bfOffBits=<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER)+<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER)+<span class="hljs-number">256</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-built_in">fwrite</span>(&amp;fileHead,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPFILEHEADER),<span class="hljs-number">1</span>,fp);<br>    BITMAPINFOHEADER head;<br>    head.biBitCount=<span class="hljs-number">8</span>;<br>    head.biClrImportant=<span class="hljs-number">0</span>;<br>    head.biClrUsed=<span class="hljs-number">256</span>;<br>    head.biCompression=BI_RGB;<br>    head.biHeight=height;<br>    head.biPlanes=<span class="hljs-number">1</span>;<br>    head.biSize=<span class="hljs-number">40</span>;<br>    head.biSizeImage=lineBytetmp*height;<br>    head.biWidth=width;<br>    head.biXPelsPerMeter=<span class="hljs-number">0</span>;<br>    head.biYPelsPerMeter=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">fwrite</span>(&amp;head,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(BITMAPINFOHEADER),<span class="hljs-number">1</span>,fp);<br>    RGBQUAD *pColorTabletmp=<span class="hljs-keyword">new</span> RGBQUAD[<span class="hljs-number">256</span>];<br>    <span class="hljs-keyword">int</span> R[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">85</span>,<span class="hljs-number">170</span>,<span class="hljs-number">255</span>&#125;;<br>    <span class="hljs-keyword">int</span> G[<span class="hljs-number">16</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">17</span>,<span class="hljs-number">34</span>,<span class="hljs-number">51</span>,<span class="hljs-number">68</span>,<span class="hljs-number">85</span>,<span class="hljs-number">102</span>,<span class="hljs-number">119</span>,<span class="hljs-number">136</span>,<span class="hljs-number">153</span>,<span class="hljs-number">170</span>,<span class="hljs-number">187</span>,<span class="hljs-number">204</span>,<span class="hljs-number">221</span>,<span class="hljs-number">238</span>,<span class="hljs-number">255</span>&#125;;<br>    <span class="hljs-keyword">int</span> B[<span class="hljs-number">4</span>]=&#123;<span class="hljs-number">0</span>,<span class="hljs-number">85</span>,<span class="hljs-number">170</span>,<span class="hljs-number">255</span>&#125;;<br>    <span class="hljs-keyword">int</span> numcolortable=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">4</span>;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">16</span>;j++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">4</span>;k++)<br>            &#123;<br>                pColorTabletmp[numcolortable].rgbRed=R[i];<br>                pColorTabletmp[numcolortable].rgbGreen=G[j];<br>                pColorTabletmp[numcolortable].rgbBlue=B[k];<br>                numcolortable++;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">int</span> pos=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>        &#123;<br>            <span class="hljs-keyword">int</span> blue=*p++;<br>            <span class="hljs-keyword">int</span> green=*p++;<br>            <span class="hljs-keyword">int</span> red=*p++;<br>            red=red/<span class="hljs-number">85</span>*<span class="hljs-number">85</span>;<br>            green=green/<span class="hljs-number">17</span>*<span class="hljs-number">17</span>;<br>            blue=blue/<span class="hljs-number">85</span>*<span class="hljs-number">85</span>;<br>            <span class="hljs-keyword">int</span> _tmp=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>            &#123;<br>                <span class="hljs-keyword">if</span>(red==pColorTabletmp[i].rgbRed&amp;&amp;green==pColorTabletmp[i].rgbGreen&amp;&amp;blue==pColorTabletmp[i].rgbBlue)<br>                &#123;<br>                    _tmp=i;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            imgBuftmp[pos]=_tmp;<br>            pos++;<br>        &#125;<br>        p+=fix;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;fixtmp;i++)<br>        &#123;<br>            imgBuftmp[pos]=<span class="hljs-number">0</span>;<br>            pos++;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">delete</span> []pColorTable;<br>    <span class="hljs-keyword">delete</span> []imgBuf;<br>    <span class="hljs-built_in">fwrite</span>(pColorTabletmp,<span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(RGBQUAD),<span class="hljs-number">256</span>,fp);<br>    <span class="hljs-built_in">fwrite</span>(imgBuftmp,height*lineBytetmp,<span class="hljs-number">1</span>,fp);<br>    <span class="hljs-built_in">fclose</span>(fp);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">startbmp</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span>  <span class="hljs-comment">//打开图片</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>    <span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;bmp_start.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp</span>(writePath,pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start bmp_start.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ImageShow</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span><span class="hljs-comment">//显示图像数据</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>    cout&lt;&lt;<span class="hljs-string">&quot;width=&quot;</span>&lt;&lt;bmpWidth&lt;&lt;<span class="hljs-string">&quot; height=&quot;</span>&lt;&lt;bmpHeight&lt;&lt;<span class="hljs-string">&quot; biBitCount=&quot;</span>&lt;&lt;biBitCount&lt;&lt;endl;<br>    <span class="hljs-keyword">int</span> lineByte=(bmpWidth*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>,count_pixel=<span class="hljs-number">0</span>;<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>            &#123;<br>                out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>                n++;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;<span class="hljs-string">&quot;总的像素个素为:&quot;</span>&lt;&lt;n&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;前十行十列10*10的数据：&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">10</span>;j++)<br>			&#123;<br>				cout&lt;&lt;out_r[i][j]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>			&#125;<br>            cout&lt;&lt;endl;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">24</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>            &#123;<br>                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">3</span>;k++)<br>                &#123;<br>                    count_pixel++;<br>                &#125;<br>                n++;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;<span class="hljs-string">&quot;总的像素个素为:&quot;</span>&lt;&lt;n&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">24</span>)<br>	&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>				out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>				out_g[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>				out_b[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>			&#125;<br>		&#125;<br>        cout&lt;&lt;<span class="hljs-string">&quot;前十行十列10*10的数据：&quot;</span>&lt;&lt;endl;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;<span class="hljs-number">10</span>;j++)<br>			&#123;<br>				cout&lt;&lt;out_r[i][j]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>				cout&lt;&lt;out_g[i][j]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>				cout&lt;&lt;out_b[i][j]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>                cout&lt;&lt;<span class="hljs-string">&quot;\t&quot;</span>;<br>			&#125;<br>            cout&lt;&lt;endl;<br>		&#125;<br>	&#125;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ImageShow_2</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span><span class="hljs-comment">//显示图像数据</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>    cout&lt;&lt;<span class="hljs-string">&quot;width=&quot;</span>&lt;&lt;bmpWidth&lt;&lt;<span class="hljs-string">&quot; height=&quot;</span>&lt;&lt;bmpHeight&lt;&lt;<span class="hljs-string">&quot; biBitCount=&quot;</span>&lt;&lt;biBitCount&lt;&lt;endl;<br>    <span class="hljs-keyword">int</span> lineByte=(bmpWidth*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>    <span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>,count_pixel=<span class="hljs-number">0</span>;<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>            &#123;<br>                out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>                n++;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;<span class="hljs-string">&quot;总的像素个素为:&quot;</span>&lt;&lt;n&lt;&lt;endl;<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Histogram</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span><span class="hljs-comment">//直方图</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> num[<span class="hljs-number">256</span>]=&#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-keyword">int</span> col_r[<span class="hljs-number">256</span>]=&#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-keyword">int</span> bmpsize=bmpWidth*bmpHeight;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>            &#123;<br>                out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;<span class="hljs-number">256</span>;k++)<br>        &#123;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		    &#123;<br>			    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			    &#123;<br>                    <span class="hljs-keyword">if</span>(k==out_r[i][j])<br>                        num[k]++;<br>			    &#125;<br>            &#125;<br>        &#125;<br>        cout&lt;&lt;<span class="hljs-string">&quot;直方图：&quot;</span>&lt;&lt;endl;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>            cout&lt;&lt;num[i]&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>        cout&lt;&lt;endl;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>        &#123;<br>            col_r[i]=((<span class="hljs-keyword">double</span>)num[i]/bmpsize)*<span class="hljs-number">50</span>;<br>        &#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>        &#123;<br>            cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot;:&quot;</span>;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;col_r[i];j++)<br>                cout&lt;&lt;<span class="hljs-string">&quot;*&quot;</span>;<br>            cout&lt;&lt;endl;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">BrightDark</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span><span class="hljs-comment">//增量或减暗</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">int</span> num_b_d;<br>    cin&gt;&gt;num_b_d;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>		&#123;<br>			pColorTable[i].rgbBlue+=num_b_d;<br>			pColorTable[i].rgbGreen+=num_b_d;<br>			pColorTable[i].rgbRed+=num_b_d;<br>		&#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>		&#123;<br>			<span class="hljs-keyword">if</span>(pColorTable[i].rgbBlue&gt;<span class="hljs-number">255</span>)<br>                pColorTable[i].rgbBlue=<span class="hljs-number">255</span>;<br>            <span class="hljs-keyword">if</span>(pColorTable[i].rgbBlue&lt;<span class="hljs-number">0</span>)<br>                pColorTable[i].rgbBlue=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">if</span>(pColorTable[i].rgbGreen&gt;<span class="hljs-number">255</span>)<br>                pColorTable[i].rgbGreen=<span class="hljs-number">255</span>;<br>            <span class="hljs-keyword">if</span>(pColorTable[i].rgbGreen&lt;<span class="hljs-number">0</span>)<br>                pColorTable[i].rgbGreen=<span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">if</span>(pColorTable[i].rgbRed&gt;<span class="hljs-number">255</span>)<br>                pColorTable[i].rgbRed=<span class="hljs-number">255</span>;<br>            <span class="hljs-keyword">if</span>(pColorTable[i].rgbRed&lt;<span class="hljs-number">0</span>)<br>                pColorTable[i].rgbRed=<span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;bmp_bri_dar.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp</span>(writePath,pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>	<span class="hljs-keyword">delete</span>[]pBmpBuf;<br>	<span class="hljs-keyword">if</span> (biBitCount == <span class="hljs-number">8</span>)<br>		<span class="hljs-keyword">delete</span>[]pColorTable;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start bmp_bri_dar.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Inverse</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span> <span class="hljs-comment">//反色</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>		&#123;<br>			pColorTable[i].rgbBlue=<span class="hljs-number">255</span>-pColorTable[i].rgbBlue;<br>			pColorTable[i].rgbGreen=<span class="hljs-number">255</span>-pColorTable[i].rgbGreen;<br>			pColorTable[i].rgbRed=<span class="hljs-number">255</span>-pColorTable[i].rgbRed;<br>		&#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">24</span>)<br>	&#123;<br>        <span class="hljs-keyword">int</span> lineByte=(bmpWidth*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>		<span class="hljs-keyword">int</span> fix=lineByte-bmpWidth*<span class="hljs-number">3</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>				out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>				out_g[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>				out_b[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>                out_r[i][j]=<span class="hljs-number">255</span>-out_r[i][j];<br>                out_g[i][j]=<span class="hljs-number">255</span>-out_g[i][j];<br>                out_b[i][j]=<span class="hljs-number">255</span>-out_b[i][j];<br>			&#125;<br>		&#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>                pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_r[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>				pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_g[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>				pBmpBuf[j*<span class="hljs-number">3</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_b[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>			&#125;<br>		&#125;<br>	&#125;<br>    <span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;bmp_inverse.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp</span>(writePath, pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>	<span class="hljs-keyword">delete</span>[]pBmpBuf;<br>	<span class="hljs-keyword">if</span> (biBitCount == <span class="hljs-number">8</span>)<br>		<span class="hljs-keyword">delete</span>[]pColorTable;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start bmp_inverse.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ConvertGray</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span> <span class="hljs-comment">//变成灰度图</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>		&#123;<br>			pColorTable[i].rgbBlue=<span class="hljs-number">0.11</span>*pColorTable[i].rgbBlue+<span class="hljs-number">0.59</span>*pColorTable[i].rgbGreen+<span class="hljs-number">0.3</span>*pColorTable[i].rgbRed;<br>			pColorTable[i].rgbGreen=pColorTable[i].rgbRed=pColorTable[i].rgbBlue;<br>		&#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">24</span>)<br>	&#123;<br>        <span class="hljs-keyword">int</span> lineByte=(bmpWidth*biBitCount/<span class="hljs-number">8</span>+<span class="hljs-number">3</span>)/<span class="hljs-number">4</span>*<span class="hljs-number">4</span>;<br>		<span class="hljs-keyword">int</span> fix=lineByte-bmpWidth*<span class="hljs-number">3</span>;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>				out_r[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>				out_g[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>				out_b[bmpHeight<span class="hljs-number">-1</span>-i][j]=pBmpBuf[j*<span class="hljs-number">3</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix];<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>                out_r[i][j]=<span class="hljs-number">0.3</span>*out_r[i][j]+<span class="hljs-number">0.59</span>*out_g[i][j]+<span class="hljs-number">0.11</span>*out_b[i][j];<br>                out_g[i][j]=out_b[i][j]=out_r[i][j];<br>			&#125;<br>		&#125;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		&#123;<br>			<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;bmpWidth;j++)<br>			&#123;<br>                pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_r[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>				pBmpBuf[j*<span class="hljs-number">3</span>+<span class="hljs-number">1</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_g[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>				pBmpBuf[j*<span class="hljs-number">3</span>+bmpWidth*i*<span class="hljs-number">3</span>+i*fix]=out_b[bmpHeight<span class="hljs-number">-1</span>-i][j];<br>			&#125;<br>		&#125;<br>	&#125;<br>    <span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;bmp_gray.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp</span>(writePath, pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>	<span class="hljs-keyword">delete</span>[]pBmpBuf;<br>	<span class="hljs-keyword">if</span> (biBitCount == <span class="hljs-number">8</span>)<br>		<span class="hljs-keyword">delete</span>[]pColorTable;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start bmp_gray.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">palette</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span> <span class="hljs-comment">//显示调色板</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	out_r=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_r[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_g=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_g[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>	out_b=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> *[bmpHeight];<br>	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;bmpHeight;i++)<br>		out_b[i]=<span class="hljs-keyword">new</span> <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>[bmpWidth];<br>    <span class="hljs-keyword">if</span>(biBitCount==<span class="hljs-number">8</span>)<br>    &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">256</span>;i++)<br>		&#123;<br>			cout&lt;&lt;(<span class="hljs-keyword">double</span>)pColorTable[i].rgbRed&lt;&lt;<span class="hljs-string">&quot;\t&quot;</span>&lt;&lt;(<span class="hljs-keyword">double</span>)pColorTable[i].rgbGreen&lt;&lt;<span class="hljs-string">&quot;\t&quot;</span>&lt;&lt;(<span class="hljs-keyword">double</span>)pColorTable[i].rgbBlue;<br>            cout&lt;&lt;endl;<br>		&#125;<br>    &#125;<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TFtoEgray</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	<span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;24to8gray.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp_2</span>(writePath,pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start 24to8gray.bmp&quot;</span>);<br>    <span class="hljs-built_in">ImageShow_2</span>(<span class="hljs-string">&quot;24to8gray.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TFtoEcolor</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *bmpName)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">readBmp</span>(bmpName);<br>	<span class="hljs-keyword">char</span> writePath[] = <span class="hljs-string">&quot;24to8color.bmp&quot;</span>;<br>	<span class="hljs-built_in">saveBmp_3</span>(writePath,pBmpBuf, bmpWidth, bmpHeight, biBitCount, pColorTable);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;start 24to8color.bmp&quot;</span>);<br>    <span class="hljs-built_in">ImageShow_2</span>(<span class="hljs-string">&quot;24to8color.bmp&quot;</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">InputBmp</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> numb;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t请输入图片的序号：&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t1、24位彩色图像（eyes.bmp）&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t2、24位灰度图像（bird.bmp）&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t3、8位彩色图像（sense.bmp）&quot;</span>&lt;&lt;endl;<br>    cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t4、8位灰度图像（flower.bmp）&quot;</span>&lt;&lt;endl;<br>    cin&gt;&gt;numb;<br>    <span class="hljs-keyword">return</span> numb;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">char</span> readPath[<span class="hljs-number">107</span>];<br>    <span class="hljs-keyword">int</span> num;<br>    num=<span class="hljs-built_in">InputBmp</span>(num);<br>    <span class="hljs-built_in"><span class="hljs-keyword">switch</span></span> (num)<br>    &#123;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<span class="hljs-built_in">strcpy</span>(readPath,<span class="hljs-string">&quot;eyes.bmp&quot;</span>);  <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<span class="hljs-built_in">strcpy</span>(readPath,<span class="hljs-string">&quot;bird.bmp&quot;</span>);  <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<span class="hljs-built_in">strcpy</span>(readPath,<span class="hljs-string">&quot;sense.bmp&quot;</span>); <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<span class="hljs-built_in">strcpy</span>(readPath,<span class="hljs-string">&quot;flower.bmp&quot;</span>);<span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:                     <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-keyword">int</span> number;<br>    <span class="hljs-keyword">do</span><br>    &#123;<br>        <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;cls&quot;</span>);<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t图像处理&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t0、结束&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t1、读图像（8/24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t2、写图像（8/24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t3、显示图像数据（8/24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t4、计算直方图（8位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t5、对图像进行增量或减暗（8位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t6、图像反色（8/24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t7、变成灰度图（8/24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t8、显示调色板（8位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t9、24位彩色图像转换为8位灰度图像（24位）&quot;</span>&lt;&lt;endl;<br>        cout&lt;&lt;<span class="hljs-string">&quot;\t\t\t10、24位彩色图像转换为8位彩色图像（24位）&quot;</span>&lt;&lt;endl;<br>        cin&gt;&gt;number;<br>        <span class="hljs-keyword">if</span>(number&lt;<span class="hljs-number">0</span>||number&gt;<span class="hljs-number">10</span>)<br>            cin&gt;&gt;number;<br>        <span class="hljs-built_in"><span class="hljs-keyword">switch</span></span> (number)<br>        &#123;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<span class="hljs-built_in">startbmp</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<span class="hljs-built_in">ImageShow</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<span class="hljs-built_in">Histogram</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:<span class="hljs-built_in">BrightDark</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<span class="hljs-built_in">Inverse</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:<span class="hljs-built_in">ConvertGray</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:<span class="hljs-built_in">palette</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:<span class="hljs-built_in">TFtoEgray</span>(readPath); <span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:<span class="hljs-built_in">TFtoEcolor</span>(readPath);<span class="hljs-keyword">break</span>;<br>            <span class="hljs-keyword">default</span>:        <span class="hljs-keyword">break</span>;<br>        &#125;<br>    &#125;<span class="hljs-keyword">while</span>(number!=<span class="hljs-number">11</span>);<br>    <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/C/">C++</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E7%A8%8B%E5%BA%8F%E5%91%98/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/10/20201110clock/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">HTML实现简单指针式钟表</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/07/coding/CG/20201107opengl/">
+                        <span class="hidden-mobile">OpenGL 相关函数资料汇总</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
