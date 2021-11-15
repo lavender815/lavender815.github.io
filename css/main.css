@@ -9,7 +9,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.3);
 }
 .banner .page-header {
   color: #fff;
@@ -204,6 +203,13 @@ sup > a::before,
   #subtitle {
     font-size: 1.35rem;
   }
+}
+.banner-bg {
+  background-image: url("https://tva4.sinaimg.cn/large/0075auPSly1fqb6p7fxywj31hc0u0b2a.jpg");
+  background-position: center;
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-attachment: fixed;
 }
 .qr-trigger {
   cursor: pointer;
