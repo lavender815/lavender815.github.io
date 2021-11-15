@@ -388,7 +388,7 @@ img[lazyload] {
     transition: filter 0.2s ease-in-out;
   }
   :root:not([data-user-color-scheme]) .page-header {
-    color: #ddd;
+    color: #fff;
     transition: color 0.2s ease-in-out;
   }
   :root:not([data-user-color-scheme]) .markdown-body :not(pre) > code {
@@ -486,7 +486,7 @@ img[lazyload] {
   transition: filter 0.2s ease-in-out;
 }
 [data-user-color-scheme='dark'] .page-header {
-  color: #ddd;
+  color: #fff;
   transition: color 0.2s ease-in-out;
 }
 [data-user-color-scheme='dark'] .markdown-body :not(pre) > code {
