@@ -16,13 +16,15 @@
   <meta name="description" content="">
   <meta name="author" content="Lavender">
   <meta name="keywords" content="">
-  <meta property="og:type" content="website">
+  <meta name="description" content="听听音乐吧">
+<meta property="og:type" content="website">
 <meta property="og:title" content="关于">
 <meta property="og:url" content="https://lavender815.github.io/about/index.html">
 <meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="听听音乐吧">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-15T05:57:51.000Z">
-<meta property="article:modified_time" content="2021-11-15T08:08:25.371Z">
+<meta property="article:modified_time" content="2021-11-16T09:44:41.017Z">
 <meta property="article:author" content="Lavender">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -71,7 +73,10 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
 
 
 <body class="banner-bg">
@@ -251,7 +256,10 @@
 
 <article class="about-content page-content mt-5">
   <div class="markdown-body">
-    
+    <h2 id="听听音乐吧"><a href="#听听音乐吧" class="headerlink" title="听听音乐吧"></a>听听音乐吧</h2>
+    <div id="aplayer-VbiwNDUD" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="5297225655" data-server="netease" data-type="playlist" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#FF4081"
+    ></div>
   </div>
 
   
@@ -330,6 +338,61 @@
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
      <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
   </div>
   
 
