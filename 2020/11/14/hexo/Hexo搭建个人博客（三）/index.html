@@ -64,7 +64,7 @@
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css">
+<link rel="stylesheet" href="/css/fluid-extension.css">
 
 
 
@@ -417,9 +417,9 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
-                    
                       <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/categories/Hexo/">Hexo</a>
                     
                   </div>
                 
@@ -432,12 +432,6 @@
                   </div>
                 
               </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
               
               
                 <div class="post-prevnext">
@@ -695,5 +689,22 @@
 <script  src="/js/boot.js" ></script>
 
 
-</body>
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    
+    <link defer rel="stylesheet" href="/css/reward-button.css"/>
+    <script src="/js/reward-button.js"></script>
+    <script>
+        new RewardButton({
+            btnIcon: "iconfont icon-love",
+            btnText: "赞赏",
+            comment: "我很可爱，请给我钱！",
+            qrcodes: [{"src":"/img/wechatpay.png","caption":"微信","title":"微信赞赏码"},{"src":"/img/alipay.png","caption":"支付宝","title":"支付宝赞赏码"}]
+        }).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
 </html>
