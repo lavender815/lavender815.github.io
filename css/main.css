@@ -362,6 +362,7 @@ img[lazyload] {
   --link-hover-bg-color: #f8f9fa;
   --navbar-bg-color: #ab6aff;
   --navbar-text-color: #fff;
+  --talking-bg-color: rgba(249, 250, 251, 1);
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -379,6 +380,7 @@ img[lazyload] {
     --link-hover-bg-color: #364151;
     --navbar-bg-color: #1f3144;
     --navbar-text-color: #d0d0d0;
+    --talking-bg-color: rgba(55, 65, 81, 1);
   }
   :root:not([data-user-color-scheme]) img,
   :root:not([data-user-color-scheme]) .note,
@@ -477,6 +479,7 @@ img[lazyload] {
   --link-hover-bg-color: #364151;
   --navbar-bg-color: #1f3144;
   --navbar-text-color: #d0d0d0;
+  --talking-bg-color: rgba(55, 65, 81, 1);
 }
 [data-user-color-scheme='dark'] img,
 [data-user-color-scheme='dark'] .note,
