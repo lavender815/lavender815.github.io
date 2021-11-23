@@ -1,0 +1,108 @@
+<p>##Left-off</p>
+<p><strong>To-do</strong></p>
+<ul>
+<li>Highlight the ‘syntax’ better? It wasn’t really that useful for Sarah<ul>
+<li>The A + B stuff, not sure if it’s relatable enough</li>
+<li>The examples are better anyway</li>
+</ul>
+</li>
+</ul>
+<p>##Feature Ideas</p>
+<p><strong>Notes &amp; Thoughts</strong></p>
+<ul>
+<li>I should present even and odd stuff better<ul>
+<li>Right now it’s in nth-of-type, but would work better in nth-child maybe?</li>
+<li>:nth-child(even) is a thing</li>
+</ul>
+</li>
+<li>Divide the levels into groups?<ul>
+<li>Is it daunting? Too many levels?</li>
+</ul>
+</li>
+</ul>
+<p>—– ^ Prioritize this stuff later ————————————————</p>
+<p><strong>Social &amp; Engagemnt</strong></p>
+<ul>
+<li>Email signup via mailchimp</li>
+<li>Do more work to figure out who has already been there, treat them a bit differently?<ul>
+<li>“Welcome back et.”</li>
+</ul>
+</li>
+</ul>
+<p><strong>Gameplay</strong></p>
+<ul>
+<li>Award stars when a level is completed without commas and using the indicated selector<ul>
+<li>This would be in addition to the checkmark we already do</li>
+</ul>
+</li>
+<li>selector: “plate:nth-of-type(2n+3)”<ul>
+<li>Make this level use apples instead of plates? Seems too big..</li>
+</ul>
+</li>
+<li>Riddle mode<ul>
+<li>Difficult selector problems</li>
+<li>Add a new one every week</li>
+<li>Gives me a reason to bring people back</li>
+</ul>
+</li>
+</ul>
+<p><strong>Fun sfuff</strong></p>
+<ul>
+<li>Some kind of bonus level<ul>
+<li>Appears randomly and not very often</li>
+<li>Can have different food items</li>
+<li>Or a special riddle that they get two shots on</li>
+</ul>
+</li>
+</ul>
+<p><strong>Aesthetic Cleanup</strong></p>
+<ul>
+<li>Color the hover border according to the element hovered and context<ul>
+<li>Apples have a red border…</li>
+</ul>
+</li>
+</ul>
+<p><strong>Branding</strong></p>
+<ul>
+<li>Pull jquery from CDN</li>
+<li>Figure out CNAME setup for github<ul>
+<li>Would be cool for it to always show up as cssdiner.com</li>
+</ul>
+</li>
+</ul>
+<p><strong>Questions</strong></p>
+<ul>
+<li>Is it possible to track where &amp; how the diner is being shared?<ul>
+<li>Sharetally, or something similar?</li>
+</ul>
+</li>
+</ul>
+<p><strong>Tracking where people have trouble</strong></p>
+<ul>
+<li>Figure out how best to track which levels are the hardest<ul>
+<li>Current proposed method is by tracking incorrect guess counts per level</li>
+</ul>
+</li>
+</ul>
+<pre><code>  ga(&#39;send&#39;, {
+    hitType: &#39;event&#39;,
+    eventCategory: &#39;guess&#39;,
+    eventAction: &#39;incorrect&#39;,
+    eventLabel: 3,    // Level Number
+    eventValue: 10    // Number of incorrect guesses
+  });
+</code></pre>
+<ul>
+<li>How will this show up in Analytics?</li>
+<li>Will it be useful?</li>
+<li>Can I look up the average eventValue per eventLabel</li>
+<li>When should we track an incorrect guess..<ul>
+<li>When the selector isn’t blank</li>
+<li>When the attempted selector isn’t the exact same one tried before…<ul>
+<li>Don’t want to count 10 attempts if someone just hits enter 10 times in a row</li>
+</ul>
+</li>
+<li>Could just keep track of atttempted selectors and make sure it’s unique</li>
+</ul>
+</li>
+</ul>
