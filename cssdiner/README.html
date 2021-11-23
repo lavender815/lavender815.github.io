@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="Welcome to CSS DinerIt’s a fun game to learn and practice CSS selectors. To play, visit flukeout.github.io or cssdiner.com Change LogAug 25,2016  Added Twitter, Facebook and Email share actions Tracki">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://lavender815.github.io/cssdiner/README.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="Welcome to CSS DinerIt’s a fun game to learn and practice CSS selectors. To play, visit flukeout.github.io or cssdiner.com Change LogAug 25,2016  Added Twitter, Facebook and Email share actions Tracki">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-22T10:57:09.619Z">
+<meta property="article:modified_time" content="2018-11-27T17:26:10.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>page.title - Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 60vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/flexfroggy/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="page.title">
+              
+            </span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Welcome-to-CSS-Diner"><a href="#Welcome-to-CSS-Diner" class="headerlink" title="Welcome to CSS Diner"></a>Welcome to CSS Diner</h1><p>It’s a fun game to learn and practice CSS selectors.</p>
+<p>To play, visit <a target="_blank" rel="noopener" href="http://flukeout.github.io/">flukeout.github.io</a> or <a target="_blank" rel="noopener" href="http://cssdiner.com/">cssdiner.com</a></p>
+<h3 id="Change-Log"><a href="#Change-Log" class="headerlink" title="Change Log"></a>Change Log</h3><p><strong>Aug 25,2016</strong></p>
+<ul>
+<li>Added Twitter, Facebook and Email share actions<ul>
+<li>Tracking clicks with GA Events</li>
+</ul>
+</li>
+<li>Made the level menu and editor area scroll independently<ul>
+<li>Using custom jQuery scroll library</li>
+</ul>
+</li>
+</ul>
+<p><strong>Aug 18,2016</strong></p>
+<ul>
+<li>Started using <code>cssdiner.com</code> to redirect to <code>flukeout.github.io</code></li>
+</ul>
+<p><strong>Aug 12,2016</strong></p>
+<ul>
+<li>Added checkmarks to completed levels in level menu and header</li>
+</ul>
+<p><strong>Aug 4,2016</strong></p>
+<ul>
+<li>Began tracking progress and correct guesses with GA Events</li>
+</ul>
+<h3 id="Filing-issues-and-PRs"><a href="#Filing-issues-and-PRs" class="headerlink" title="Filing issues and PRs"></a>Filing issues and PRs</h3><p>Please file issues and PRs in the <a target="_blank" rel="noopener" href="https://github.com/flukeout/css-diner/">css-diner repo</a>.</p>
+<h3 id="Repo-structure"><a href="#Repo-structure" class="headerlink" title="Repo structure"></a>Repo structure</h3><p>Here’s the repo structure, it’s a bit confusing…</p>
+<ul>
+<li>Currently, all of the working code (including issues, PRs and in-progress branches) is hosted in the <a target="_blank" rel="noopener" href="https://github.com/flukeout/css-diner/">css-diner repo</a><ul>
+<li>The lastest version of the code is on the <code>develop</code> branch</li>
+</ul>
+</li>
+<li>The live version is published from the <a target="_blank" rel="noopener" href="https://github.com/flukeout/flukeout.github.io/issues">flukeout.github.io repo</a><ul>
+<li>Live version lives on the <code>master</code> branch</li>
+</ul>
+</li>
+</ul>
+<h3 id="Deploying"><a href="#Deploying" class="headerlink" title="Deploying"></a>Deploying</h3><p>This is more of a note to myself in case I forget, to deploy the latest version, I’ll have to push to the <code>master</code> branch on the <code>flukeout.github.io</code> repo from the latest <code>develop</code> branch.</p>
+<h1 id="Roadmap-and-Status"><a href="#Roadmap-and-Status" class="headerlink" title="Roadmap and Status"></a>Roadmap and Status</h1><p><strong>Potential Features &amp; Improvements</strong></p>
+<ul>
+<li>Lots of people have trouble with level 19, how should I address this?</li>
+<li>Create levels for attribute selectors<ul>
+<li>Will probably add attributes like <code>customer=&#39;bob&#39;</code> and place a little nametag by those dishes</li>
+<li>Also some great ideas in <a target="_blank" rel="noopener" href="https://github.com/flukeout/css-diner/issues/91">this issue</a></li>
+</ul>
+</li>
+<li>Figure out how to tackle the <code>.table</code> element<ul>
+<li>Including it in the selector string makes the selectors invalid, but it shouldn’t</li>
+</ul>
+</li>
+<li>Investigate the order of stacked oranges in the markup, some users think it’s counter intuitive</li>
+<li>Block attempts to use comma between selectors</li>
+<li>Only pass each level if that level’s selector is used</li>
+<li>Make it easier to navigate between levels</li>
+<li>Number all of the levels in the menu</li>
+<li>Add UI to Tweet about finishing all of the levels</li>
+<li>Add additional challenges per Selector<ul>
+<li>Some repetition per level would be good</li>
+</ul>
+</li>
+</ul>
+<h3 id="Special-Thanks"><a href="#Special-Thanks" class="headerlink" title="Special Thanks"></a>Special Thanks</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/k88hudson">@k88hudson</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.twitter.com/antlam">@antlam</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/smashman2004">@smashman2004</a></li>
+</ul>
+
+
+  
+</article>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
