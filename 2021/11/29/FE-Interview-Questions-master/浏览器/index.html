@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="一、事件机制1.1 事件触发三阶段 document 往事件触发处传播，遇到注册的捕获事件会触发 传播到事件触发处时触发注册的事件 从事件触发处往 document 传播，遇到注册的冒泡事件会触发   事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行  1234567&#x2F;&#x2F; 以下会先打印冒泡然后是捕获node.addEvent">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/2021/11/29/FE-Interview-Questions-master/%E6%B5%8F%E8%A7%88%E5%99%A8/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="一、事件机制1.1 事件触发三阶段 document 往事件触发处传播，遇到注册的捕获事件会触发 传播到事件触发处时触发注册的事件 从事件触发处往 document 传播，遇到注册的冒泡事件会触发   事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行  1234567&#x2F;&#x2F; 以下会先打印冒泡然后是捕获node.addEvent">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/3/28/1626b1e8eba68e1c?w=1770&h=722&f=png&s=192277">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/3/28/1626b20dfc4fcd26?w=1118&h=728&f=png&s=85610">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2018/4/11/162b2ab2ec70ac5b?w=900&h=352&f=png&s=49983">
+<meta property="article:published_time" content="2021-11-29T13:49:16.417Z">
+<meta property="article:modified_time" content="2020-02-09T09:24:11.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2018/3/28/1626b1e8eba68e1c?w=1770&h=722&f=png&s=192277">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://flexboxfroggy.com/#zh-cn">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-29 21:49" pubdate>
+        2021年11月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      26 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、事件机制"><a href="#一、事件机制" class="headerlink" title="一、事件机制"></a>一、事件机制</h2><h3 id="1-1-事件触发三阶段"><a href="#1-1-事件触发三阶段" class="headerlink" title="1.1 事件触发三阶段"></a>1.1 事件触发三阶段</h3><ul>
+<li>document 往事件触发处传播，遇到注册的捕获事件会触发</li>
+<li>传播到事件触发处时触发注册的事件</li>
+<li>从事件触发处往 document 传播，遇到注册的冒泡事件会触发</li>
+</ul>
+<blockquote>
+<p>事件触发一般来说会按照上面的顺序进行，但是也有特例，如果给一个目标节点同时注册冒泡和捕获事件，事件触发会按照注册的顺序执行</p>
+</blockquote>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs coffeescript"><span class="hljs-regexp">//</span> 以下会先打印冒泡然后是捕获<br>node.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-params">(event)</span> =&gt;</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;冒泡&#x27;</span>)<br>&#125;,<span class="hljs-literal">false</span>);<br>node.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function"><span class="hljs-params">(event)</span> =&gt;</span>&#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;捕获 &#x27;</span>)<br>&#125;,<span class="hljs-literal">true</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-注册事件"><a href="#1-2-注册事件" class="headerlink" title="1.2 注册事件"></a>1.2 注册事件</h3><ul>
+<li>通常我们使用 <code>addEventListener</code> 注册事件，该函数的第三个参数可以是布尔值，也可以是对象。对于布尔值 <code>useCapture</code> 参数来说，该参数默认值为 <code>false</code> 。<code>useCapture</code> 决定了注册的事件是捕获事件还是冒泡事件</li>
+<li>一般来说，我们只希望事件只触发在目标上，这时候可以使用 <code>stopPropagation</code> 来阻止事件的进一步传播。通常我们认为 <code>stopPropagation</code> 是用来阻止事件冒泡的，其实该函数也可以阻止捕获事件。<code>stopImmediatePropagation</code> 同样也能实现阻止事件，但是还能阻止该事件目标执行别的注册事件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript">node.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span>&#123;<br>	event.stopImmediatePropagation()<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;冒泡&#x27;</span>)<br>&#125;,<span class="hljs-literal">false</span>);<br><span class="hljs-comment">// 点击 node 只会执行上面的函数，该函数不会执行</span><br>node.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>	<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;捕获 &#x27;</span>)<br>&#125;,<span class="hljs-literal">true</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-事件代理"><a href="#1-3-事件代理" class="headerlink" title="1.3 事件代理"></a>1.3 事件代理</h3><blockquote>
+<p>如果一个节点中的子节点是动态生成的，那么子节点需要注册事件的话应该注册在父节点上</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;ul&quot;</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>5<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">	<span class="hljs-keyword">let</span> ul = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&#x27;##ul&#x27;</span>)</span><br><span class="javascript">	ul.addEventListener(<span class="hljs-string">&#x27;click&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;</span><br><span class="javascript">		<span class="hljs-built_in">console</span>.log(event.target);</span><br><span class="javascript">	&#125;)</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>事件代理的方式相对于直接给目标注册事件来说，有以下优点</p>
+</blockquote>
+<ul>
+<li>节省内存</li>
+<li>不需要给子节点注销事件</li>
+</ul>
+<h2 id="二、跨域"><a href="#二、跨域" class="headerlink" title="二、跨域"></a>二、跨域</h2><blockquote>
+<p>因为浏览器出于安全考虑，有同源策略。也就是说，如果协议、域名或者端口有一个不同就是跨域，Ajax 请求会失败</p>
+</blockquote>
+<h3 id="2-1-JSONP"><a href="#2-1-JSONP" class="headerlink" title="2.1 JSONP"></a>2.1 JSONP</h3><blockquote>
+<p>JSONP 的原理很简单，就是利用 <script> 标签没有跨域限制的漏洞。通过 <script> 标签指向一个需要访问的地址并提供一个回调函数来接收数据当需要通讯时</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;http://domain/api?param1=a&amp;param2=b&amp;callback=jsonp&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript"></span><br><span class="javascript">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsonp</span>(<span class="hljs-params">data</span>) </span>&#123;</span><br><span class="javascript">    	<span class="hljs-built_in">console</span>.log(data)</span><br><span class="javascript">	&#125;</span><br><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>JSONP 使用简单且兼容性不错，但是只限于 get 请求</li>
+</ul>
+<h3 id="2-2-CORS"><a href="#2-2-CORS" class="headerlink" title="2.2 CORS"></a>2.2 CORS</h3><ul>
+<li><code>CORS</code>需要浏览器和后端同时支持</li>
+<li>浏览器会自动进行 <code>CORS</code> 通信，实现CORS通信的关键是后端。只要后端实现了 <code>CORS</code>，就实现了跨域。</li>
+<li>服务端设置 <code>Access-Control-Allow-Origin</code> 就可以开启 <code>CORS</code>。 该属性表示哪些域名可以访问资源，如果设置通配符则表示所有网站都可以访问资源</li>
+</ul>
+<h3 id="2-3-document-domain"><a href="#2-3-document-domain" class="headerlink" title="2.3 document.domain"></a>2.3 document.domain</h3><ul>
+<li>该方式只能用于二级域名相同的情况下，比如 <code>a.test.com</code> 和 <code>b.test.com</code> 适用于该方式。</li>
+<li>只需要给页面添加 <code>document.domain = &#39;test.com&#39;</code> 表示二级域名都相同就可以实现跨域</li>
+</ul>
+<h3 id="2-4-postMessage"><a href="#2-4-postMessage" class="headerlink" title="2.4 postMessage"></a>2.4 postMessage</h3><blockquote>
+<p>这种方式通常用于获取嵌入页面中的第三方页面数据。一个页面发送消息，另一个页面判断来源并接收消息</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 发送消息端</span><br><span class="hljs-built_in">window</span>.parent.postMessage(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-string">&#x27;http://test.com&#x27;</span>);<br><br><span class="hljs-comment">// 接收消息端</span><br><span class="hljs-keyword">var</span> mc = <span class="hljs-keyword">new</span> MessageChannel();<br>mc.addEventListener(<span class="hljs-string">&#x27;message&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> &#123;<br>    <span class="hljs-keyword">var</span> origin = event.origin || event.originalEvent.origin; <br>    <span class="hljs-keyword">if</span> (origin === <span class="hljs-string">&#x27;http://test.com&#x27;</span>) &#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;验证通过&#x27;</span>)<br>    &#125;<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<h2 id="三、Event-loop"><a href="#三、Event-loop" class="headerlink" title="三、Event loop"></a>三、Event loop</h2><h3 id="3-1-JS中的event-loop"><a href="#3-1-JS中的event-loop" class="headerlink" title="3.1 JS中的event loop"></a>3.1 JS中的event loop</h3><blockquote>
+<p>众所周知 JS 是门非阻塞单线程语言，因为在最初 JS 就是为了和浏览器交互而诞生的。如果 JS 是门多线程的语言话，我们在多个线程中处理 DOM 就可能会发生问题（一个线程中新加节点，另一个线程中删除节点）</p>
+</blockquote>
+<ul>
+<li>JS 在执行的过程中会产生执行环境，这些执行环境会被顺序的加入到执行栈中。如果遇到异步的代码，会被挂起并加入到 Task（有多种 task） 队列中。一旦执行栈为空，Event Loop 就会从 Task 队列中拿出需要执行的代码并放入执行栈中执行，所以本质上来说 JS 中的异步还是同步行为</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script start&#x27;</span>);<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script end&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>不同的任务源会被分配到不同的 <code>Task</code> 队列中，任务源可以分为 微任务（<code>microtask</code>） 和 宏任务（<code>macrotask</code>）。在 <code>ES6</code> 规范中，<code>microtask</code> 称为 jobs，macrotask 称为 task</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script start&#x27;</span>);<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>);<br><br><span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve</span>) =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;Promise&#x27;</span>)<br>    resolve()<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise1&#x27;</span>);<br>&#125;).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise2&#x27;</span>);<br>&#125;);<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;script end&#x27;</span>);<br><span class="hljs-comment">// script start =&gt; Promise =&gt; script end =&gt; promise1 =&gt; promise2 =&gt; setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>以上代码虽然 <code>setTimeout</code> 写在 <code>Promise</code> 之前，但是因为 <code>Promise</code> 属于微任务而 <code>setTimeout</code> 属于宏任务</p>
+</blockquote>
+<p><strong>微任务</strong></p>
+<ul>
+<li><code>process.nextTick</code></li>
+<li><code>promise</code></li>
+<li><code>Object.observe</code></li>
+<li><code>MutationObserver</code></li>
+</ul>
+<p><strong>宏任务</strong></p>
+<ul>
+<li><code>script </code></li>
+<li><code>setTimeout</code></li>
+<li><code>setInterval </code></li>
+<li><code>setImmediate </code></li>
+<li><code>I/O </code></li>
+<li><code>UI rendering</code></li>
+</ul>
+<blockquote>
+<p>宏任务中包括了 script ，浏览器会先执行一个宏任务，接下来有异步代码的话就先执行微任务</p>
+</blockquote>
+<p><strong>所以正确的一次 Event loop 顺序是这样的</strong></p>
+<ul>
+<li>执行同步代码，这属于宏任务</li>
+<li>执行栈为空，查询是否有微任务需要执行</li>
+<li>执行所有微任务</li>
+<li>必要的话渲染 UI</li>
+<li>然后开始下一轮 <code>Event loop</code>，执行宏任务中的异步代码</li>
+</ul>
+<blockquote>
+<p>通过上述的 <code>Event loop</code> 顺序可知，如果宏任务中的异步代码有大量的计算并且需要操作 <code>DOM</code> 的话，为了更快的响应界面响应，我们可以把操作 <code>DOM</code> 放入微任务中</p>
+</blockquote>
+<h3 id="3-2-Node-中的-Event-loop"><a href="#3-2-Node-中的-Event-loop" class="headerlink" title="3.2 Node 中的 Event loop"></a>3.2 Node 中的 Event loop</h3><ul>
+<li><code>Node</code> 中的 <code>Event loop</code> 和浏览器中的不相同。</li>
+<li><code>Node</code> 的 <code>Event loop</code> 分为<code>6</code>个阶段，它们会按照顺序反复运行</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs javascript">┌───────────────────────┐<br>┌─&gt;│        timers         │<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>│  │     I/O callbacks     │<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>│  │     idle, prepare     │<br>│  └──────────┬────────────┘      ┌───────────────┐<br>│  ┌──────────┴────────────┐      │   incoming:   │<br>│  │         poll          │&lt;──connections───     │<br>│  └──────────┬────────────┘      │   data, etc.  │<br>│  ┌──────────┴────────────┐      └───────────────┘<br>│  │        check          │<br>│  └──────────┬────────────┘<br>│  ┌──────────┴────────────┐<br>└──┤    close callbacks    │<br>   └───────────────────────┘<br></code></pre></td></tr></table></figure>
+
+<p><strong>timer</strong></p>
+<ul>
+<li><code>timers</code> 阶段会执行 <code>setTimeout</code> 和 <code>setInterval</code></li>
+<li>一个 timer 指定的时间并不是准确时间，而是在达到这个时间后尽快执行回调，可能会因为系统正在执行别的事务而延迟</li>
+</ul>
+<p><strong>I/O</strong></p>
+<ul>
+<li><code>I/O</code> 阶段会执行除了 <code>close</code> 事件，定时器和 <code>setImmediate</code> 的回调</li>
+</ul>
+<p>idle, prepare<br>idle, prepare 阶段内部实现</p>
+<p><strong>poll</strong></p>
+<ul>
+<li><code>poll</code> 阶段很重要，这一阶段中，系统会做两件事情<ul>
+<li>执行到点的定时器</li>
+<li>执行 <code>poll</code> 队列中的事件</li>
+</ul>
+</li>
+<li>并且当 poll 中没有定时器的情况下，会发现以下两件事情<ul>
+<li>如果 poll 队列不为空，会遍历回调队列并同步执行，直到队列为空或者系统限制</li>
+<li>如果 poll 队列为空，会有两件事发生</li>
+<li>如果有 <code>setImmediate</code> 需要执行，<code>poll</code> 阶段会停止并且进入到 <code>check</code> 阶段执行 <code>setImmediate</code></li>
+<li>如果没有 <code>setImmediate</code> 需要执行，会等待回调被加入到队列中并立即执行回调</li>
+<li>如果有别的定时器需要被执行，会回到 <code>timer</code> 阶段执行回调。</li>
+</ul>
+</li>
+</ul>
+<p><strong>check</strong></p>
+<ul>
+<li><code>check</code> 阶段执行 <code>setImmediate</code></li>
+</ul>
+<p><strong>close callbacks</strong></p>
+<ul>
+<li><code>close callbacks</code> 阶段执行 <code>close</code> 事件</li>
+<li>并且在 <code>Node</code> 中，有些情况下的定时器执行顺序是随机的</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setTimeout&#x27;</span>);<br>&#125;, <span class="hljs-number">0</span>);<br>setImmediate(<span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;setImmediate&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">// 这里可能会输出 setTimeout，setImmediate</span><br><span class="hljs-comment">// 可能也会相反的输出，这取决于性能</span><br><span class="hljs-comment">// 因为可能进入 event loop 用了不到 1 毫秒，这时候会执行 setImmediate</span><br><span class="hljs-comment">// 否则会执行 setTimeout</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面介绍的都是 macrotask 的执行情况，microtask 会在以上每个阶段完成后立即执行</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;timer1&#x27;</span>)<br><br>    <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise1&#x27;</span>)<br>    &#125;)<br>&#125;, <span class="hljs-number">0</span>)<br><br><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">()=&gt;</span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;timer2&#x27;</span>)<br><br>    <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;promise2&#x27;</span>)<br>    &#125;)<br>&#125;, <span class="hljs-number">0</span>)<br><br><span class="hljs-comment">// 以上代码在浏览器和 node 中打印情况是不同的</span><br><span class="hljs-comment">// 浏览器中一定打印 timer1, promise1, timer2, promise2</span><br><span class="hljs-comment">// node 中可能打印 timer1, timer2, promise1, promise2</span><br><span class="hljs-comment">// 也可能打印 timer1, promise1, timer2, promise2</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Node</code> 中的 <code>process.nextTick</code> 会先于其他 <code>microtask</code> 执行</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;timer1&quot;</span>);<br><br> <span class="hljs-built_in">Promise</span>.resolve().then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;<br>   <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;promise1&quot;</span>);<br> &#125;);<br>&#125;, <span class="hljs-number">0</span>);<br><br>process.nextTick(<span class="hljs-function">() =&gt;</span> &#123;<br> <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;nextTick&quot;</span>);<br>&#125;);<br><span class="hljs-comment">// nextTick, timer1, promise1</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="四、Service-Worker"><a href="#四、Service-Worker" class="headerlink" title="四、Service Worker"></a>四、Service Worker</h2><blockquote>
+<p>Service workers 本质上充当Web应用程序与浏览器之间的代理服务器，也可以在网络可用时作为浏览器和网络间的代理。它们旨在（除其他之外）使得能够创建有效的离线体验，拦截网络请求并基于网络是否可用以及更新的资源是否驻留在服务器上来采取适当的动作。他们还允许访问推送通知和后台同步API</p>
+</blockquote>
+<p><strong>目前该技术通常用来做缓存文件，提高首屏速度</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// index.js</span><br><span class="hljs-keyword">if</span> (navigator.serviceWorker) &#123;<br>  navigator.serviceWorker<br>    .register(<span class="hljs-string">&quot;sw.js&quot;</span>)<br>    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">registration</span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;service worker 注册成功&quot;</span>);<br>    &#125;)<br>    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>&#123;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;servcie worker 注册失败&quot;</span>);<br>    &#125;);<br>&#125;<br><span class="hljs-comment">// sw.js</span><br><span class="hljs-comment">// 监听 `install` 事件，回调中缓存所需文件</span><br>self.addEventListener(<span class="hljs-string">&quot;install&quot;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> &#123;<br>  e.waitUntil(<br>    caches.open(<span class="hljs-string">&quot;my-cache&quot;</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cache</span>) </span>&#123;<br>      <span class="hljs-keyword">return</span> cache.addAll([<span class="hljs-string">&quot;./index.html&quot;</span>, <span class="hljs-string">&quot;./index.js&quot;</span>]);<br>    &#125;)<br>  );<br>&#125;);<br><br><span class="hljs-comment">// 拦截所有请求事件</span><br><span class="hljs-comment">// 如果缓存中已经有请求的数据就直接用缓存，否则去请求数据</span><br>self.addEventListener(<span class="hljs-string">&quot;fetch&quot;</span>, <span class="hljs-function"><span class="hljs-params">e</span> =&gt;</span> &#123;<br>  e.respondWith(<br>    caches.match(e.request).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>&#123;<br>      <span class="hljs-keyword">if</span> (response) &#123;<br>        <span class="hljs-keyword">return</span> response;<br>      &#125;<br>      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;fetch source&quot;</span>);<br>    &#125;)<br>  );<br>&#125;);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>打开页面，可以在开发者工具中的 Application 看到 Service Worker 已经启动了</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/3/28/1626b1e8eba68e1c?w=1770&h=722&f=png&s=192277" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>在 Cache 中也可以发现我们所需的文件已被缓存</p>
+</blockquote>
+<p><img src="https://user-gold-cdn.xitu.io/2018/3/28/1626b20dfc4fcd26?w=1118&h=728&f=png&s=85610" srcset="/img/loading.gif" lazyload></p>
+<p>当我们重新刷新页面可以发现我们缓存的数据是从 Service Worker 中读取的</p>
+<h2 id="五、渲染机制"><a href="#五、渲染机制" class="headerlink" title="五、渲染机制"></a>五、渲染机制</h2><p><strong>浏览器的渲染机制一般分为以下几个步骤</strong></p>
+<ul>
+<li>处理 <code>HTML</code> 并构建 <code>DOM</code> 树。</li>
+<li>处理 <code>CSS</code> 构建 <code>CSSOM</code> 树。</li>
+<li>将 <code>DOM</code> 与 <code>CSSOM</code> 合并成一个渲染树。</li>
+<li>根据渲染树来布局，计算每个节点的位置。</li>
+<li>调用 <code>GPU</code> 绘制，合成图层，显示在屏幕上</li>
+</ul>
+<p><img src="https://user-gold-cdn.xitu.io/2018/4/11/162b2ab2ec70ac5b?w=900&h=352&f=png&s=49983" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>在构建 CSSOM 树时，会阻塞渲染，直至 CSSOM 树构建完成。并且构建 CSSOM 树是一个十分消耗性能的过程，所以应该尽量保证层级扁平，减少过度层叠，越是具体的 CSS 选择器，执行速度越慢</li>
+<li>当 HTML 解析到 script 标签时，会暂停构建 DOM，完成后才会从暂停的地方重新开始。也就是说，如果你想首屏渲染的越快，就越不应该在首屏就加载 JS 文件。并且 CSS 也会影响 JS 的执行，只有当解析完样式表才会执行 JS，所以也可以认为这种情况下，CSS 也会暂停构建 DOM</li>
+</ul>
+<h3 id="5-1-图层"><a href="#5-1-图层" class="headerlink" title="5.1 图层"></a>5.1 图层</h3><blockquote>
+<p>一般来说，可以把普通文档流看成一个图层。特定的属性可以生成一个新的图层。不同的图层渲染互不影响，所以对于某些频繁需要渲染的建议单独生成一个新图层，提高性能。但也不能生成过多的图层，会引起反作用</p>
+</blockquote>
+<p><strong>通过以下几个常用属性可以生成新图层</strong></p>
+<ul>
+<li>3D 变换：<code>translate3d</code>、<code>translateZ</code></li>
+<li><code>will-change</code></li>
+<li><code>video</code>、<code>iframe</code> 标签</li>
+<li>通过动画实现的 <code>opacity</code> 动画转换</li>
+<li><code>position: fixed</code></li>
+</ul>
+<h3 id="5-2-重绘（Repaint）和回流（Reflow）"><a href="#5-2-重绘（Repaint）和回流（Reflow）" class="headerlink" title="5.2 重绘（Repaint）和回流（Reflow）"></a>5.2 重绘（Repaint）和回流（Reflow）</h3><ul>
+<li>重绘是当节点需要更改外观而不会影响布局的，比如改变 color 就叫称为重绘</li>
+<li>回流是布局或者几何属性需要改变就称为回流</li>
+</ul>
+<blockquote>
+<p>回流必定会发生重绘，重绘不一定会引发回流。回流所需的成本比重绘高的多，改变深层次的节点很可能导致父节点的一系列回流</p>
+</blockquote>
+<p><strong>所以以下几个动作可能会导致性能问题</strong>：</p>
+<ul>
+<li>改变 window 大小</li>
+<li>改变字体</li>
+<li>添加或删除样式</li>
+<li>文字改变</li>
+<li>定位或者浮动</li>
+<li>盒模型</li>
+</ul>
+<p><strong>很多人不知道的是，重绘和回流其实和 Event loop 有关</strong></p>
+<ul>
+<li>当 Event loop 执行完 <code>Microtasks</code> 后，会判断 <code>document</code> 是否需要更新。因为浏览器是 <code>60Hz </code>的刷新率，每 <code>16ms </code>才会更新一次。</li>
+<li>然后判断是否有 <code>resize</code> 或者 <code>scroll</code> ，有的话会去触发事件，所以 <code>resize</code> 和 <code>scroll</code> 事件也是至少 <code>16ms</code> 才会触发一次，并且自带节流功能。</li>
+<li>判断是否触发了<code> media query</code></li>
+<li>更新动画并且发送事件</li>
+<li>判断是否有全屏操作事件</li>
+<li>执行 <code>requestAnimationFrame</code> 回调</li>
+<li>执行 <code>IntersectionObserver</code> 回调，该方法用于判断元素是否可见，可以用于懒加载上，但是兼容性不好</li>
+<li>更新界面</li>
+<li>以上就是一帧中可能会做的事情。如果在一帧中有空闲时间，就会去执行 <code>requestIdleCallback</code> 回调</li>
+</ul>
+<p><strong>减少重绘和回流</strong></p>
+<ul>
+<li>使用 <code>translate</code> 替代 <code>top</code></li>
+<li>使用 <code>visibility</code> 替换<code> display: none</code> ，因为前者只会引起重绘，后者会引发回流（改变了布局）</li>
+<li>不要使用 <code>table</code> 布局，可能很小的一个小改动会造成整个 table 的重新布局</li>
+<li>动画实现的速度的选择，动画速度越快，回流次数越多，也可以选择使用 <code>requestAnimationFrame</code></li>
+<li><code>CSS</code> 选择符从右往左匹配查找，避免 <code>DOM</code> 深度过深</li>
+<li>将频繁运行的动画变为图层，图层能够阻止该节点回流影响别的元素。比如对于 <code>video </code>标签，浏览器会自动将该节点变为图层</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%9A%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%A7%E6%89%BF%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E8%B7%A8%E5%9F%9F%E9%80%9A%E4%BF%A1%E7%B1%BB/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":"欢迎留言！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,654 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="一、网络相关1.1 DNS 预解析 DNS 解析也是需要时间的，可以通过预解析的方式来预先获得域名所对应的 IP  1&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;yuchengkai.cn&quot;&gt;  1.2 缓存 缓存对于前端性能优化来说是个很重要的点，良好的缓存策略可以降低资源的重复加载提高网页的整体加载速度 通常浏览器缓存策">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/2021/11/29/FE-Interview-Questions-master/%E6%80%A7%E8%83%BD/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="一、网络相关1.1 DNS 预解析 DNS 解析也是需要时间的，可以通过预解析的方式来预先获得域名所对应的 IP  1&lt;link rel&#x3D;&quot;dns-prefetch&quot; href&#x3D;&quot;&#x2F;&#x2F;yuchengkai.cn&quot;&gt;  1.2 缓存 缓存对于前端性能优化来说是个很重要的点，良好的缓存策略可以降低资源的重复加载提高网页的整体加载速度 通常浏览器缓存策">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-29T13:49:16.417Z">
+<meta property="article:modified_time" content="2020-02-09T09:24:11.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://flexboxfroggy.com/#zh-cn">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-29 21:49" pubdate>
+        2021年11月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="一、网络相关"><a href="#一、网络相关" class="headerlink" title="一、网络相关"></a>一、网络相关</h2><h3 id="1-1-DNS-预解析"><a href="#1-1-DNS-预解析" class="headerlink" title="1.1 DNS 预解析"></a>1.1 DNS 预解析</h3><ul>
+<li>DNS 解析也是需要时间的，可以通过预解析的方式来预先获得域名所对应的 IP</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;dns-prefetch&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;//yuchengkai.cn&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-缓存"><a href="#1-2-缓存" class="headerlink" title="1.2 缓存"></a>1.2 缓存</h3><ul>
+<li>缓存对于前端性能优化来说是个很重要的点，良好的缓存策略可以降低资源的重复加载提高网页的整体加载速度</li>
+<li>通常浏览器缓存策略分为两种：强缓存和协商缓存</li>
+</ul>
+<p><strong>强缓存</strong></p>
+<blockquote>
+<p>实现强缓存可以通过两种响应头实现：<code>Expires </code>和 <code>Cache-Control</code> 。强缓存表示在缓存期间不需要请求，<code>state code </code>为 <code>200</code></p>
+</blockquote>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">Expires</span>: Wed, <span class="hljs-number">22</span> Oct <span class="hljs-number">2018</span> <span class="hljs-number">08</span>:<span class="hljs-number">41</span>:<span class="hljs-number">00</span> GMT<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Expires</code> 是 <code>HTTP / 1.0</code> 的产物，表示资源会在 <code>Wed, 22 Oct 2018 08:41:00 GMT</code> 后过期，需要再次请求。并且 <code>Expires</code> 受限于本地时间，如果修改了本地时间，可能会造成缓存失效</p>
+</blockquote>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lasso"><span class="hljs-keyword">Cache</span><span class="hljs-params">-control</span>: <span class="hljs-keyword">max</span><span class="hljs-params">-age</span>=<span class="hljs-number">30</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p><code>Cache-Control</code> 出现于 <code>HTTP / 1.1</code>，优先级高于 <code>Expires</code> 。该属性表示资源会在 <code>30</code> 秒后过期，需要再次请求</p>
+</blockquote>
+<p><strong>协商缓存</strong></p>
+<ul>
+<li>如果缓存过期了，我们就可以使用协商缓存来解决问题。协商缓存需要请求，如果缓存有效会返回 304</li>
+<li>协商缓存需要客户端和服务端共同实现，和强缓存一样，也有两种实现方式</li>
+</ul>
+<p>Last-Modified 和 If-Modified-Since</p>
+<ul>
+<li><code>Last-Modified</code> 表示本地文件最后修改日期，<code>If-Modified-Since</code> 会将 <code>Last-Modified </code>的值发送给服务器，询问服务器在该日期后资源是否有更新，有更新的话就会将新的资源发送回来</li>
+<li>但是如果在本地打开缓存文件，就会造成 <code>Last-Modified</code> 被修改，所以在 <code>HTTP / 1.1</code> 出现了 <code>ETag</code></li>
+</ul>
+<p>ETag 和 If-None-Match</p>
+<ul>
+<li><code>ETag</code> 类似于文件指纹，<code>If-None-Match</code> 会将当前 <code>ETag</code> 发送给服务器，询问该资源 ETag 是否变动，有变动的话就将新的资源发送回来。并且 <code>ETag</code> 优先级比 <code>Last-Modified</code> 高</li>
+</ul>
+<p><strong>选择合适的缓存策略</strong></p>
+<blockquote>
+<p>对于大部分的场景都可以使用强缓存配合协商缓存解决，但是在一些特殊的地方可能需要选择特殊的缓存策略</p>
+</blockquote>
+<ul>
+<li>对于某些不需要缓存的资源，可以使用 <code>Cache-control: no-store</code> ，表示该资源不需要缓存</li>
+<li>对于频繁变动的资源，可以使用 <code>Cache-Control: no-cache</code> 并配合 <code>ETag</code> 使用，表示该资源已被缓存，但是每次都会发送请求询问资源是否更新。</li>
+<li>对于代码文件来说，通常使用 <code>Cache-Control: max-age=31536000</code> 并配合策略缓存使用，然后对文件进行指纹处理，一旦文件名变动就会立刻下载新的文件</li>
+</ul>
+<h3 id="1-3-使用-HTTP-2-0"><a href="#1-3-使用-HTTP-2-0" class="headerlink" title="1.3 使用 HTTP / 2.0"></a>1.3 使用 HTTP / 2.0</h3><ul>
+<li>因为浏览器会有并发请求限制，在 HTTP / 1.1 时代，每个请求都需要建立和断开，消耗了好几个 RTT 时间，并且由于 TCP 慢启动的原因，加载体积大的文件会需要更多的时间</li>
+<li>在 HTTP / 2.0 中引入了多路复用，能够让多个请求使用同一个 TCP 链接，极大的加快了网页的加载速度。并且还支持 Header 压缩，进一步的减少了请求的数据大小</li>
+</ul>
+<h3 id="1-4-预加载"><a href="#1-4-预加载" class="headerlink" title="1.4 预加载"></a>1.4 预加载</h3><ul>
+<li>在开发中，可能会遇到这样的情况。有些资源不需要马上用到，但是希望尽早获取，这时候就可以使用预加载</li>
+<li>预加载其实是声明式的 <code>fetch</code> ，强制浏览器请求资源，并且不会阻塞 <code>onload</code> 事件，可以使用以下代码开启预加载</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preload&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://example.com&quot;</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>预加载可以一定程度上降低首屏的加载时间，因为可以将一些不影响首屏但重要的文件延后加载，唯一缺点就是兼容性不好</p>
+</blockquote>
+<h3 id="1-5-预渲染"><a href="#1-5-预渲染" class="headerlink" title="1.5 预渲染"></a>1.5 预渲染</h3><blockquote>
+<p>可以通过预渲染将下载的文件预先在后台渲染，可以使用以下代码开启预渲染</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;prerender&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://example.com&quot;</span>&gt;</span> <br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>预渲染虽然可以提高页面的加载速度，但是要确保该页面百分百会被用户在之后打开，否则就白白浪费资源去渲染</li>
+</ul>
+<h2 id="二、优化渲染过程"><a href="#二、优化渲染过程" class="headerlink" title="二、优化渲染过程"></a>二、优化渲染过程</h2><h3 id="2-1-懒执行"><a href="#2-1-懒执行" class="headerlink" title="2.1 懒执行"></a>2.1 懒执行</h3><ul>
+<li>懒执行就是将某些逻辑延迟到使用时再计算。该技术可以用于首屏优化，对于某些耗时逻辑并不需要在首屏就使用的，就可以使用懒执行。懒执行需要唤醒，一般可以通过定时器或者事件的调用来唤醒</li>
+</ul>
+<h3 id="2-2-懒加载"><a href="#2-2-懒加载" class="headerlink" title="2.2 懒加载"></a>2.2 懒加载</h3><ul>
+<li>懒加载就是将不关键的资源延后加载</li>
+</ul>
+<blockquote>
+<p>懒加载的原理就是只加载自定义区域（通常是可视区域，但也可以是即将进入可视区域）内需要加载的东西。对于图片来说，先设置图片标签的 src 属性为一张占位图，将真实的图片资源放入一个自定义属性中，当进入自定义区域时，就将自定义属性替换为 src 属性，这样图片就会去下载资源，实现了图片懒加载</p>
+</blockquote>
+<ul>
+<li>懒加载不仅可以用于图片，也可以使用在别的资源上。比如进入可视区域才开始播放视频等</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98%EF%BC%9ACSRF%E5%92%8CXSS/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E5%89%8D%E7%AB%AF%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":"欢迎留言！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>

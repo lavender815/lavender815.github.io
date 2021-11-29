@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="1 前言1.1 面向对象的三大特性 封装 继承 多态  1.2 原型链的知识 原型链是面向对象的基础，是非常重要的部分。有以下几种知识：   创建对象有几种方法 原型、构造函数、实例、原型链 instanceof的原理 new 运算符  2 创建对象有几种方法2.1 方式一：字面量12var obj11 &#x3D; &amp;#123;name: &amp;#x27;smyh&amp;#x27;&amp;#125;;var obj12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/2021/11/29/FE-Interview-Questions-master/%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="1 前言1.1 面向对象的三大特性 封装 继承 多态  1.2 原型链的知识 原型链是面向对象的基础，是非常重要的部分。有以下几种知识：   创建对象有几种方法 原型、构造函数、实例、原型链 instanceof的原理 new 运算符  2 创建对象有几种方法2.1 方式一：字面量12var obj11 &#x3D; &amp;#123;name: &amp;#x27;smyh&amp;#x27;&amp;#125;;var obj12">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_1633.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_1540.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_2107.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_2120.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_2209.png">
+<meta property="article:published_time" content="2021-11-29T13:49:16.401Z">
+<meta property="article:modified_time" content="2020-02-09T09:24:11.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://img.smyhvae.com/20180306_1633.png">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://flexboxfroggy.com/#zh-cn">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-29 21:49" pubdate>
+        2021年11月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><h3 id="1-1-面向对象的三大特性"><a href="#1-1-面向对象的三大特性" class="headerlink" title="1.1 面向对象的三大特性"></a>1.1 面向对象的三大特性</h3><ul>
+<li>封装</li>
+<li>继承</li>
+<li>多态</li>
+</ul>
+<h3 id="1-2-原型链的知识"><a href="#1-2-原型链的知识" class="headerlink" title="1.2 原型链的知识"></a>1.2 原型链的知识</h3><blockquote>
+<p>原型链是面向对象的基础，是非常重要的部分。有以下几种知识：</p>
+</blockquote>
+<ul>
+<li>创建对象有几种方法</li>
+<li>原型、构造函数、实例、原型链</li>
+<li><code>instanceof</code>的原理</li>
+<li><code>new</code> 运算符</li>
+</ul>
+<h2 id="2-创建对象有几种方法"><a href="#2-创建对象有几种方法" class="headerlink" title="2 创建对象有几种方法"></a>2 创建对象有几种方法</h2><h3 id="2-1-方式一：字面量"><a href="#2-1-方式一：字面量" class="headerlink" title="2.1 方式一：字面量"></a>2.1 方式一：字面量</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> obj11 = &#123;<span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;smyh&#x27;</span>&#125;;<br><span class="hljs-keyword">var</span> obj12 = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>(name: <span class="hljs-string">`smyh`</span>); <span class="hljs-comment">//内置对象（内置的构造函数）</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的两种写法，效果是一样的。因为，第一种写法，<code>obj11</code>会指向<code>Object</code>。</p>
+</blockquote>
+<ul>
+<li>第一种写法是：字面量的方式。</li>
+<li>第二种写法是：内置的构造函数</li>
+</ul>
+<h3 id="2-2-方式二：通过构造函数"><a href="#2-2-方式二：通过构造函数" class="headerlink" title="2.2 方式二：通过构造函数"></a>2.2 方式二：通过构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> M = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><span class="hljs-keyword">var</span> obj3 = <span class="hljs-keyword">new</span> M(<span class="hljs-string">&#x27;smyhvae&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-方法三：Object-create"><a href="#2-3-方法三：Object-create" class="headerlink" title="2.3 方法三：Object.create"></a>2.3 方法三：Object.create</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> p = &#123;<span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;smyhvae&#x27;</span>&#125;;<br><span class="hljs-keyword">var</span> obj3 = <span class="hljs-built_in">Object</span>.create(p);  <span class="hljs-comment">//此方法创建的对象，是用原型链连接的</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第三种方法，很少有人能说出来。这种方式里，<code>obj3</code>是实例，<code>p</code>是<code>obj3的``原型（</code>name<code>是p原型里的属性），构造函数是</code>Objecet` 。</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20180306_1633.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-原型、构造函数、实例，以及原型链"><a href="#3-原型、构造函数、实例，以及原型链" class="headerlink" title="3 原型、构造函数、实例，以及原型链"></a>3 原型、构造函数、实例，以及原型链</h2><p><img src="http://img.smyhvae.com/20180306_1540.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>PS：任何一个函数，如果在前面加了<code>new</code>，那就是构造函数。</p>
+</blockquote>
+<h3 id="3-1-原型、构造函数、实例三者之间的关系"><a href="#3-1-原型、构造函数、实例三者之间的关系" class="headerlink" title="3.1 原型、构造函数、实例三者之间的关系"></a>3.1 原型、构造函数、实例三者之间的关系</h3><p><img src="http://img.smyhvae.com/20180306_2107.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>构造函数通过 <code>new</code> 生成实例</li>
+<li>构造函数也是函数，构造函数的<code>prototype</code>指向原型。（所有的函数有<code>prototype</code>属性，但实例没有 <code>prototype</code>属性）</li>
+<li>原型对象中有 <code>constructor</code>，指向该原型的构造函数。</li>
+</ol>
+<blockquote>
+<p>上面的三行，代码演示：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">var</span> Foo = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name</span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = name;<br>&#125;<br><br><span class="hljs-keyword">var</span> fn = <span class="hljs-keyword">new</span> Foo(<span class="hljs-string">&#x27;smyhvae&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的代码中，<code>Foo.prototype.constructor === Foo</code>的结果是<code>true</code>：</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20180306_2120.png" srcset="/img/loading.gif" lazyload></p>
+<ol start="4">
+<li>实例的<code>__proto__</code>指向原型。也就是说，<code>Foo.__proto__ === M.prototype</code>。</li>
+</ol>
+<blockquote>
+<p>声明：所有的<strong>引用类型</strong>（数组、对象、函数）都有<code>__proto__</code>这个属性。</p>
+</blockquote>
+<p><code>Foo.__proto__ === Function.prototype</code>的结果为true，说明<code>Foo</code>这个普通的函数，是<code>Function</code>构造函数的一个实例。</p>
+<h3 id="3-2-原型链"><a href="#3-2-原型链" class="headerlink" title="3.2 原型链"></a>3.2 原型链</h3><p><strong>原型链的基本原理</strong>：任何一个<strong>实例</strong>，通过原型链，找到它上面的<strong>原型</strong>，该原型对象中的方法和属性，可以被所有的原型实例共享。</p>
+<blockquote>
+<p><code>Object</code>是原型链的顶端。</p>
+</blockquote>
+<ul>
+<li>原型可以起到继承的作用。原型里的方法都可以被不同的实例共享：</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">//给Foo的原型添加 say 函数</span><br>Foo.prototype.say = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&#x27;&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>原型链的关键</strong>：在访问一个实例的时候，如果实例本身没找到此方法或属性，就往原型上找。如果还是找不到，继续往上一级的原型上找。</p>
+<h3 id="3-3-instanceof的原理"><a href="#3-3-instanceof的原理" class="headerlink" title="3.3 instanceof的原理"></a>3.3 <code>instanceof</code>的原理</h3><p><img src="http://img.smyhvae.com/20180306_2209.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><code>instanceof</code>的<strong>作用</strong>：用于判断<strong>实例</strong>属于哪个<strong>构造函数</strong>。</li>
+<li><code>instanceof</code>的<strong>原理</strong>：判断实例对象的<code>__proto__</code>属性，和构造函数的<code>prototype</code>属性，是否为同一个引用（是否指向同一个地址）。</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>注意1</strong>：虽然说，实例是由构造函数 new 出来的，但是实例的<code>__proto__</code>属性引用的是构造函数的<code>prototype</code>。也就是说，实例的<code>__proto__</code>属性与构造函数本身无关。</li>
+<li><strong>注意2</strong>：在原型链上，原型的上面可能还会有原型，以此类推往上走，继续找<code>__proto__</code>属性。这条链上如果能找到， instanceof 的返回结果也是 true。</li>
+</ul>
+</blockquote>
+<p>比如说：</p>
+<ul>
+<li><code>foo instance of Foo</code>的结果为true，因为<code>foo.__proto__ === M.prototype</code>为<code>true</code>。</li>
+<li><strong><code>foo instance of Objecet</code>的结果也为true</strong>，为<code>Foo.prototype.__proto__ === Object.prototype</code>为<code>true</code>。</li>
+</ul>
+<blockquote>
+<p>但我们不能轻易的说：<code>foo</code> 一定是 由<code>Object</code>创建的实例`。这句话是错误的。我们来看下一个问题就明白了。</p>
+</blockquote>
+<h3 id="3-4-分析一个问题"><a href="#3-4-分析一个问题" class="headerlink" title="3.4 分析一个问题"></a>3.4 分析一个问题</h3><p><strong>问题：</strong>已知A继承了B，B继承了C。怎么判断 a 是由A<strong>直接生成</strong>的实例，还是B直接生成的实例呢？还是C直接生成的实例呢？</p>
+<blockquote>
+<p>分析：这就要用到原型的<code>constructor</code>属性了。</p>
+</blockquote>
+<ul>
+<li><code>foo.__proto__.constructor === M</code>的结果为<code>true</code>，但是 <code>foo.__proto__.constructor === Object</code>的结果为<code>false</code>。</li>
+<li>所以，用 <code>consturctor</code>判断就比用 <code>instanceof</code>判断，更为严谨。</li>
+</ul>
+<h2 id="4-new-运算符"><a href="#4-new-运算符" class="headerlink" title="4 new 运算符"></a>4 new 运算符</h2><blockquote>
+<p>当<code>new Foo()</code>时发生了什么：</p>
+</blockquote>
+<ul>
+<li>创建一个<strong>新的空对象实例</strong>。</li>
+<li>将此空对象的隐式原型指向其构造函数的显示原型。</li>
+<li>执行构造函数（传入相应的参数，如果没有参数就不用传），同时 <code>this</code> 指向这个新实例。</li>
+<li>如果返回值是一个新对象，那么直接返回该对象；如果无返回值或者返回一个非对象值，那么就将步骤（1）创建的对象返回。</li>
+</ul>
+<pre><code>
+</code></pre>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/performance-optimization/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/vue/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":"欢迎留言！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>

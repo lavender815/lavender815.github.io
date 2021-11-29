@@ -1,0 +1,795 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="题目：谈一谈你对CSS盒模型的认识 专业的面试，一定会问 CSS 盒模型。对于这个题目，我们要回答一下几个方面：   基本概念：content、padding、margin 标准盒模型、IE盒模型的区别。不要漏说了IE盒模型，通过这个问题，可以筛选一部分人 CSS如何设置这两种模型（即：如何设置某个盒子为其中一个模型）？如果回答了上面的第二条，还会继续追问这一条。 JS如何设置、获取盒模型对应的宽">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/2021/11/29/FE-Interview-Questions-master/CSS%E7%9B%92%E6%A8%A1%E5%9E%8B%E5%8F%8ABFC/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="题目：谈一谈你对CSS盒模型的认识 专业的面试，一定会问 CSS 盒模型。对于这个题目，我们要回答一下几个方面：   基本概念：content、padding、margin 标准盒模型、IE盒模型的区别。不要漏说了IE盒模型，通过这个问题，可以筛选一部分人 CSS如何设置这两种模型（即：如何设置某个盒子为其中一个模型）？如果回答了上面的第二条，还会继续追问这一条。 JS如何设置、获取盒模型对应的宽">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.smyhvae.com/2015-10-03-css-27.jpg">
+<meta property="og:image" content="http://img.smyhvae.com/2015-10-03-css-30.jpg">
+<meta property="og:image" content="http://img.smyhvae.com/20170805_0904.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180305_2216.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180305_2217.png">
+<meta property="og:image" content="http://img.smyhvae.com/20170806_1537.png">
+<meta property="og:image" content="http://img.smyhvae.com/20170806_1544.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_0825.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_0827.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_0840.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180306_0845.png">
+<meta property="article:published_time" content="2021-11-29T13:49:16.354Z">
+<meta property="article:modified_time" content="2020-02-09T09:24:11.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://img.smyhvae.com/2015-10-03-css-27.jpg">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://flexboxfroggy.com/#zh-cn">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-29 21:49" pubdate>
+        2021年11月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="题目：谈一谈你对CSS盒模型的认识"><a href="#题目：谈一谈你对CSS盒模型的认识" class="headerlink" title="题目：谈一谈你对CSS盒模型的认识"></a>题目：谈一谈你对CSS盒模型的认识</h2><blockquote>
+<p>专业的面试，一定会问 <code>CSS</code> 盒模型。对于这个题目，我们要回答一下几个方面：</p>
+</blockquote>
+<ol>
+<li>基本概念：<code>content</code>、<code>padding</code>、<code>margin</code></li>
+<li>标准盒模型、<code>IE</code>盒模型的区别。不要漏说了<code>IE</code>盒模型，通过这个问题，可以筛选一部分人</li>
+<li><code>CSS</code>如何设置这两种模型（即：如何设置某个盒子为其中一个模型）？如果回答了上面的第二条，还会继续追问这一条。</li>
+<li><code>JS</code>如何设置、获取盒模型对应的宽和高？这一步，已经有很多人答不上来了。</li>
+<li>实例题：根据盒模型解释<strong>边距重叠</strong>。</li>
+</ol>
+<blockquote>
+<p>前四个方面是逐渐递增，第五个方面，却鲜有人知。</p>
+</blockquote>
+<ol start="6">
+<li><code>BFC</code>（边距重叠解决方案）或<code>IFC</code>。</li>
+</ol>
+<blockquote>
+<p>如果能回答第五条，就会引出第六条。<code>BFC</code>是面试频率较高的。</p>
+</blockquote>
+<p><strong>总结</strong>：以上几点，从上到下，知识点逐渐递增，知识面从理论、<code>CSS</code>、<code>JS</code>，又回到<code>CSS</code>理论</p>
+<p>接下来，我们把上面的六条，依次讲解。</p>
+<p><strong>标准盒模型和IE盒子模型</strong></p>
+<p>标准盒子模型：</p>
+<p><img src="http://img.smyhvae.com/2015-10-03-css-27.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><code>IE</code>盒子模型：</p>
+<p><img src="http://img.smyhvae.com/2015-10-03-css-30.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>上图显示：</p>
+<blockquote>
+<p>在 <code>CSS</code> 盒子模型 (<code>Box Model</code>) 规定了元素处理元素的几种方式：</p>
+</blockquote>
+<ul>
+<li><code>width</code>和<code>height</code>：<strong>内容</strong>的宽度、高度（不是盒子的宽度、高度）。</li>
+<li><code>padding</code>：内边距。</li>
+<li><code>border</code>：边框。</li>
+<li><code>margin</code>：外边距。</li>
+</ul>
+<blockquote>
+<p><code>CSS</code>盒模型和<code>IE</code>盒模型的区别：</p>
+</blockquote>
+<ul>
+<li><p>在<strong>标准盒子模型</strong>中，<strong>width 和 height 指的是内容区域</strong>的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。</p>
+</li>
+<li><p><strong>IE盒子模型</strong>中，<strong>width 和 height 指的是内容区域+border+padding</strong>的宽度和高度。</p>
+</li>
+</ul>
+<p><strong>CSS如何设置这两种模型</strong></p>
+<p>代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/* 设置当前盒子为 标准盒模型（默认） */</span><br>box-sizing: content-box;<br><br><span class="hljs-comment">/* 设置当前盒子为 IE盒模型 */</span><br>box-sizing: border-box;<br></code></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>备注：盒子默认为标准盒模型。</p>
+</blockquote>
+<p><strong>JS如何设置、获取盒模型对应的宽和高</strong></p>
+<blockquote>
+<p>方式一：通过<code>DOM</code>节点的 <code>style</code> 样式获取</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">element.style.width/height;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>缺点：通过这种方式，只能获取<strong>行内样式</strong>，不能获取<code>内嵌</code>的样式和<code>外链</code>的样式。</p>
+</blockquote>
+<p>这种方式有局限性，但应该了解。</p>
+<blockquote>
+<p>方式二（通用型）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-built_in">window</span>.getComputedStyle(element).width/height;<br></code></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p>方式二能兼容 <code>Chrome</code>、火狐。是通用型方式。</p>
+</blockquote>
+<blockquote>
+<p>方式三（IE独有的）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.currentStyle.width/height;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>和方式二相同，但这种方式只有IE独有。获取到的即时运行完之后的宽高（三种css样式都可以获取）。</p>
+</blockquote>
+<blockquote>
+<p>方式四</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">element.getBoundingClientRect().width/height;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此 <code>api</code> 的作用是：获取一个元素的绝对位置。绝对位置是视窗 <code>viewport</code> 左上角的绝对位置。此 <code>api</code> 可以拿到四个属性：<code>left</code>、<code>top</code>、<code>width</code>、<code>height</code>。</p>
+</blockquote>
+<p><strong>总结：</strong></p>
+<blockquote>
+<p>上面的四种方式，要求能说出来区别，以及哪个的通用型更强。</p>
+</blockquote>
+<p><strong>margin塌陷/margin重叠</strong></p>
+<p><strong>标准文档流中，竖直方向的margin不叠加，只取较大的值作为margin</strong>(水平方向的<code>margin</code>是可以叠加的，即水平方向没有塌陷现象)。</p>
+<blockquote>
+<p>PS：如果不在标准流，比如盒子都浮动了，那么两个盒子之间是没有<code>margin</code>重叠的现象的。</p>
+</blockquote>
+<blockquote>
+<p>我们来看几个例子。</p>
+</blockquote>
+<p><strong>兄弟元素之间</strong></p>
+<p>如下图所示：</p>
+<p><img src="http://img.smyhvae.com/20170805_0904.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>子元素和父元素之间</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css"></span><br><span class="css">        * &#123;</span><br><span class="css">            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="css">            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.father</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">background</span>: green;</span><br><span class="css"></span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">        <span class="hljs-comment">/* 给儿子设置margin-top为10像素 */</span></span><br><span class="css">        <span class="hljs-selector-class">.son</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="css">            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>;</span><br><span class="css">            <span class="hljs-attribute">background</span>: red;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;father&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;son&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的代码中，儿子的<code>height</code>是 <code>100p</code>x，<code>magin-top</code> 是<code>10px</code>。注意，此时父亲的 <code>height</code> 是<code>100</code>，而不是<code>110</code>。因为儿子和父亲在竖直方向上，共一个<code>margin</code>。</p>
+</blockquote>
+<p>儿子这个盒子：</p>
+<p><img src="http://img.smyhvae.com/20180305_2216.png" srcset="/img/loading.gif" lazyload></p>
+<p>父亲这个盒子：</p>
+<p><img src="http://img.smyhvae.com/20180305_2217.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上方代码中，如果我们给父亲设置一个属性：<code>overflow: hidden</code>，就可以避免这个问题，此时父亲的高度是110px，这个用到的就是BFC（下一段讲解）。</p>
+</blockquote>
+<p><strong>善于使用父亲的padding，而不是儿子的margin</strong></p>
+<blockquote>
+<p>其实，这一小段讲的内容与上一小段相同，都是讲父子之间的margin重叠。</p>
+</blockquote>
+<p>我们来看一个奇怪的现象。现在有下面这样一个结构：（<code>div</code>中放一个<code>p</code>）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的结构中，我们尝试通过给儿子<code>p</code>一个<code>margin-top:50px;</code>的属性，让其与父亲保持50px的上边距。结果却看到了下面的奇怪的现象：</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20170806_1537.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>此时我们给父亲<code>div</code>加一个<code>border</code>属性，就正常了：</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20170806_1544.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>如果父亲没有<code>border</code>，那么儿子的<code>margin</code>实际上踹的是“流”，踹的是这“行”。所以，父亲整体也掉下来了。</p>
+</blockquote>
+<p><strong>margin这个属性，本质上描述的是兄弟和兄弟之间的距离； 最好不要用这个marign表达父子之间的距离。</strong></p>
+<blockquote>
+<p>所以，如果要表达父子之间的距离，我们一定要善于使用父亲的padding，而不是儿子的`margin。</p>
+</blockquote>
+<p><strong>BFC（边距重叠解决方案）</strong></p>
+<blockquote>
+<p><code>BFC（Block Formatting Context）</code>：块级格式化上下文。你可以把它理解成一个独立的区域。</p>
+</blockquote>
+<p>另外还有个概念叫<code>IFC</code>。不过，<code>BFC</code>问得更多。</p>
+<p><strong>BFC 的原理/BFC的布局规则【非常重要】</strong></p>
+<blockquote>
+<p><code>BFC</code> 的原理，其实也就是 <code>BFC</code> 的渲染规则（能说出以下四点就够了）。包括：</p>
+</blockquote>
+<ol>
+<li>BFC <strong>内部的</strong>子元素，在垂直方向，<strong>边距会发生重叠</strong>。</li>
+<li>BFC在页面中是独立的容器，外面的元素不会影响里面的元素，反之亦然。（稍后看<code>举例1</code>）</li>
+<li><strong>BFC区域不与旁边的<code>float box</code>区域重叠</strong>。（可以用来清除浮动带来的影响）。（稍后看<code>举例2</code>）</li>
+<li>计算<code>BFC</code>的高度时，浮动的子元素也参与计算。（稍后看<code>举例3</code>）</li>
+</ol>
+<p><strong>如何生成BFC</strong></p>
+<blockquote>
+<p>有以下几种方法：</p>
+</blockquote>
+<ul>
+<li>方法1：<code>overflow</code>: 不为<code>visible</code>，可以让属性是 <code>hidden</code>、<code>auto</code>。【最常用】</li>
+<li>方法2：浮动中：<code>float</code>的属性值不为<code>none</code>。意思是，只要设置了浮动，当前元素就创建了<code>BFC</code>。</li>
+<li>方法3：定位中：只要<code>posiiton</code>的值不是 s<code>tatic</code>或者是<code>relative</code>即可，可以是<code>absolute</code>或<code>fixed</code>，也就生成了一个<code>BFC</code>。</li>
+<li>方法4：<code>display</code>为<code>inline-block</code>, <code>table-cell</code>, <code>table-caption</code>, <code>flex</code>, <code>inline-flex</code></li>
+</ul>
+<p><strong>BFC 的应用</strong></p>
+<p><strong>举例1：</strong>解决 margin 重叠</p>
+<blockquote>
+<p>当父元素和子元素发生 <code>margin</code> 重叠时，解决办法：<strong>给子元素或父元素创建BFC</strong>。</p>
+</blockquote>
+<p>比如说，针对下面这样一个 <code>div</code> 结构：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;father&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;son&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面的<code>div</code>结构中，如果父元素和子元素发生<code>margin</code>重叠，我们可以给子元素创建一个 <code>BFC</code>，就解决了：</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;father&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;son&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;overflow: hidden&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>因为<strong>第二条：BFC区域是一个独立的区域，不会影响外面的元素</strong>。</p>
+</blockquote>
+<p><strong>举例2</strong>：BFC区域不与float区域重叠：</p>
+<p>针对下面这样一个div结构；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.father-layout</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">background</span>: pink;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.father-layout</span> <span class="hljs-selector-class">.left</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">float</span>: left;</span><br><span class="css">            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;</span><br><span class="css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;</span><br><span class="css">            <span class="hljs-attribute">background</span>: green;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.father-layout</span> <span class="hljs-selector-class">.right</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;  <span class="hljs-comment">/*右侧标准流里的元素，比左侧浮动的元素要高*/</span></span><br><span class="css">            <span class="hljs-attribute">background</span>: red;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;father-layout&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;left&quot;</span>&gt;</span><br>        左侧，生命壹号<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span>&gt;</span><br>        右侧，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="http://img.smyhvae.com/20180306_0825.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上图中，由于右侧标准流里的元素，比左侧浮动的元素要高，导致右侧有一部分会跑到左边的下面去。</p>
+</blockquote>
+<p><strong>如果要解决这个问题，可以将右侧的元素创建BFC</strong>，因为<strong>第三条：BFC区域不与<code>float box</code>区域重叠</strong>。解决办法如下：（将right区域添加overflow属性）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;right&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;overflow: hidden&quot;</span>&gt;</span><br>    右侧，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，smyhvae，<br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
+<p><img src="http://img.smyhvae.com/20180306_0827.png" srcset="/img/loading.gif" lazyload></p>
+<p>上图表明，解决之后，<code>father-layout</code>的背景色显现出来了，说明问题解决了。</p>
+<p><strong>举例3：</strong>清除浮动</p>
+<p>现在有下面这样的结构：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css"></span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.father</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">background</span>: pink;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">        <span class="hljs-selector-class">.son</span> &#123;</span><br><span class="css">            <span class="hljs-attribute">float</span>: left;</span><br><span class="css">            <span class="hljs-attribute">background</span>: green;</span><br><span class="css">        &#125;</span><br><span class="css"></span><br><span class="css">    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;father&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;son&quot;</span>&gt;</span><br>        生命壹号<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="http://img.smyhvae.com/20180306_0840.png" srcset="/img/loading.gif" lazyload></p>
+<p>上面的代码中，儿子浮动了，但由于父亲没有设置高度，导致看不到父亲的背景色（此时父亲的高度为0）。正所谓<strong>有高度的盒子，才能关住浮动</strong>。</p>
+<blockquote>
+<p>如果想要清除浮动带来的影响，方法一是给父亲设置高度，然后采用隔墙法。方法二是 BFC：给父亲增加 <code>overflow=hidden</code>属性即可， 增加之后，效果如下：</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20180306_0845.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>为什么父元素成为BFC之后，就有了高度呢？这就回到了<strong>第四条：计算BFC的高度时，浮动元素也参与计算</strong>。意思是，<strong>在计算BFC的高度时，子元素的float box也会参与计算</strong></p>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/dataBase/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/Ajax/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":"欢迎留言！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>

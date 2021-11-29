@@ -1,0 +1,663 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.jpg">
+  <link rel="icon" href="/img/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ab6aff">
+  <meta name="description" content="">
+  <meta name="author" content="Lavender">
+  <meta name="keywords" content="">
+  <meta name="description" content="1 前言 类与实例：   类的声明 生成实例  类与继承：  如何实现继承：继承的本质就是原型链 继承的几种方式  2 类的定义、实例化2.1 类的定义&#x2F;类的声明方式一：用构造函数模拟类（传统写法） 123function Animal1() &amp;#123;    this.name &#x3D; &amp;#x27;smyhvae&amp;#x27;; &#x2F;&#x2F;通过this，表明这是一个构造函数&amp;#125;  方式二：用 cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lavender&#39;s blog">
+<meta property="og:url" content="https://lavender815.github.io/2021/11/29/FE-Interview-Questions-master/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%EF%BC%9A%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E7%BB%A7%E6%89%BF%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="Lavender&#39;s blog">
+<meta property="og:description" content="1 前言 类与实例：   类的声明 生成实例  类与继承：  如何实现继承：继承的本质就是原型链 继承的几种方式  2 类的定义、实例化2.1 类的定义&#x2F;类的声明方式一：用构造函数模拟类（传统写法） 123function Animal1() &amp;#123;    this.name &#x3D; &amp;#x27;smyhvae&amp;#x27;; &#x2F;&#x2F;通过this，表明这是一个构造函数&amp;#125;  方式二：用 cl">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_0957.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_1000.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_1015.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_1030.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_1109.png">
+<meta property="og:image" content="http://img.smyhvae.com/20180307_1123.png">
+<meta property="article:published_time" content="2021-11-29T13:49:16.417Z">
+<meta property="article:modified_time" content="2020-02-09T09:24:11.000Z">
+<meta property="article:author" content="Lavender">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://img.smyhvae.com/20180307_0957.png">
+  
+  <title>Lavender&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/fluid-extension.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"lavender815.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":false,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":false,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"Fx5yqqDyB8jNGNy6FyqiiDaa-gzGzoHsz","app_key":"nHH1obvazNjsx315R8rvzPSs","server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body class="banner-bg">
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Lavender</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/talking/">
+                <i class="iconfont icon-comment"></i>
+                说说
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cssdiner/">
+                <i class="iconfont icon-bookmark-fill"></i>
+                CSSDiner
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" target="_blank" rel="noopener" href="http://flexboxfroggy.com/#zh-cn">
+                <i class="iconfont icon-bookmark-fill"></i>
+                FlexFroggy
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true >
+      <div class="full-bg-img">
+        <div class="mask flex-center">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-29 21:49" pubdate>
+        2021年11月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2020年2月9日 下午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1 前言"></a>1 前言</h2><blockquote>
+<p>类与实例：</p>
+</blockquote>
+<ul>
+<li>类的声明</li>
+<li>生成实例</li>
+</ul>
+<p><strong>类与继承：</strong></p>
+<ul>
+<li>如何实现继承：继承的本质就是原型链</li>
+<li>继承的几种方式</li>
+</ul>
+<h2 id="2-类的定义、实例化"><a href="#2-类的定义、实例化" class="headerlink" title="2 类的定义、实例化"></a>2 类的定义、实例化</h2><h3 id="2-1-类的定义-类的声明"><a href="#2-1-类的定义-类的声明" class="headerlink" title="2.1 类的定义/类的声明"></a>2.1 类的定义/类的声明</h3><p><strong>方式一</strong>：用构造函数模拟类（传统写法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Animal1</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = <span class="hljs-string">&#x27;smyhvae&#x27;</span>; <span class="hljs-comment">//通过this，表明这是一个构造函数</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方式二</strong>：用 class 声明（<code>ES6</code>的写法）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal2</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-title">constructor</span>(<span class="hljs-params"></span>)</span> &#123;  <span class="hljs-comment">//可以在构造函数里写属性</span><br>        <span class="hljs-built_in">this</span>.name = name;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>控制台的效果：</p>
+<p><img src="http://img.smyhvae.com/20180307_0957.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-2-实例化"><a href="#2-2-实例化" class="headerlink" title="2.2 实例化"></a>2.2 实例化</h3><p>类的实例化很简单，直接 <code>new</code> 出来即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> Animal1(),<span class="hljs-keyword">new</span> Animal2()); <span class="hljs-comment">//实例化。如果括号里没有参数，则括号可以省略</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="http://img.smyhvae.com/20180307_1000.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3-继承的几种方式"><a href="#3-继承的几种方式" class="headerlink" title="3 继承的几种方式"></a>3 继承的几种方式</h2><blockquote>
+<p>继承的本质就是原型链。</p>
+</blockquote>
+<p><strong>继承的方式有几种？每种形式的优缺点是</strong>？这些问题必问的。其实就是考察你对原型链的掌握程度。</p>
+<h3 id="3-1-方式一：借助构造函数"><a href="#3-1-方式一：借助构造函数" class="headerlink" title="3.1 方式一：借助构造函数"></a>3.1 方式一：借助构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent1</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = <span class="hljs-string">&#x27;parent1 的属性&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child1</span>(<span class="hljs-params"></span>) </span>&#123;<br>    Parent1.call(<span class="hljs-built_in">this</span>);         <span class="hljs-comment">//【重要】此处用 call 或 apply 都行：改变 this 的指向</span><br>    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;child1 的属性&#x27;</span>;<br>&#125;<br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> Child1);<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>【重要】上方代码中，最重要的那行代码：在子类的构造函数里写了<code>Parent1.call(this);</code>，意思是：<strong>让Parent的构造函数在child的构造函数中执行</strong>。发生的变化是：<strong>改变this的指向</strong>，parent的实例 –&gt; 改为指向child的实例。导致 parent的实例的属性挂在到了child的实例上，这就实现了继承。</p>
+</blockquote>
+<p>打印结果：</p>
+<p><img src="http://img.smyhvae.com/20180307_1015.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上方结果表明：<code>child</code>先有了 <code>parent</code> 实例的属性（继承得以实现），再有了<code>child</code> 实例的属性。</p>
+</blockquote>
+<p><strong>分析</strong>：</p>
+<blockquote>
+<p>这种方式，虽然改变了 <code>this</code> 的指向，但是，<strong>Child1 无法继承 <code>Parent1</code> 的原型</strong>。也就是说，如果我给 <code>Parent1</code> 的原型增加一个方法：</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript">Parent1.prototype.say = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面这个方法是无法被 <code>Child1</code> 继承的。如下：</p>
+</blockquote>
+<p><img src="http://img.smyhvae.com/20180307_1030.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="3-2-方法二：通过原型链实现继承"><a href="#3-2-方法二：通过原型链实现继承" class="headerlink" title="3.2 方法二：通过原型链实现继承"></a>3.2 方法二：通过原型链实现继承</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span><br><span class="hljs-comment">通过原型链实现继承</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = <span class="hljs-string">&#x27;Parent 的属性&#x27;</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;Child 的属性&#x27;</span>;<br>&#125;<br><br>Child.prototype = <span class="hljs-keyword">new</span> Parent(); <span class="hljs-comment">//【重要】</span><br><br><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">new</span> Child());<br></code></pre></td></tr></table></figure>
+
+<p>打印结果：</p>
+<p><img src="http://img.smyhvae.com/20180307_1109.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>【重要】上方代码中，最重要的那行：每个函数都有<code>prototype</code>属性，于是，构造函数也有这个属性，这个属性是一个对象。现在，<strong>我们把<code>Parent</code>的实例赋值给了<code>Child</code>的<code>prototye</code><strong>，从而实现</strong>继承</strong>。此时，<code>Child</code>构造函数、<code>Parent</code>的实例、<code>Child</code>的实例构成一个三角关系。于是：</p>
+</blockquote>
+<ul>
+<li><code>new Child.__proto__ === new Parent()</code>的结果为<code>true</code></li>
+</ul>
+<p><strong>分析：</strong></p>
+<ul>
+<li>这种继承方式，<strong>Child 可以继承 Parent 的原型</strong>，但有个缺点：</li>
+</ul>
+<blockquote>
+<p>缺点是：<strong>如果修改 child1实例的name属性，child2实例中的name属性也会跟着改变</strong>。</p>
+</blockquote>
+<p>如下：</p>
+<p><img src="http://img.smyhvae.com/20180307_1123.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>上面的代码中， <code>child1</code>修改了<code>arr</code>属性，却发现，<code>child2</code>的<code>arr</code>属性也跟着改变了。这显然不太好，在业务中，两个子模块应该隔离才对。如果改了一个对象，另一个对象却发生了改变，就不太好。</p>
+</blockquote>
+<blockquote>
+<p>造成这种缺点的原因是：<code>child1</code>和<code>child2</code>共用原型。即：<code>chi1d1.__proto__ === child2__proto__</code>是严格相同。而 arr方法是在 Parent 的实例上（即 Child实例的原型）的。</p>
+</blockquote>
+<h3 id="3-3-方式三：组合的方式：构造函数-原型链"><a href="#3-3-方式三：组合的方式：构造函数-原型链" class="headerlink" title="3.3 方式三：组合的方式：构造函数 + 原型链"></a>3.3 方式三：组合的方式：构造函数 + 原型链</h3><p>就是把上面的两种方式组合起来：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">/*</span><br><span class="hljs-comment">组合方式实现继承：构造函数、原型链</span><br><span class="hljs-comment"> */</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Parent3</span>(<span class="hljs-params"></span>) </span>&#123;<br>    <span class="hljs-built_in">this</span>.name = <span class="hljs-string">&#x27;Parent 的属性&#x27;</span>;<br>    <span class="hljs-built_in">this</span>.arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Child3</span>(<span class="hljs-params"></span>) </span>&#123;<br>    Parent3.call(<span class="hljs-built_in">this</span>); <span class="hljs-comment">//【重要1】执行 parent方法</span><br>    <span class="hljs-built_in">this</span>.type = <span class="hljs-string">&#x27;Child 的属性&#x27;</span>;<br>&#125;<br>Child3.prototype = <span class="hljs-keyword">new</span> Parent3(); <span class="hljs-comment">//【重要2】第二次执行parent方法</span><br><br><span class="hljs-keyword">var</span> child = <span class="hljs-keyword">new</span> Child3();<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>这种方式，能解决之前两种方式的问题：既可以继承父类原型的内容，也不会造成原型里属性的修改。</li>
+<li>这种方式的缺点是：让父亲<code>Parent</code>的构造方法执行了两次。</li>
+<li><code>ES6</code>中的继承方式，一带而过即可，重点是要掌握<code>ES5</code>中的继承。</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E5%89%8D%E7%AB%AF%E9%94%99%E8%AF%AF%E7%9B%91%E6%8E%A7/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/29/FE-Interview-Questions-master/%E6%B5%8F%E8%A7%88%E5%99%A8/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"90PaekkAJqWW9TALNKJD5Ei4-gzGzoHsz","appKey":"c3Vd6DWx4a5FVEmwytEXOYVd","path":"window.location.pathname","placeholder":"欢迎留言！","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Hexo</span></a> <i class="iconfont icon-love" style = "color: #fff"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener" style = "color: #fff"><span>Fluid</span></a> <div style="font-size: 0.85rem; color: #fff"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.css">
+<style>
+    .row{
+        text-align: left;
+    }
+
+    .aplayer .aplayer-lrc p {
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="5297225655"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/gh/DIYgod/APlayer/dist/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<!-- hexo injector body_end start -->
+    <link defer rel="stylesheet" href="/css/mini-copyright.css"/>
+    <script src="/js/mini-copyright.js"></script>
+    <script>
+        new MiniCopyright(`本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！`).init();
+    </script>
+    <!-- hexo injector body_end end --></body>
+</html>
