@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://lavender815.github.io</id>
     <title>Lavender</title>
     <subtitle></subtitle>
-    <icon>http://example.com/images/favicon.ico</icon>
-    <link href="http://example.com" />
+    <icon>https://lavender815.github.io/images/favicon.ico</icon>
+    <link href="https://lavender815.github.io" />
     <author>
       <name>Lavender</name>
     </author>
     <updated>2022-08-18T02:09:14.000Z</updated>
     <entry>
-        <id>http://example.com/2022/08/18/hello-world/</id>
+        <id>https://lavender815.github.io/2022/08/18/hello-world/</id>
         <title>Hello World</title>
-        <link rel="alternate" href="http://example.com/2022/08/18/hello-world/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/08/18/hello-world/"/>
         <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
@@ -24,14 +24,14 @@
 &lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
 </content>
-        <category term="Hello" scheme="http://example.com/categories/Hello/" />
-        <category term="Hello" scheme="http://example.com/tags/Hello/" />
+        <category term="Hello" scheme="https://lavender815.github.io/categories/Hello/" />
+        <category term="Hello" scheme="https://lavender815.github.io/tags/Hello/" />
         <updated>2022-08-18T02:09:14.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/07/01/Python%20Handbook/</id>
+        <id>https://lavender815.github.io/2022/07/01/Python%20Handbook/</id>
         <title>Python</title>
-        <link rel="alternate" href="http://example.com/2022/07/01/Python%20Handbook/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/07/01/Python%20Handbook/"/>
         <content type="html">&lt;h1 id=&#34;python&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#python&#34;&gt;#&lt;/a&gt; Python&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#%E4%BB%80%E4%B9%88%E6%98%AF-Python-%E7%94%9F%E6%88%90%E5%99%A8&#34;&gt;什么是 Python 生成器？&lt;/a&gt;&lt;/li&gt;
@@ -156,14 +156,14 @@ print(a is b)
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vS2VlcC1BbWJpdGlvbi9wLzc1OTYwOTguaHRtbA==&#34;&gt;GIL 锁、线程锁 (互斥锁)、递归锁 (RLock)&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/" />
-        <category term="Python" scheme="http://example.com/tags/Python/" />
+        <category term="学习" scheme="https://lavender815.github.io/categories/%E5%AD%A6%E4%B9%A0/" />
+        <category term="Python" scheme="https://lavender815.github.io/tags/Python/" />
         <updated>2022-07-01T03:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/06/30/Operating%20Systems/</id>
+        <id>https://lavender815.github.io/2022/06/30/Operating%20Systems/</id>
         <title>操作系统</title>
-        <link rel="alternate" href="http://example.com/2022/06/30/Operating%20Systems/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/06/30/Operating%20Systems/"/>
         <content type="html">&lt;h1 id=&#34;操作系统&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#操作系统&#34;&gt;#&lt;/a&gt; 操作系统&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;进程和线程
@@ -632,14 +632,14 @@ C 语言使用运行时栈来存储过程信息。每个函数的信息存储在
 &amp;lt;/div&amp;gt;&lt;/label&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="计算机" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
-        <category term="操作系统" scheme="http://example.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
+        <category term="计算机" scheme="https://lavender815.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
+        <category term="操作系统" scheme="https://lavender815.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" />
         <updated>2022-06-30T03:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/06/15/Git-ComdLine-REST/</id>
+        <id>https://lavender815.github.io/2022/06/15/Git-ComdLine-REST/</id>
         <title>Git/RESTful API/命令行</title>
-        <link rel="alternate" href="http://example.com/2022/06/15/Git-ComdLine-REST/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/06/15/Git-ComdLine-REST/"/>
         <content type="html">&lt;h1 id=&#34;gitrestful-api命令行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#gitrestful-api命令行&#34;&gt;#&lt;/a&gt; Git/RESTful API / 命令行&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#git&#34;&gt;Git&lt;/a&gt;
@@ -756,14 +756,14 @@ C 语言使用运行时栈来存储过程信息。每个函数的信息存储在
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2psZXZ5L3RoZS1hcnQtb2YtY29tbWFuZC1saW5lL2Jsb2IvbWFzdGVyL1JFQURNRS16aC5tZA==&#34;&gt;GitHub - jlevy/the-art-of-command-line: Master the command line, in one page&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="计算机" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
-        <category term="命令" scheme="http://example.com/tags/%E5%91%BD%E4%BB%A4/" />
+        <category term="计算机" scheme="https://lavender815.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
+        <category term="命令" scheme="https://lavender815.github.io/tags/%E5%91%BD%E4%BB%A4/" />
         <updated>2022-06-15T03:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/06/01/Design%20Pattern/</id>
+        <id>https://lavender815.github.io/2022/06/01/Design%20Pattern/</id>
         <title>设计模式</title>
-        <link rel="alternate" href="http://example.com/2022/06/01/Design%20Pattern/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/06/01/Design%20Pattern/"/>
         <content type="html">&lt;h1 id=&#34;设计模式&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设计模式&#34;&gt;#&lt;/a&gt; 设计模式&lt;/h1&gt;
 &lt;h2 id=&#34;设计模式是什么&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#设计模式是什么&#34;&gt;#&lt;/a&gt; 设计模式是什么&lt;/h2&gt;
 &lt;p&gt;设计模式是一个通过定义、使用、测试去解决特定问题的方法，是针对软件设计中在给定条件下会重复性发生的问题而提出的一种通用性的可重用解决方案，设计模式不是可以直接转化为代码的完整设计，它是用于描述在不同情况下解决问题的通用方案。&lt;/p&gt;
@@ -1486,14 +1486,14 @@ C 语言使用运行时栈来存储过程信息。每个函数的信息存储在
 使用访问者模式的一个主要优点是，对于在我们的数据结构中添加需要执行的新的操作来说，是非常容易的。我们所要做的就是创建一个新的访问者，并定义相应的操作。&lt;br /&gt;
 访问者模式的主要问题是，因为每个访问者需要有相应的方法来处理每一种可能的具体数据，那么一旦实现了访问者模式，其具体类的数量和类型就不能被轻易改变。&lt;/p&gt;
 </content>
-        <category term="学习" scheme="http://example.com/categories/%E5%AD%A6%E4%B9%A0/" />
-        <category term="设计模式" scheme="http://example.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
+        <category term="学习" scheme="https://lavender815.github.io/categories/%E5%AD%A6%E4%B9%A0/" />
+        <category term="设计模式" scheme="https://lavender815.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" />
         <updated>2022-06-01T03:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/05/30/Database/</id>
+        <id>https://lavender815.github.io/2022/05/30/Database/</id>
         <title>数据库</title>
-        <link rel="alternate" href="http://example.com/2022/05/30/Database/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/05/30/Database/"/>
         <content type="html">&lt;h1 id=&#34;数据库&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据库&#34;&gt;#&lt;/a&gt; 数据库&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;数据库基础
@@ -1921,14 +1921,14 @@ delete;
 &lt;li class=&#34;task-list-item&#34;&gt;&lt;input type=&#34;checkbox&#34; id=&#34;cbx_4&#34; disabled=&#34;true&#34; /&gt;&lt;label for=&#34;cbx_4&#34;&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vd2VueGlhb2ZlaS9wLzk4NTM2ODIuaHRtbA==&#34;&gt;史上最全的数据库面试题，不看绝对后悔 -- 博客园&lt;/span&gt;&lt;/label&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="计算机" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
-        <category term="数据库" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" />
+        <category term="计算机" scheme="https://lavender815.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
+        <category term="数据库" scheme="https://lavender815.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" />
         <updated>2022-05-30T03:00:00.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2022/05/15/Computer%20Network/</id>
+        <id>https://lavender815.github.io/2022/05/15/Computer%20Network/</id>
         <title>计算机网络</title>
-        <link rel="alternate" href="http://example.com/2022/05/15/Computer%20Network/"/>
+        <link rel="alternate" href="https://lavender815.github.io/2022/05/15/Computer%20Network/"/>
         <content type="html">&lt;h1 id=&#34;计算机网络&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#计算机网络&#34;&gt;#&lt;/a&gt; 计算机网络&lt;/h1&gt;
 &lt;p&gt;&amp;lt;!-- GFM-TOC --&amp;gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -2273,8 +2273,8 @@ HTTP 不可以使用 UDP，HTTP 需要基于可靠的传输协议，而 UDP 不�
 &lt;li&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JhZF9zaGVlcC9hcnRpY2xlL2RldGFpbHMvNjE1ODY3Ng==&#34;&gt;TCP 速率与窗口，带宽，RTT 之间的关系&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <category term="计算机" scheme="http://example.com/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
-        <category term="计算机网络" scheme="http://example.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" />
+        <category term="计算机" scheme="https://lavender815.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" />
+        <category term="计算机网络" scheme="https://lavender815.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" />
         <updated>2022-05-15T11:09:14.000Z</updated>
     </entry>
 </feed>
