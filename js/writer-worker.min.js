@@ -118,7 +118,7 @@
     <div class="gramophone-shelf-status" data-gramophone-shelf-status hidden role="status"></div>
     <div class="gramophone-shelf-access" data-gramophone-shelf-access hidden aria-label="\u9009\u62E9\u6B4C\u5355\u5531\u7247"></div>
     <div class="about-gramophone__loading" data-gramophone-loading role="status">
-      <span></span><strong>\u6B63\u5728\u4E3A\u7559\u58F0\u673A\u4E0A\u5F26</strong><small>\u5531\u7247\u4E0E\u66F2\u5E93\u51C6\u5907\u4E2D</small>
+      <span></span><strong>\u6EDA\u52A8\u5230\u6B64\u5904\u540E\u4E3A\u7559\u58F0\u673A\u4E0A\u5F26</strong><small>\u4EC5\u5728\u6A21\u578B\u63A5\u8FD1\u89C6\u53E3\u65F6\u52A0\u8F7D\u4E09\u7EF4\u7EC4\u4EF6</small>
     </div>
   </div>
   <button class="about-gramophone__dialog-backdrop" type="button" data-gramophone-close aria-label="\u5173\u95ED\u64AD\u653E\u9762\u677F"></button>
